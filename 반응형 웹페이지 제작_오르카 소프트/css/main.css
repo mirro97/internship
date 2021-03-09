@@ -1,4 +1,26 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+header {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin: 5px 360px;
+}
+
+header .company-title {
+  margin-right: 100px;
+}
+
+header .nav {
+  display: flex;
+  list-style: none;
+}
+
+header .nav li {
+  margin-right: 20px;
 }
