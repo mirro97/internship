@@ -7,6 +7,7 @@
     <title>오르카소프트</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
       rel="stylesheet"
@@ -14,17 +15,19 @@
   </head>
   <body>
     <header>
-      <h1 class="company-title">오르카 소프트</h1>
-      <ul class="nav">
-        <li>About</li>
-        <li>Business</li>
-        <li>With Us</li>
-      </ul>
+      <div class="header-wrapper">
+        <h1 class="company-title"><a href="#">오르카 소프트</a></h1>
+        <ul class="nav">
+          <li class="nav-item"><a href="#">About</a></li>
+          <li class="nav-item"><a href="#">Business</a></li>
+          <li class="nav-item"><a href="#">With Us</a></li>
+        </ul>
+      </div>
     </header>
     <main>
       <div class="slide">
-        <ul class="slide-wrap">
-          <li>
+        <ul class="slide-container">
+          <li class="slide-wrapper">
             <div class="intro">
               <h2 class="intro-title">
                 당신의 꿈을 실현시켜주는 오르카 소프트
@@ -35,8 +38,10 @@
                 다짐으로 모인 개발자들이 설립한 청년 기업입니다. VR, 블록체인,
                 Web등 각 파트별 전문가들이 꿈을 현실로 만들어 드립니다.
               </p>
+              <span class="orca"></span>
             </div>
           </li>
+          <!-- 
           <li>
             <div class="intro">
               <h2 class="intro-title">젊음의 무한경쟁 오르카 소프트</h2>
@@ -48,47 +53,49 @@
               </p>
             </div>
           </li>
+           -->
         </ul>
       </div>
-      <div class="container">
-        <div class="intro">
-          <div class="intro-content-graph">
-            <div class="wrap-graph">
-              <h3>01 전문적인 노하우</h3>
-              <p>90%</p>
-              <div class="graph"></div>
-              <span>
-                각 분야별 전문 개발자들의 노하우로 소프트웨어를 완성합니다
-              </span>
-            </div>
-
-            <div class="wrap-graph">
-              <h3>02 최신 트랜드 리드</h3>
-              <p>99%</p>
-              <div class="graph"></div>
-              <span>
-                최신 IT 트랜드 분석과 기술력으로 IT 업계의 선두 주자가
-                되겠습니다
-              </span>
-            </div>
-
-            <div class="wrap-graph">
-              <h3>03 합리적인 가격</h3>
-              <p>100%</p>
-              <div class="graph"></div>
-              <span>효율적인 프로젝트 관리로 최선의 가격을 제공합니다</span>
-            </div>
+      <div class="graph">
+        <div class="graph-container">
+          <div class="graph-wrapper">
+            <h3 class="graph-title">전문적인 노하우</h3>
+            <p>90%</p>
+            <div class="graph" id="first-graph"></div>
+            <span>
+              각 분야별 전문 개발자들의 노하우로 </br> 소프트웨어를 완성합니다
+            </span>
           </div>
+
+          <div class="graph-wrapper">
+            <h3 class="graph-title">최신 트랜드 리드</h3>
+            <p>99%</p>
+            <div class="graph" id="second-graph"></div>
+            <span>
+              최신 IT 트랜드 분석과 기술력으로 </br> IT 업계의 선두 주자가 되겠습니다
+            </span>
+          </div>
+
+          <div class="graph-wrapper">
+            <h3 class="graph-title" id="third-graph">합리적인 가격</h3>
+            <p>100%</p>
+            <div class="graph"></div>
+            <span>효율적인 프로젝트 관리로 </br> 최선의 가격을 제공합니다</span>
+          </div>
+          
         </div>
       </div>
     </main>
     <footer>
       <div class="company-detail">
-        <img src="#" alt="오르카소프트" />
-        <span>회사명: Orca Software</span>
-        <span>대표자: 유영제</span>
-        <span>주소: 강원도 춘천시 ...</span>
-        <span>이메일: orcasoft@naver.com</span>
+        <div class="detail">
+          <span>회사명: Orca Software</span>
+          <span>대표자: 유영제</span>
+          <span>주소: 강원도 춘천시 한림대학교 창업보육센터 12110호</span>
+          <span>이메일: orcasoft@naver.com</span>
+        </div>
+        
+        <img src="css/image/세로로고_배경투명_w150.png" alt="오르카소프트" />
       </div>
     </footer>
   </body>
