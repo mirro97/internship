@@ -9,7 +9,7 @@ body {
   height: 100vh;
   /* font-family: "Noto Sans KR", sans-serif; */
   font-family: "NanumSquare", sans-serif !important;
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 a {
@@ -72,28 +72,21 @@ header .nav-item a {
 }
 
 header .nav li a:hover {
-  border-bottom: 2px solid #000;
+  border-bottom: 3px solid #ff981a;
 }
 
 /* main css */
-main .slide {
-  position: relative;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 28, 115, 1) 0%,
-    rgba(0, 118, 142, 1) 100%
-  );
-  padding: 150px 0;
+main .swiper-container {
+  height: 500px;
 }
 
-main .slide-container {
-  margin: 0 400px;
+main .swiper-wrapper {
+  position: relative;
 }
 
-main .intro {
-  position: relative;
+main .swiper-slide {
+  padding: 0 400px;
+  padding-top: 150px;
 }
 
 main .intro-title {
@@ -102,25 +95,26 @@ main .intro-title {
   color: #fff;
 }
 
+main #fitst-content {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 28, 115, 1) 0%,
+    rgba(0, 118, 142, 1) 100%
+  );
+}
+
+main #second-content {
+  background-color: #e2e2e2;
+}
+
 main .intro-content {
   font-size: 18px;
   line-height: 1.4545;
   width: 525px;
   color: #fff;
 }
-
-/* main .slide .intro .orca {
-  position: absolute;
-  background-image: url("image/orca_image.png");
-  bottom: 0;
-  top: -100px;
-  left: 70%;
-  width: 367px;
-  height: 402px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-} */
 
 /* slide css */
 main .graph {
@@ -145,6 +139,26 @@ main .graph-wrapper {
 
 main .graph-wrapper:last-child {
   margin-right: 0;
+}
+
+main .graph-wrapper .graph-title {
+  font-size: 25px;
+}
+
+main .g-wrapper {
+  position: relative;
+  margin: 20px 0;
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+}
+
+main .graph strong {
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* footer */
