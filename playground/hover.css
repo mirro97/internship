@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen {
+  color: #fff;
+  background-color: #7d7576;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* border 효과를 위한 부분 */
+  margin: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen:nth-child(2) {
+  background-color: #69bcc5;
+}
+
+.screen:nth-child(3) {
+  background-color: #978bb3;
+}
+
+.screen span {
+  display: block;
+  position: absolute;
+  background-color: #e2e2e2;
+  transition: all 0.5s;
+}
+
+.screen span:nth-child(1) {
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0;
+}
+.screen span:nth-child(2) {
+  top: 0;
+  right: 0;
+  height: 0;
+  width: 5px;
+}
+.screen span:nth-child(3) {
+  bottom: 0;
+  right: 0;
+  height: 5px;
+  width: 0;
+}
+.screen span:nth-child(4) {
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: 5px;
+}
+
+/* hover effect practice 1 */
+.screen:hover span:nth-child(1) {
+  width: 100%;
+}
+
+.screen:hover span:nth-child(2) {
+  height: 100%;
+}
+.screen:hover span:nth-child(3) {
+  width: 100%;
+}
+.screen:hover span:nth-child(4) {
+  height: 100%;
+}
+
+/* hover effect practice 2 */
+.screen:hover #second:nth-child(1) {
+  width: 100%;
+}
+
+.screen:hover #second:nth-child(2) {
+  height: 100%;
+  transition-delay: 0.5s;
+}
+.screen:hover #second:nth-child(3) {
+  width: 100%;
+  transition-delay: 1s;
+}
+.screen:hover #second:nth-child(4) {
+  height: 100%;
+  transition-delay: 1.5s;
+}
+
+/* hover effect practice 3 */
+.screen:hover #third:nth-child(1) {
+  width: 100%;
+}
+
+.screen:hover #third:nth-child(2) {
+  height: 100%;
+  transition-delay: 0.5s;
+}
+.screen:hover #third:nth-child(3) {
+  width: 100%;
+}
+.screen:hover #third:nth-child(4) {
+  height: 100%;
+  transition-delay: 0.5s;
+}
