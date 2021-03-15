@@ -1,0 +1,77 @@
+h1,
+h2,
+p {
+  display: block;
+}
+
+main .intro {
+  padding: 110px 0;
+  /* max-width: ; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main .intro h1 {
+  font-size: 40px;
+}
+
+main .intro span {
+  font-size: 22px;
+}
+
+main .service {
+  margin: 0 550px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+main .service:hover {
+  /* animation */
+  animation: hoverAction 1s ease-in;
+}
+
+@keyframes hoverAction {
+  0% {
+  }
+  100% {
+    border-top: 3px solid #243aab;
+    border-bottom: 3px solid #243aab;
+  }
+}
+
+main .service .content {
+  width: 50%;
+  height: 100%;
+  background-color: #ede3e5;
+  padding: 0 30px;
+  /* 
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px; */
+}
+
+main .service .content .business-title {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 25px;
+}
+
+main .service .content .business-content {
+  font-size: 20px;
+  margin-top: 26px;
+}
+
+main .service .explane-img {
+  width: 50%;
+  height: 100%;
+  background-color: #f3f3f3;
+  /* border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px; */
+
+  text-align: center;
+}
