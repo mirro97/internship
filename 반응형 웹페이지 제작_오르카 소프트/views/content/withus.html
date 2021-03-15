@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WITH US | 오르카소프트</title>
+
+    <!-- header, footer 공통 html -->
+    <script src="js/common-js.js"></script>
+
+    <!-- main과 공통인 css - header, footer -->
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- with us css -->
+    <link rel="stylesheet" href="css/withus.css" />
+
+    <!-- 폰트 -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      window.onload = function () {
+        includeHTML();
+      };
+    </script>
+  </head>
+  <body>
+    <header include-html="/component/header.html"></header>
+    <main>
+      <span>
+        제휴 또는 협력, 서비스에 대한 궁금한 사항을 작성해주세요 <br />
+        담당자가 확인하는 대로 최대한 빠른 답변 드리겠습니다
+      </span>
+
+      <form action="">
+        <input type="text" name="id" />
+        <input type="password" name="pw" />
+      </form>
+    </main>
+    <footer include-html="/component/footer.html" required></footer>
+  </body>
+</html>

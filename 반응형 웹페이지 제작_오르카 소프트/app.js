@@ -37,3 +37,13 @@ app.get("/business", (req, res, next) => {
     }
   );
 });
+
+app.get("/withus", (req, res, next) => {
+  fs.readFile(
+    __dirname + "/views/content/withus.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
