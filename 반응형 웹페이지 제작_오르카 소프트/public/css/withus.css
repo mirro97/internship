@@ -1,3 +1,56 @@
+input {
+  width: 100%;
+  height: 36px;
+  padding-left: 10px;
+}
+
+th {
+  font-weight: 400;
+}
+
+header .header-wrapper {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* main css */
 main {
-  background-color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+main .inquiry-title {
+  padding: 100px 0 100px 0;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: -0.05em;
+}
+main .form-container {
+  width: 100%;
+  background-color: #f3f3f3;
+  padding: 50px 0 100px 0;
+}
+
+main .input-group {
+  width: 500px;
+  margin: 0 auto;
+}
+
+main table {
+  width: 100%;
+  border-spacing: 0 20px;
+}
+
+main #inquiry {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  padding: 10px;
+}
+
+main .submit-button {
+  padding: 8px 20px;
+  border: none;
+  background-color: #0c3b85;
+  color: #fff;
+  border-radius: 4px;
+  float: right;
 }

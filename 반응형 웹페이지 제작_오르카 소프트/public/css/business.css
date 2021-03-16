@@ -21,7 +21,7 @@ main .intro h1 {
 }
 
 main .intro span {
-  font-size: 22px;
+  font-size: 19px;
 }
 
 main .service-wrapper {
@@ -76,4 +76,31 @@ main .service .explane-img {
   background-color: #f3f3f3;
 
   text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  /* 가로길이가 1200px 보다 작을 경우(이하)에 적용됨 */
+  main .service {
+    width: 900px;
+    height: 480px;
+  }
+  main .service .content .business-title {
+    font-size: 30px;
+  }
+
+  main .service .content .business-content {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  /* 가로길이가 992px 보다 작을 경우(이하)에 적용됨 */
+}
+
+@media screen and (max-width: 855px) {
+  /* 가로길이가 855px 보다 작을 경우(이하)에 적용됨 */
+}
+
+@media screen and (max-width: 768px) {
+  /* 가로길이가 768px 보다 작을 경우(이하)에 적용됨 */
 }

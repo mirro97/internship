@@ -34,7 +34,7 @@ header .header-wrapper {
   top: 0;
   width: 100%;
   overflow: hidden;
-  padding: 0 360px;
+  padding: 0 340px;
 
   text-align: center;
   background-color: #ffffff;
@@ -77,18 +77,17 @@ header .nav li a:hover {
   border-bottom: 2px solid #001845;
 }
 
-/* main css */
-main .swiper-container {
-  height: 500px;
+header .sub-tab {
+  display: none;
 }
 
+/* main css */
 main .swiper-wrapper {
   position: relative;
 }
 
 main .swiper-slide {
-  padding: 0 400px;
-  padding-top: 150px;
+  padding: 150px 340px;
 }
 
 main .intro-title {
@@ -112,9 +111,9 @@ main #second-content {
 }
 
 main .intro-content {
+  width: 613px;
   font-size: 18px;
   line-height: 1.4545;
-  width: 525px;
   color: #fff;
 }
 
@@ -198,4 +197,112 @@ footer .detail span:last-child {
 .swiper-button-next {
   /* color:  */
   --swiper-theme-color: #e5e5e5;
+}
+
+@media screen and (max-width: 1366px) {
+  /* 가로길이가 1366px 보다 작을 경우(이하)에 적용됨 */
+  header .header-wrapper {
+    padding: 0 200px;
+  }
+  main .swiper-slide {
+    padding: 150px 200px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  /* 가로길이가 1200px 보다 작을 경우(이하)에 적용됨 */
+  span {
+    font-size: 14px;
+  }
+
+  main .graph-wrapper {
+    width: 260px;
+  }
+
+  main .g-wrapper {
+    width: 150px;
+  }
+
+  main .graph-wrapper .graph-title {
+    font-size: 20px;
+  }
+
+  main .graph strong {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  /* 가로길이가 992px 보다 작을 경우(이하)에 적용됨 */
+  header .header-wrapper,
+  main .swiper-slide {
+    padding: 0 140px;
+  }
+  main .swiper-slide {
+    padding: 150px 150px;
+  }
+
+  main .graph-wrapper {
+    padding: 20px 10px;
+  }
+  main .graph {
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 855px) {
+  /* 가로길이가 992px 보다 작을 경우(이하)에 적용됨 */
+  main .swiper-slide {
+    padding: 150px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main .swiper-slide .intro-content {
+    text-align: center;
+  }
+
+  main .graph-container {
+    flex-direction: column;
+  }
+  main .graph-wrapper {
+    margin-right: 0;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  /* footer */
+  .company-detail .detail {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header .company-title {
+    float: none;
+  }
+  header .nav {
+    display: none;
+  }
+  main .swiper-slide {
+    padding: 100px 0;
+  }
+
+  main .intro-content {
+    width: 613px;
+    font-size: 18px;
+    line-height: 1.4545;
+    color: #fff;
+  }
+  main .intro-title {
+    font-size: 20px;
+  }
+
+  main .intro-content {
+    width: auto;
+    padding: 0 80px;
+    font-size: 14px;
+  }
 }
