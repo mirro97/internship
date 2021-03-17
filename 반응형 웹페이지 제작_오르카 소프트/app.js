@@ -5,6 +5,7 @@ app.listen(httpPort);
 
 const fs = require("fs");
 
+app.use(express.urlencoded());
 app.use("/", express.static(__dirname + "/public"));
 app.use("/component", express.static(__dirname + "/views/component"));
 
@@ -46,4 +47,14 @@ app.get("/withus", (req, res, next) => {
       res.end(data);
     }
   );
+});
+
+app.post("/withus", (req, res, next) => {
+  console.log(req.body);
+  res.redirect("/withus");
+});
+
+app.post("/sendEmail", (req, res, next) => {
+  console.log(req.body);
+  res.redirect("/withus");
 });
