@@ -28,4 +28,8 @@ function includeHTML() {
       return;
     }
   }
+  // console.log("initIncludeAfter");
+  // var event = new Event("initIncludeAfter");
+  // window.dispatchEvent(event);
+  initHambugerMenu();
 }

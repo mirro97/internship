@@ -18,15 +18,14 @@ main {
 }
 
 main .inquiry-title {
-  padding: 100px 0 100px 0;
+  padding: 100px 0;
   font-size: 30px;
   text-align: center;
   letter-spacing: -0.05em;
 }
 main .form-container {
-  width: 100%;
   background-color: #f3f3f3;
-  padding: 50px 0 100px 0;
+  padding: 50px 10px 100px 10px;
 }
 
 main .input-group {
@@ -39,6 +38,23 @@ main table {
   border-spacing: 0 20px;
 }
 
+main table input {
+  border: solid 1px #dadada;
+}
+
+main table textarea {
+  border: solid 1px #dadada;
+}
+
+main table input:focus {
+  outline: solid 1px #002795;
+  box-shadow: 0 2px 6px 0 rgb(61 80 81 / 8%);
+}
+
+main table textarea:focus {
+  outline: solid 1px #002795;
+}
+
 main #inquiry {
   width: 100%;
   height: 100px;
@@ -49,8 +65,37 @@ main #inquiry {
 main .submit-button {
   padding: 8px 20px;
   border: none;
+  outline: 0;
   background-color: #0c3b85;
   color: #fff;
   border-radius: 4px;
   float: right;
+}
+
+@media screen and (max-width: 855px) {
+  /* 가로길이가 992px 보다 작을 경우(이하)에 적용됨 */
+  main .inquiry-title {
+    font-size: 25px;
+    padding: 80px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main .form-container {
+    padding: 30px 10px 80px 10px;
+  }
+
+  main .inquiry-title {
+    font-size: 15px;
+    padding: 80px 0;
+  }
+
+  main .input-group {
+    width: auto;
+  }
+
+  th {
+    font-size: 15px;
+    width: 59px;
+  }
 }

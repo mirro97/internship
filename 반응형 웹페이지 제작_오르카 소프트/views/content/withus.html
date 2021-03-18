@@ -26,6 +26,8 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- 햄버거 메뉴 탭 -->
+    <script src="js/hamburgerToggle.js"></script>
 
     <script>
       window.onload = function () {
@@ -49,12 +51,13 @@
           name="person-info"
           method="POST"
           accept-charset="utf-8"
+          autocomplete="off"
           class="input-group"
         >
           <table class="table">
             <tr>
               <th>이름</th>
-              <td><input type="text" name="person-name" id="test" /></td>
+              <td><input type="text" name="person-name" /></td>
             </tr>
             <tr>
               <th>연락처</th>

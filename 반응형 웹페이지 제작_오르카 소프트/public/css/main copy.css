@@ -8,6 +8,7 @@ body {
   width: 100%;
   height: 100vh;
   font-family: "NanumSquare", sans-serif;
+  padding-top: 50px;
 }
 
 a {
@@ -28,12 +29,6 @@ span {
 }
 
 /* hamburger 탭 활성화 */
-header {
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-}
-
 header .header-wrapper .active {
   background-color: #fff;
   width: 100%;
@@ -43,7 +38,7 @@ header .header-wrapper .active {
 
 /* header css */
 header .header-wrapper {
-  /* position: fixed; */
+  position: fixed;
   top: 0;
   width: 100%;
   /* overflow: hidden; */
@@ -112,9 +107,6 @@ header .header-wrapper .nav::after {
 
 /* main css */
 /* slider css */
-main {
-  padding-top: 50px;
-}
 main .swiper-wrapper {
   position: relative;
 }
@@ -295,13 +287,6 @@ footer .detail span:last-child {
 
 @media screen and (max-width: 855px) {
   /* 가로길이가 992px 보다 작을 경우(이하)에 적용됨 */
-  header .header-wrapper {
-    border-bottom: 1px solid #e5e5e5;
-  }
-  main .swiper-slide {
-    height: 350px;
-  }
-
   main .swiper-slide {
     padding: 150px 0;
     display: flex;

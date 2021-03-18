@@ -29,8 +29,8 @@ main .service-wrapper {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 80px 30px;
   background-color: #f3f3f3;
-  padding-top: 80px;
 }
 
 main .service {
@@ -39,15 +39,17 @@ main .service {
   justify-content: center;
   align-items: center;
   width: 1000px;
-  height: 500px;
+  height: 550px;
   border-radius: 14px;
   box-shadow: 0px 1px 3px rgb(0 0 0 / 10%), 0px 4px 6px rgb(0 0 0 / 5%),
     inset 0px 1px 0px rgb(255 255 255 / 10%);
 
-  /* border 효과를 위한 부분 */
-  margin: 5px 5px 115px 5px;
-  position: relative;
+  margin-bottom: 110px;
   overflow: hidden;
+}
+
+main .service:last-child {
+  margin-bottom: 0;
 }
 
 main .service .content {
@@ -81,9 +83,10 @@ main .service .explane-img {
 @media screen and (max-width: 1200px) {
   /* 가로길이가 1200px 보다 작을 경우(이하)에 적용됨 */
   main .service {
-    width: 900px;
-    height: 480px;
+    width: 800px;
+    height: 440px;
   }
+
   main .service .content .business-title {
     font-size: 30px;
   }
@@ -93,14 +96,59 @@ main .service .explane-img {
   }
 }
 
-@media screen and (max-width: 992px) {
-  /* 가로길이가 992px 보다 작을 경우(이하)에 적용됨 */
-}
-
 @media screen and (max-width: 855px) {
   /* 가로길이가 855px 보다 작을 경우(이하)에 적용됨 */
+  main .intro {
+    padding: 80px 0;
+  }
+
+  main .intro h1 {
+    font-size: 35px;
+  }
+
+  main .service {
+    width: 680px;
+    height: 374px;
+  }
+
+  main .service .content .business-title {
+    font-size: 30px;
+  }
+
+  main .service .content .business-content {
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   /* 가로길이가 768px 보다 작을 경우(이하)에 적용됨 */
+  main .intro h1 {
+    font-size: 30px;
+  }
+
+  main .service {
+    height: 680px;
+    width: 374px;
+    flex-direction: column;
+  }
+
+  main .service .content {
+    height: 50%;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    justify-content: space-between;
+  }
+
+  main .service .explane-img {
+    height: 50%;
+    width: 100%;
+  }
+  main .service .content .business-title {
+    font-size: 25px;
+  }
+
+  main .service .content .business-content {
+    font-size: 15px;
+  }
 }
