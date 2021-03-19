@@ -33,3 +33,29 @@ function includeHTML() {
   // window.dispatchEvent(event);
   initHambugerMenu();
 }
+
+function checkAgent() {
+  // 익스플로러 체크
+
+  var agent = navigator.userAgent.toLowerCase();
+  if (
+    (navigator.appName == "Netscape" &&
+      navigator.userAgent.search("Trident") != -1) ||
+    agent.indexOf("msie") != -1
+  ) {
+    return "ie";
+  }
+  // 크롬 체크
+  else if (agent.indexOf("chrome") != -1) {
+    return "chrome";
+  }
+  // 사파리나 체크
+  else if (agent.indexOf("safari") != -1) {
+    return "safari";
+  }
+
+  // 파이어폭스 체크
+  else if (agent.indexOf("firefox") != -1) {
+    return "firefox";
+  }
+}

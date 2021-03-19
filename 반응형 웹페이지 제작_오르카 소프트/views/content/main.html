@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/hoverEffect.css" />
 
     <!-- 도넛 차트 플러그인 -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="plugin/Donut-Pie-Ring-Charts-SVG-Donutty/dist/donutty-jquery.js"></script>
     <script src="js/donutGraph.js"></script>
 
@@ -44,16 +44,22 @@
     <script src="js/hamburgerToggle.js"></script>
 
     <script>
-      window.onload = function () {
+      $(document).ready(function () {
+        var agentType = checkAgent();
+        // alert(agentType);
         includeHTML();
         window.initSlider();
-      };
-      // $(document).ready(function () {
 
-      //   includeHTML();
-      //   initGraph();
-      //   window.initSlider();
-      // })
+        // ios 대비 0.01초만에 -90도를 돌린다
+        // 현재 safari에서  rotate가 제대로 안먹히기 때문
+        if (agentType == "safari") {
+          setTimeout(function () {
+            $("circle")[1].setAttribute("transform", "rotate(-90,55,55)");
+            $("circle")[3].setAttribute("transform", "rotate(-90,55,55)");
+            $("circle")[5].setAttribute("transform", "rotate(-90,55,55)");
+          }, 10);
+        }
+      });
     </script>
   </head>
   <body>

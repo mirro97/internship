@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WITH US | 오르카소프트</title>
+    <style>
+      circle {
+        stroke-width: 5;
+        fill: none;
+        stroke: red;
+        stroke-dasharray: 94.2477796077 94.2477796077;
+        stroke-dashoffset: 60;
+      }
+      circle.gray {
+        stroke-width: 7;
+        fill: none;
+        stroke: gray;
+        stroke-dasharray: none;
+        stroke-dashoffset: none;
+      }
+
+      circle.donut {
+        transform: rotate(-90.1deg);
+      }
+
+      svg.wka1 g {
+        /*   margin-top: 140px; */
+        transform: translateY(60px) rotate(-90deg);
+      }
+
+      .wka3 {
+        width: 50px;
+        height: 50px;
+        transform: rotate(-90deg);
+        border-top: 1px solid black;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.js"></script>
+    <script>
+      $(document).ready(function () {
+        // setInterval(function () {
+        // }, 2000);
+        $("circle").get(0).style.strokeDashoffset = 90;
+        $("circle").velocity(
+          {
+            strokeDashoffset: 10,
+          },
+          1000
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <!-- no workaround -->
+    <svg class="wka3">
+      <circle class="gray" cx="50%" cy="50%" r="20" />
+      <circle class="donut" cx="50%" cy="50%" r="20" stroke-linecap="round" />
+    </svg>
+  </body>
+</html>

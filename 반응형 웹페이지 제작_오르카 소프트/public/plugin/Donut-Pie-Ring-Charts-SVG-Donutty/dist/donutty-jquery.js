@@ -217,7 +217,7 @@
             rotateExtra = this.options.round ? this.options.thickness / 3 : 0,
             //   rotate = this.options.circle ? 90 + rotateExtra : -225,
             scale = this.options.dir === "rtl" ? "-1, 1" : "1, 1";
-        rotate = this.options.rotate || -90;
+        rotate = this.options.rotate || -90.1;
         if (this.options.padding >= 0) {
             viewbox += this.options.padding;
         }

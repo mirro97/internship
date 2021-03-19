@@ -51,6 +51,16 @@ app.get("/withus", (req, res, next) => {
   );
 });
 
+app.get("/rotateTest", (req, res, next) => {
+  fs.readFile(
+    __dirname + "/views/content/test.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
+
 // 이메일
 app.post("/withus", async (req, res, next) => {
   let reqParams = req.body;
