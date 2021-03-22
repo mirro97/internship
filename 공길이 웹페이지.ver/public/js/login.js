@@ -1,4 +1,6 @@
 var signInButton = document.querySelector(".loginButton");
+var errorMsg = document.querySelector(".error-msg");
+
 signInButton.addEventListener("click", signIn);
 
 function signIn() {
@@ -7,8 +9,14 @@ function signIn() {
 
   if (userId === "testid" && userPw === "testpw") {
     console.log("로그인 성공");
+    location.href = "이동할 페이지 주소 쓰기";
   } else if (userId !== "testid" || userPw !== "testpw") {
-    alert("아이디나 비밀번호를 다시 확인해주세요");
     console.log("로그인 실패");
+
+    if (errorMsg.classList.contains("error")) {
+      return;
+    } else {
+      errorMsg.classList.toggle("error");
+    }
   }
 }

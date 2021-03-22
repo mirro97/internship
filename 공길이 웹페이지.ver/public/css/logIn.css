@@ -52,7 +52,7 @@ section {
   height: auto;
 }
 
-section .login-wrapper {
+section .login-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,11 +93,15 @@ section .input-group .input-wrapper {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  margin-bottom: 20px;
   width: 300px;
 }
 
-section .input-group .error-msg {
+section .input-group .error-wrapper .error-msg {
+  display: none;
+}
+
+section .input-group .error-wrapper .error {
+  display: block;
   width: 300px;
   background-color: #f1f3f5;
   font-size: 14px;
@@ -113,7 +117,7 @@ section .input-group .loginButton {
   font-weight: 700;
   border: none;
   border-radius: 4px;
-  background-color: #15a58d;
+  background-color: #12b886;
 }
 
 section .input-group .loginButton:first-child {
@@ -121,9 +125,17 @@ section .input-group .loginButton:first-child {
   margin-bottom: 10px;
 }
 
+section .input-group .loginButton:first-child:hover {
+  background-color: #0ca678;
+}
+
 section .input-group .loginButton:last-child {
   background-color: #fee500;
   margin: 10px 0;
+}
+
+section .input-group .loginButton:last-child:hover {
+  background-color: #ffd43b;
 }
 
 section .login-method .line {

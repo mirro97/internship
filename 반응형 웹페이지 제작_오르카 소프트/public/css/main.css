@@ -43,10 +43,8 @@ header .header-wrapper .active {
 
 /* header css */
 header .header-wrapper {
-  /* position: fixed; */
   top: 0;
   width: 100%;
-  /* overflow: hidden; */
   padding: 0 340px;
 
   text-align: center;
