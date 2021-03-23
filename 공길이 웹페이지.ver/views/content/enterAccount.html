@@ -18,7 +18,6 @@
 
     <!-- account js -->
     <script src="../../public/js/account.js"></script>
-
   </head>
   <body>
     <section class="account">
@@ -39,42 +38,56 @@
       >
         <div class="row_content">
           <span class="userinfo">아이디</span>
-          <input type="text" name="user-id" 
-          id="chk_id" onclick="check()" placeholder="아이디 입력" />
-          <span class="caution" id="c_nes">
-            아이디를 입력해주세요
-          </span>
+          <input
+            type="text"
+            id="user_id"
+            onkeyup="checkId()"
+            placeholder="아이디 입력"
+          />
+          <span class="caution" id="c_id"> 아이디를 입력해주세요 </span>
         </div>
-        
 
         <div class="row_content">
           <span class="userinfo">비밀번호</span>
-          <input type="password" name="user-pw" placeholder="비밀번호" />
-          <span class="caution c_pattern_pw">
+          <input
+            type="password"
+            id="user_pw1"
+            onchange="checkPw1()"
+            placeholder="비밀번호"
+          />
+          <span class="caution" id="c_pattern_pw">
             8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요
           </span>
 
-          <span class="userinfo">비밀번호 확인</span>
-          <input type="password" name="user-pw" placeholder="비밀번호 확인" />
-          <span class="caution c_wrong_pw"> 비밀번호가 일치하지 않습니다</span>
+          <span class="userinfo" id="chk_pw">비밀번호 확인</span>
+          <input
+            type="password"
+            id="user_pw2"
+            onchange="checkPw2()"
+            placeholder="비밀번호 확인"
+          />
+          <span class="caution" id="c_wrong_pw">
+            비밀번호가 일치하지 않습니다</span
+          >
         </div>
 
         <div class="row_content">
           <span class="userinfo">이메일</span>
           <input
             type="text"
-            name="user-email"
+            id="user_email"
+            onkeyup="checkEmail()"
             placeholder="이메일을 입력해 주세요"
           />
-          <span class="caution c_email">이메일 주소를 다시 확인해주세요</span>
+          <span class="caution" id="c_email"
+            >이메일 주소를 다시 확인해주세요</span
+          >
         </div>
 
         <div class="row_content">
           <span class="userinfo">이름</span>
-          <input type="text" name="user-name" />
-          <span class="caution c_name">
-            이름을 입력해주세요
-          </span>
+          <input type="text" id="user_name" onkeyup="checkName()" />
+          <span class="caution" id="c_name"> 이름을 입력해주세요 </span>
         </div>
 
         <div class="row_content">
@@ -85,7 +98,6 @@
               name="select-year"
               class="sel-yy"
               placeholder="년(4자)"
-              maxlength="4"
             />
 
             <select name="select-month" class="sel-mm">
@@ -109,38 +121,37 @@
               name="select-day"
               class="sel-dd"
               placeholder="일"
-              maxlength="2"
             />
           </div>
 
-          <span class="caution c_birth">
-            생년월일을 입력해주세요
-          </span>
+          <span class="caution c_birth"> 생년월일을 입력해주세요 </span>
         </div>
 
         <div class="row_content">
           <span class="userinfo">닉네임</span>
           <input
             type="text"
-            id="user-nickname"
+            id="user_nickname"
+            onkeyup="checkNick()"
             placeholder="닉네임을 입력하세요"
           />
-          <span class="caution c_nick">
-            이름을 입력해주세요
-          </span>
+          <span class="caution" id="c_nick"> 닉네임을 입력해주세요 </span>
         </div>
 
         <div class="row_content">
           <span class="userinfo">지역 인증</span>
-          <input type="text" name="user-location" />
+          <input type="text" id="user_location" />
         </div>
 
         <div class="row_content">
           <span class="userinfo">직렬</span>
-          <input type="text" name="user-rank" placeholder="직렬을 입력하세요"/>
-          <span class="caution c_rank">
-            직렬을 입력해주세요
-          </span>
+          <input
+            type="text"
+            id="user_rank"
+            onkeyup="checkRank()"
+            placeholder="직렬을 입력하세요"
+          />
+          <span class="caution" id="c_rank"> 직렬을 입력해주세요 </span>
         </div>
 
         <div class="row_content">
@@ -154,20 +165,22 @@
             <option value="5">5년</option>
             <option value="6">6년</option>
             <option value="7">7년</option>
-            <option value="8">8년</option>
-            <option value="9">9년</option>
-            <option value="10">10년</option>
           </select>
 
-          <span class="caution c_period">
-            학습기간을 입력해주세요
-          </span>
+          <span class="caution c_period"> 학습기간을 입력해주세요 </span>
         </div>
 
         <div class="row_content">
-          <button class="submit-button" type="button">
-            <a href="#" class="submit">가입하기</a></div>
-        </button>
+          <div class="go_login">
+            <button
+              type="button"
+              onclick="location.href='./signupComplete.html'"
+              class="submit-button"
+            >
+              가입하기
+            </button>
+          </div>
+        </div>
       </form>
     </section>
   </body>

@@ -78,6 +78,10 @@ input:focus {
   justify-content: space-between;
 }
 
+.account .input_group #chk_pw {
+  margin-top: 20px;
+}
+
 .sel-yy,
 .sel-mm,
 .sel-dd,
@@ -116,7 +120,7 @@ input:focus {
   background-color: #0ca678;
 }
 
-.account .submit-button .submit {
+.account .submit-button {
   text-decoration: none;
   display: block;
   color: #fff;

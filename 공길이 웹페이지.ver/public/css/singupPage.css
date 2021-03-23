@@ -65,19 +65,21 @@ body {
 .membership .agree-button {
   width: 470px;
   height: 50px;
-  border: none;
-  border-radius: 4px;
-  background-color: #12b886;
-}
-
-.membership .agree-button:hover {
-  background-color: #0ca678;
 }
 
 .membership .agree-button .agree {
+  width: 100%;
+  height: 50px;
   display: block;
   color: #fff;
+  border: none;
+  border-radius: 4px;
+  background-color: #12b886;
   font-weight: 700;
   font-size: 15px;
   text-decoration: none;
+}
+
+.membership .agree-button .agree:hover {
+  background-color: #0ca678;
 }
