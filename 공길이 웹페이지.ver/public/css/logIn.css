@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #1e1e1e;
 }
 
 body {
   font-family: "Noto Sans KR", sans-serif;
-  color: #1e1e1e;
   /* background-color: #edf2ff; */
   height: 100vh;
   width: 100%;
@@ -96,11 +96,13 @@ section .input-group .input-wrapper {
   width: 300px;
 }
 
-section .input-group .error-wrapper .error-msg {
+section .input-group .error-wrapper .wrong-account,
+section .input-group .error-wrapper .null-account {
   display: none;
 }
 
-section .input-group .error-wrapper .error {
+section .input-group .error-wrapper .wrong-account.error,
+section .input-group .error-wrapper .null-account.error {
   display: block;
   width: 300px;
   background-color: #f1f3f5;
