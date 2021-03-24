@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #252525;
+  height: 100vh;
+  width: 100%;
+}
+
+/* signup complete page css */
+.complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+}
+
+.complete .logo {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
+}
+
+.complete .logo img {
+  width: 100%;
+}
+
+.complete .signup_complete {
+  margin-top: 40px;
+}
+
+.complete .go_login {
+  margin-top: 50px;
+}
+
+.complete .login_link {
+  height: 50px;
+  width: 470px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #12b886;
+}
+.complete .login_link:hover {
+  background-color: #0ca678;
+}
