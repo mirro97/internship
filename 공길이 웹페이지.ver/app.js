@@ -75,24 +75,24 @@ const userList = [
   { id: "test3", pw: "1", name: "소" },
 ];
 
-app.post("/login", (req, res, next) => {
-  let rp = req.body;
-  let userInfo = undefined;
-  userList.forEach((v) => {
-    if (v.id == rp.userId && v.pw == rp.userPw) {
-      userInfo = v;
-      return;
-    }
-  });
-  console.log(rp);
-  if (userInfo) {
-    res.redirect("/main");
-    return;
-  }
-  res.send('<script>alert("실패"); location.href="/login";</script>');
-});
+// app.post("/login2", (req, res, next) => {
+//   let rp = req.body;
+//   let userInfo = undefined;
+//   userList.forEach((v) => {
+//     if (v.id == rp.userId && v.pw == rp.userPw) {
+//       userInfo = v;
+//       return;
+//     }
+//   });
+//   console.log(rp);
+//   if (userInfo) {
+//     res.redirect("/main");
+//     return;
+//   }
+//   res.send('<script>alert("실패"); location.href="/login";</script>');
+// });
 
-app.post("/login2", (req, res, next) => {
+app.post("/login", (req, res, next) => {
   let rp = req.body;
   let userInfo = undefined;
   userList.forEach((v) => {

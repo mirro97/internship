@@ -44,7 +44,7 @@ function signIn() {
   var userPw = document.getElementById("userPw").value;
 
   $.ajax({
-    url: "/login2",
+    url: "/login",
     type: "post",
     data: { id: userId, pw: userPw },
     success: function (res) {
