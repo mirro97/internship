@@ -6,8 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>공길이관리자 페이지</title>
   </head>
+
+  <!-- header nav 공통 html 불러오기 -->
+  <script src="js/includeHTML.js"></script>
+
+  <!-- header css -->
+  <link rel="stylesheet" href="css/header.css" />
+
+  <!-- nav css -->
+  <link rel="stylesheet" href="css/navigation.css" />
+
+  <!-- main css -->
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- 폰트 link -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <script>
+    window.onload = function () {
+      includeHTML();
+    };
+  </script>
   <body>
-    <div>공길이 관리자페이지임~</div>
-    <a href="/login">로그인 페이지로 가기</a>
+    <header include-html="/component/header.html"></header>
+    <nav include-html="/component/navigation.html"></nav>
+    <main>
+      <div>공길이 관리자페이지임~</div>
+
+      <a href="/login">로그인 페이지로 가기</a>
+    </main>
   </body>
 </html>

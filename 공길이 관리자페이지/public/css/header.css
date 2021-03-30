@@ -1,6 +1,21 @@
-.main-title {
+@import url("/font/fonts.css");
+
+/* common css */
+a {
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.main_title {
   font-family: "Recipekorea", sans-serif;
-  height: 36px;
-  display: inline-block;
+  display: block;
   font-size: 25px;
+  padding: 15px 0 5px 15px;
+  border-bottom: 1px solid #e9ecef;
 }

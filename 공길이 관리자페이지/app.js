@@ -42,6 +42,7 @@ app.get("/login", (req, res, next) => {
   );
 });
 
+// 로그인
 const userList = [
   { id: "test", pw: "1" },
   { id: "test1", pw: "2" },
