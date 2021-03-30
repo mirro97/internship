@@ -1,0 +1,90 @@
+@import url("/font/fonts.css");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #495057;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* common css */
+h1 {
+  display: block;
+}
+
+label {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 8px;
+  cursor: pointer;
+  margin-bottom: 7px;
+}
+
+input {
+  height: 45px;
+  border: 1px solid #ced0da;
+  border-radius: 4px;
+}
+
+/* login css */
+.login {
+  min-width: 480px;
+  padding: 40px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.login_title {
+  font-family: "Recipekorea", sans-serif;
+  display: inline-block;
+  font-size: 25px;
+  margin-bottom: 40px;
+}
+
+.item_input {
+  margin-bottom: 15px;
+}
+
+.lab_placeholder {
+  width: 100%;
+}
+
+.lab_clear {
+  display: none;
+}
+
+.user_input {
+  width: 100%;
+  padding-left: 8px;
+}
+
+.submit_btn {
+  height: 50px;
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #20c997;
+  border: none;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.submit_btn:hover {
+  background-color: #12b886;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 80px;
+}

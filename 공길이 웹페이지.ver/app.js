@@ -92,7 +92,7 @@ const userList = [
 //   res.send('<script>alert("실패"); location.href="/login";</script>');
 // });
 
-app.post("/login", (req, res, next) => {
+app.post("/login2", (req, res, next) => {
   let rp = req.body;
   let userInfo = undefined;
   userList.forEach((v) => {

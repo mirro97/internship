@@ -28,8 +28,6 @@ function includeHTML() {
       return;
     }
   }
-
-  initHambugerMenu();
 }
 
 function checkAgent() {
