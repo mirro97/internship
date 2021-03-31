@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="system_config">
+  <sql id="sql_where-system_config">
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="searchFilter.idx               != undefined AND searchFilter.idx               != ''"> AND A.idx               = #{searchFilter.idx}               </if>
+      <if test="searchFilter.name              != undefined AND searchFilter.name              != ''"> AND A.name              = #{searchFilter.name}              </if>
+      <if test="searchFilter.value             != undefined AND searchFilter.value             != ''"> AND A.value             = #{searchFilter.value}             </if>
+    </trim>
+  </sql>
+
+  <select id="select-list">
+    SELECT 
+      COUNT(A.idx) OVER() AS count,
+      A.idx               AS idx,
+      A.name              AS name,
+      A.value             AS value
+    FROM system_config A 
+    <include refid="sql_where-system_config" />
+  </select>
+
+  <insert id="insert-object">
+    insert into system_config (
+      name 
+      , value 
+    ) values (
+      #{insertData.name}
+      , #{insertData.value}
+    )
+  </insert>
+
+  <update id="update-object">
+    update system_config A
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="updateData.name              != undefined and updateData.name             != ''">, name              = #{updateData.name}              </if>
+      <if test="updateData.value             != undefined and updateData.value            != ''">, value             = #{updateData.value}             </if>
+    </trim>
+    <include refid="sql_where-system_config" />
+  </update>
+
+  <delete id="delete-object">
+    delete from system_config
+    where idx = #{searchFilter.idx}
+  </delete>
+
+</mapper>

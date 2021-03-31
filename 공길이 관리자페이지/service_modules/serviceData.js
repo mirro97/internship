@@ -1,0 +1,16 @@
+const serviceData = {}
+serviceData.BoardCommentInfo = require('./class/BoardCommentInfo')
+serviceData.BoardFileInfo = require('./class/BoardFileInfo')
+serviceData.BoardInfo = require('./class/BoardInfo')
+serviceData.BoardLikeInfo = require('./class/BoardLikeInfo')
+serviceData.BoardReportInfo = require('./class/BoardReportInfo')
+serviceData.CodeInfo = require('./class/CodeInfo')
+serviceData.ConsultingInfo = require('./class/ConsultingInfo')
+serviceData.ConsultingSubjectScore = require('./class/ConsultingSubjectScore')
+serviceData.StudyGroupInfo = require('./class/StudyGroupInfo')
+serviceData.StudyGroupUser = require('./class/StudyGroupUser')
+serviceData.StudySubjectInfo = require('./class/StudySubjectInfo')
+serviceData.StudySubjectTime = require('./class/StudySubjectTime')
+serviceData.SystemConfig = require('./class/SystemConfig')
+serviceData.UserInfo = require('./class/UserInfo')
+module.exports = serviceData;

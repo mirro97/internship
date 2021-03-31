@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board_info">
+  <sql id="sql_where-board_info">
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="searchFilter.idx               != undefined AND searchFilter.idx               != ''"> AND A.idx               = #{searchFilter.idx}               </if>
+      <if test="searchFilter.userIdx           != undefined AND searchFilter.userIdx           != ''"> AND A.user_idx          = #{searchFilter.userIdx}           </if>
+      <choose>
+        <when test="searchFilter.boardTypeCode   != undefined AND searchFilter.boardTypeCode   == '1002'">AND A.board_type_code IN ('1002', '1003')                </when>
+        <when test="searchFilter.boardTypeCode   != undefined AND searchFilter.boardTypeCode   == '1004'">AND A.board_type_code IN ('1004', '1005')                </when>
+        <when test="searchFilter.boardTypeCode   != undefined AND searchFilter.boardTypeCode   != ''    ">AND A.board_type_code = #{searchFilter.boardTypeCode}    </when>
+      </choose>
+      <if test="searchFilter.title             != undefined AND searchFilter.title             != ''"> AND A.title             = #{searchFilter.title}             </if>
+      <if test="searchFilter.contents          != undefined AND searchFilter.contents          != ''"> AND A.contents          = #{searchFilter.contents}          </if>
+      <if test="searchFilter.readCount         != undefined AND searchFilter.readCount         != ''"> AND A.read_count        = #{searchFilter.readCount}         </if>
+      <choose>
+        <when test="searchFilter.registerDate.s      != '' and searchFilter.registerDate.e      != ''">AND register_date     between DATE_FORMAT(#{searchFilter.registerDate.s},      '%Y-%m-%d') AND DATE_ADD(DATE_FORMAT(#{searchFilter.registerDate.e},      '%Y-%m-%d'), INTERVAL 1 DAY) </when>
+        <when test="searchFilter.registerDate.s      != '' and searchFilter.registerDate.e      == ''">AND register_date     &gt;    DATE_FORMAT(#{searchFilter.registerDate.s},      '%Y-%m-%d')  </when>
+        <when test="searchFilter.registerDate.s      == '' and searchFilter.registerDate.e      != ''">AND register_date     &lt;                                                                     DATE_ADD(DATE_FORMAT(#{searchFilter.registerDate.e},      '%Y-%m-%d'), INTERVAL 1 DAY) </when>
+      </choose>
+    </trim>
+  </sql>
+
+  <select id="select-list">
+    SELECT 
+      COUNT(A.idx) OVER() AS count,
+      A.idx               AS idx,
+      A.user_idx          AS userIdx,
+      D.nickname          AS nickname,
+      A.board_type_code   AS boardTypeCode,
+      A.title             AS title,
+      A.contents          AS contents,
+      A.read_count        AS readCount,
+      A.register_date     AS registerDate,
+      B.count AS 'like',
+      C.count AS 'comment'
+    FROM board_info A 
+      LEFT JOIN ( SELECT B.board_idx, COUNT(board_idx) AS COUNT FROM board_like_info B GROUP BY B.board_idx	) B ON B.board_idx = A.idx
+      LEFT JOIN ( SELECT C.board_idx, COUNT(board_idx) AS COUNT FROM board_comment_info C GROUP BY C.board_idx	) C ON C.board_idx = A.idx
+      left join user_info D ON D.idx = A.user_idx
+    <include refid="sql_where-board_info" />
+    ORDER BY A.register_date DESC
+    <if test="searchFilter.page             != undefined AND searchFilter.page             != ''">
+      LIMIT 5 OFFSET ${searchFilter.page}
+    </if>
+  </select>
+
+  <select id="select-object">
+    SELECT 
+      COUNT(A.idx) OVER() AS count,
+      A.idx               AS idx,
+      A.user_idx          AS userIdx,
+      A.board_type_code   AS boardTypeCode,
+      A.title             AS title,
+      A.contents          AS contents,
+      A.read_count        AS readCount,
+      A.register_date     AS registerDate,
+      B.count AS 'like',
+      C.count AS 'comment',
+      D.file_path AS filePath1,
+      E.file_path AS filePath2,
+      F.nickname AS nickname,
+      F.profile_image_name AS profileImage
+    FROM board_info A 
+    LEFT JOIN ( SELECT B.board_idx, COUNT(board_idx) AS COUNT FROM board_like_info B GROUP BY B.board_idx	) B ON B.board_idx = A.idx
+    LEFT JOIN ( SELECT C.board_idx, COUNT(board_idx) AS COUNT FROM board_comment_info C GROUP BY C.board_idx	) C ON C.board_idx = A.idx
+    LEFT JOIN board_file_info D ON D.board_idx = A.idx AND D.file_idx = '1'
+    LEFT JOIN board_file_info E ON E.board_idx = A.idx AND E.file_idx = '2'
+    LEFT JOIN user_info F ON F.idx = A.user_idx
+    <include refid="sql_where-board_info" />
+  </select>
+
+  <insert id="insert-object">
+    insert into board_info (
+      user_idx 
+      , board_type_code 
+      , title 
+      , contents 
+      <if test="insertData.readCount         != undefined and insertData.readCount        != ''">, read_count       </if>
+      <if test="insertData.registerDate      != undefined and insertData.registerDate     != ''">, register_date    </if>
+    ) values (
+      #{insertData.userIdx}
+      , #{insertData.boardTypeCode}
+      , #{insertData.title}
+      , #{insertData.contents}
+      <if test="insertData.readCount         != undefined and insertData.readCount        != ''">, #{insertData.readCount}         </if>
+      <if test="insertData.registerDate      != undefined and insertData.registerDate     != ''">, #{insertData.registerDate}      </if>
+    )
+  </insert>
+
+  <update id="update-object">
+    update board_info A
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="updateData.userIdx           != undefined and updateData.userIdx          != ''">, user_idx          = #{updateData.userIdx}           </if>
+      <if test="updateData.boardTypeCode     != undefined and updateData.boardTypeCode    != ''">, board_type_code   = #{updateData.boardTypeCode}     </if>
+      <if test="updateData.title             != undefined and updateData.title            != ''">, title             = #{updateData.title}             </if>
+      <if test="updateData.contents          != undefined and updateData.contents         != ''">, contents          = #{updateData.contents}          </if>
+      <if test="updateData.readCount         != undefined and updateData.readCount        != ''">, read_count        = #{updateData.readCount}         </if>
+      <if test="updateData.registerDate      != undefined and updateData.registerDate     != ''">, register_date     = #{updateData.registerDate}      </if>
+    </trim>
+    <include refid="sql_where-board_info" />
+  </update>
+
+    <update id="update-readcount">
+    update board_info A
+    SET A.read_count = A.read_count + 1
+    <include refid="sql_where-board_info" />
+  </update>
+
+
+
+ 
+
+  <delete id="delete-object">
+    delete from board_info
+    where idx = #{searchFilter.idx}
+  </delete>
+
+</mapper>

@@ -13,7 +13,7 @@ function signIn() {
   $.ajax({
     url: "/login2",
     type: "post",
-    data: { id: userId, pw: userPw },
+    data: { id: userId, password: userPw },
     success: function (result) {
       console.log("로그인 성공!");
       if (result) location.href = "/main";

@@ -69,6 +69,11 @@ input {
   padding-left: 8px;
 }
 
+.user_input:focus {
+  outline: none;
+  border: 1px solid #099268;
+}
+
 .submit_btn {
   height: 50px;
   width: 100%;
@@ -83,6 +88,11 @@ input {
 
 .submit_btn:hover {
   background-color: #12b886;
+}
+
+.submit_btn:focus {
+  outline: none;
+  box-shadow: 0 2px 6px 0 rgb(61 80 81 / 8%);
 }
 
 img {
