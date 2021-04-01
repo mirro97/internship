@@ -63,7 +63,7 @@ app.get("/login", (req, res, next) => {
   );
 });
 
-app.get("/boarder", (req, res, next) => {
+app.get("/board", (req, res, next) => {
   console.log("boarder Page");
   fs.readFile(
     __dirname + "/views/content/boardPage.html",

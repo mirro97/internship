@@ -15,8 +15,13 @@ function signIn() {
     type: "post",
     data: { id: userId, password: userPw },
     success: function (result) {
-      console.log("로그인 성공!");
-      if (result) location.href = "/main";
+      console.log(result);
+      if (result && result.bResult) {
+        console.log("로그인 성공!");
+        location.href = "/main";
+      } else {
+        alert(result.message);
+      }
     },
     error: function (error) {
       alert("로그인실패");

@@ -42,7 +42,13 @@ service.login = async (id, password) => {
   return ro;
 };
 
-service.getBoardList = async (board_type_code, page, title, user_idx) => {
+service.getBoardList = async (
+  board_type_code,
+  page,
+  title,
+  user_idx,
+  nickname
+) => {
   if (page) {
     page *= 5;
   }
