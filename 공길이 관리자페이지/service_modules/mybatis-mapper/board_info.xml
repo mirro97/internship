@@ -10,7 +10,7 @@
         <when test="searchFilter.boardTypeCode   != undefined AND searchFilter.boardTypeCode   == '1004'">AND A.board_type_code IN ('1004', '1005')                </when>
         <when test="searchFilter.boardTypeCode   != undefined AND searchFilter.boardTypeCode   != ''    ">AND A.board_type_code = #{searchFilter.boardTypeCode}    </when>
       </choose>
-      <if test="searchFilter.title             != undefined AND searchFilter.title             != ''"> AND A.title             = #{searchFilter.title}             </if>
+      <if test="searchFilter.title             != undefined AND searchFilter.title             != ''"> AND A.title             LIKE CONCAT('%', #{searchFilter.title}, '%')             </if>
       <if test="searchFilter.contents          != undefined AND searchFilter.contents          != ''"> AND A.contents          = #{searchFilter.contents}          </if>
       <if test="searchFilter.readCount         != undefined AND searchFilter.readCount         != ''"> AND A.read_count        = #{searchFilter.readCount}         </if>
       <choose>
@@ -41,7 +41,7 @@
     <include refid="sql_where-board_info" />
     ORDER BY A.register_date DESC
     <if test="searchFilter.page             != undefined AND searchFilter.page             != ''">
-      LIMIT 5 OFFSET ${searchFilter.page}
+      LIMIT 10 OFFSET ${searchFilter.page}
     </if>
   </select>
 

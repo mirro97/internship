@@ -10,5 +10,24 @@
   </head>
   <body>
     <span class="sub-tab"></span>
+
+    <div id="sample">
+      <span>월</span>
+      <span>화</span>
+      <span>수</span>
+      <span>목</span>
+      <span>금</span>
+      <span>토</span>
+      <span>일</span>
+    </div>
+
+    <script>
+      var divElement = document.getElementById("sample");
+
+      divElement.addEventListener("click", (e) => {
+        var targetElement = e.target;
+        targetElement.setAttribute("class", "active");
+      });
+    </script>
   </body>
 </html>

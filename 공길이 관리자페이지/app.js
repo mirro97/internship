@@ -74,6 +74,39 @@ app.get("/board", (req, res, next) => {
   );
 });
 
+// res.render() 사용했을때 - ejs(view 엔진) 사용 필요!
+app.get(
+  "/board2/:pageNumber",
+  asyncHandler(async (req, res) => {
+    console.log("boarder Page");
+
+    let pageNum = req.params.pageNumber;
+    if (!pageNum || pageNum < -1) {
+      pageNum = 0;
+    }
+
+    // let r = undefined;
+
+    // r = await service.getBoardList(undefined, pageNum, undefined, undefined);
+    // console.log(r);
+    // let strJson = encodeURIComponent(JSON.stringify(r));
+    res.render(__dirname + "/views/content/boardPage.ejs", {
+      pageNum: pageNum,
+    });
+  })
+);
+
+app.get("/page2/:pagegNumber", (req, res, next) => {
+  console.log("boarder Page", req.params.pagegNumber);
+  fs.readFile(
+    __dirname + "/views/content/boardPage.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
+
 app.post(
   "/login2",
   asyncHandler(async (req, res) => {

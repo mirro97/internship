@@ -12,9 +12,6 @@
     <!-- header nav 공통 html 불러오기 -->
     <script src="js/includeHTML.js"></script>
 
-    <!-- 테이블 호출 -->
-    <script src="js/boardPage.js"></script>
-
     <!-- header css -->
     <link rel="stylesheet" href="css/header.css" />
 
@@ -45,36 +42,54 @@
       <div class="border_container">
         <h1 class="board_title">게시판 관리 페이지</h1>
 
+        <div class="search_container">
+          <form id="search_wrapper" name="search_wrapper" class="input_group">
+            <!-- <select name="chk_type" form="search_wrapper" class="select_type">
+              <option value="board_s_type">게시판 타입</option>
+              <option value="board_s_title">제목</option>
+              <option value="board_s_nickname">닉네임</option>
+              <option value="board_s_content">내용</option>
+            </select> -->
+
+            <input
+              type="text"
+              id="search"
+              name="search"
+              class="search_input"
+              placeholder="제목으로 검색하세요"
+            />
+            <button class="btn_container" type="button">
+              <img
+                class="search_btn"
+                src="/css/img/돋보기.png"
+                alt="검색아이콘"
+              />
+            </button>
+          </form>
+        </div>
+
         <table class="table_container test">
-          <tr>
-            <th>번호</th>
-            <th>게시판 타입</th>
-            <th>제목</th>
-            <th>닉네임</th>
-            <th>내용</th>
-            <th>게시한 날짜</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>게시판 타입</th>
+              <th>제목</th>
+              <th>닉네임</th>
+              <th>내용</th>
+              <th>게시한 날짜</th>
+            </tr>
+          </thead>
+
           <tbody id="table"></tbody>
         </table>
 
-        <!-- test -->
         <div class="page_container">
-          <ul id="page_wrapper">
-            <!-- <li class="page">
-              <a href="#">1</a>
-            </li>
-            <li class="page">
-              <a href="#">2</a>
-            </li>
-            <li class="page">
-              <a href="#">3</a>
-            </li>
-            <li class="page">
-              <a href="#">4</a>
-            </li> -->
-          </ul>
+          <ul id="page_wrapper"></ul>
         </div>
       </div>
     </section>
+
+    <!-- 테이블 호출 -->
+    <script src="js/boardPage.js"></script>
   </body>
 </html>

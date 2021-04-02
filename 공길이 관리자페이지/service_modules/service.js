@@ -50,7 +50,7 @@ service.getBoardList = async (
   nickname
 ) => {
   if (page) {
-    page *= 5;
+    page *= 10;
   }
 
   let selectDAO = DATAS.BoardInfo.getClassObject({

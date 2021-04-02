@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var targetPage = 1;
+        var maxPage = 10;
+        testPageing("divPaging1", targetPage - 5, maxPage, 5);
+        testPageing("divPaging2", targetPage + 10, maxPage, 7);
+        testPageing("divPaging2", targetPage + 15, maxPage, 15);
+        testPageing("divPaging3", targetPage + 100, maxPage, 10);
+        // testPageing("divPaging1", targetPage, maxPage, 5);
+        // testPageing("divPaging2", targetPage, maxPage, 7);
+        // testPageing("divPaging3", targetPage, maxPage, 10);
+      });
+      function testPageing(targetId, targetPage, maxPage, maxPageSize) {
+        var testDiv = $("#div-test");
+        var divPaging = $("<div>");
+        var lblTest = $("<label>").css("float", "right");
+        divPaging.append(lblTest);
+        testDiv.append(divPaging);
+        var pageCount = maxPage;
+
+        if (targetPage > maxPage) {
+          targetPage = maxPage;
+        }
+        var sPage =
+          targetPage < 1
+            ? 1
+            : (Math.ceil(targetPage / maxPageSize) - 1) * maxPageSize + 1;
+        var ePage =
+          sPage + maxPageSize - 1 > maxPage ? maxPage : sPage + maxPageSize - 1;
+
+        console.log(
+          `maxPageSize:${maxPageSize},maxPageSize:${maxPageSize},maxPage:${maxPage},sPage:${sPage}, ePage:${ePage}`
+        );
+        lblTest.text(
+          `maxPageSize: ${maxPageSize}, maxPage:${maxPage}, sPage: ${sPage}, ePage: ${ePage}`
+        );
+
+        if (sPage != 1) {
+          divPaging.append($("<button>").text("|<"));
+          divPaging.append($("<button>").text("<"));
+        }
+        for (var i = sPage; i <= ePage; ++i) {
+          divPaging.append($("<button>").text(i));
+        }
+        //if(sPage != 1) {
+        //	divPaging.prepend($('<button>').text('prev'));
+        //}
+        if (ePage != maxPage) {
+        }
+        divPaging.append($("<button>").text(">"));
+        divPaging.append($("<button>").text(">|"));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="div-test"></div>
+  </body>
+</html>
