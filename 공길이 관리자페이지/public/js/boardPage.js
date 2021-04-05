@@ -1,22 +1,40 @@
 // search
 var search_btn = document.querySelector(".btn_container");
-var search_form = document.getElementById("search_wrapper");
 
-search_form.onsubmit = getBoardList;
-search_btn.addEventListener("click", getBoardList);
+// search_btn.addEventListener("click", getBoardList);
+search_btn.addEventListener("click", function (event) {
+  getBoardList();
+});
+
+document.getElementById("search").addEventListener("keyup", function (event) {
+  var code;
+
+  if (event.key !== undefined) {
+    code = event.key;
+  } else if (event.keyIdentifier !== undefined) {
+    code = event.keyIdentifier;
+  } else if (event.keyCode !== undefined) {
+    code = event.keyCode;
+  }
+
+  if (code == 13 || code == "Enter") {
+    getBoardList();
+  }
+});
 
 // board 출력
 function movePage(i) {
   getBoardList(i);
 }
 
-function getBoardList(page = 0) {
+function getBoardList(page) {
+  if (!page) page = 0;
   var title_s = $("#search").val();
-  // var boardTypeCode_s = "1001";
 
   $.ajax({
-    url: "/getBoardList",
-    type: "post",
+    url: "/getNoticeBoardList",
+    type: "POST",
+    dataType: "json",
     data: { page: page, title: title_s },
   }).done(function (data) {
     console.log(data.count);
@@ -77,34 +95,6 @@ function getBoardList(page = 0) {
     }
   });
 }
-
-/*
-function searchBoard() {
-  var title_s = $("#search").val();
-  var boardTypeCode_s = "1001";
-  $.ajax({
-    url: "/getBoardList",
-    type: "post",
-    data: { boardTypeCode: boardTypeCode_s, page: page_s, title: title_s },
-  }).done(function (data) {
-    var tbody = $("#table").empty();
-
-    for (var i = 0; i < data.oResult.length; i++) {
-      var boardInfo = data.oResult[i];
-
-      tbody.append(
-        $("<tr>")
-          .append($("<td>").append(i + page * 10 + 1))
-          .append($("<td>").append(boardInfo.boardTypeCode))
-          .append($("<td>").append(boardInfo.title))
-          .append($("<td>").append(boardInfo.nickname))
-          .append($("<td>").append(boardInfo.contents))
-          .append($("<td>").append(boardInfo.registerDate))
-      );
-    }
-  });
-}
-*/
 
 /*
   // board 출력 - (view 엔진) 사용했을 때

@@ -147,13 +147,30 @@ app.post(
 );
 
 app.post(
-  "/getBoardList",
+  "/getNoticeBoardList",
   asyncHandler(async (req, res) => {
     let rd = appUtil.getRequestData(req);
     let r = undefined;
-
+    let boardTypeCode = "1001";
     r = await service.getBoardList(
-      rd.boardTypeCode,
+      boardTypeCode,
+      rd.page,
+      rd.title,
+      rd.userIdx
+    );
+    console.log(r);
+    res.json(r);
+  })
+);
+
+app.post(
+  "/getFreeBoardList",
+  asyncHandler(async (req, res) => {
+    let rd = appUtil.getRequestData(req);
+    let r = undefined;
+    let boardTypeCode = "1002";
+    r = await service.getBoardList(
+      boardTypeCode,
       rd.page,
       rd.title,
       rd.userIdx
