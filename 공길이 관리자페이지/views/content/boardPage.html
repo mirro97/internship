@@ -30,68 +30,31 @@
 
     <script>
       $(document).ready(function () {
-        includeHTML();
-        getBoardList();
+        // $("header").load($("header").attr("include-html"), function () {});
+        // $("nav").load($("nav").attr("include-html"), function () {});
+        // $("main").load($("main").attr("include-html"), function () {
+        //   initEvent();
+        //   getBoardList();
+        // });
+
+        $("[include-html]").each(function (index, item) {
+          $(item).load($(item).attr("include-html"), function () {
+            $(document).trigger($(item).prop("tagName") + "-load-after");
+          });
+        });
+        $(document).on("MAIN-load-after", function () {
+          initEvent();
+          getBoardList();
+        });
       });
     </script>
   </head>
   <body>
     <header include-html="/component/header.html"></header>
     <nav include-html="/component/navigation.html"></nav>
-    <section class="border_sec">
-      <div class="border_container">
-        <h1 class="board_title">게시판 관리 페이지</h1>
-
-        <div class="search_container">
-          <!-- <form id="search_wrapper" name="search_wrapper" class="input_group"> -->
-          <!-- <select name="chk_type" form="search_wrapper" class="select_type">
-              <option value="board_s_type">게시판 타입</option>
-              <option value="board_s_title">제목</option>
-              <option value="board_s_nickname">닉네임</option>
-              <option value="board_s_content">내용</option>
-            </select> -->
-          <div class="input_group">
-            <input
-              type="text"
-              id="search"
-              name="search"
-              class="search_input"
-              placeholder="제목으로 검색하세요"
-            />
-            <button class="btn_container" type="button">
-              <img
-                class="search_btn"
-                src="/css/img/돋보기.png"
-                alt="검색아이콘"
-              />
-            </button>
-          </div>
-
-          <!-- </form> -->
-        </div>
-
-        <table class="table_container test">
-          <thead>
-            <tr>
-              <th>번호</th>
-              <th>게시판 타입</th>
-              <th>제목</th>
-              <th>닉네임</th>
-              <th>내용</th>
-              <th>게시한 날짜</th>
-            </tr>
-          </thead>
-
-          <tbody id="table"></tbody>
-        </table>
-
-        <div class="page_container">
-          <ul id="page_wrapper"></ul>
-        </div>
-      </div>
-    </section>
+    <main include-html="/content/board_main.html" class="border_sec"></main>
 
     <!-- 테이블 호출 -->
-    <script src="js/boardPage.js"></script>
+    <script src="/js/boardPage.js"></script>
   </body>
 </html>

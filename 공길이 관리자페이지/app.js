@@ -21,6 +21,7 @@ const service = SYSTEM_CONFIG.MARIADB_SERVICE;
 app.use(express.urlencoded());
 app.use("/", express.static(__dirname + "/public"));
 app.use("/component", express.static(__dirname + "/views/component"));
+app.use("/content", express.static(__dirname + "/views/content"));
 
 var getEncryptPassword = function (password) {
   let encryptPassword = crypto
@@ -74,7 +75,8 @@ app.get("/board", (req, res, next) => {
   );
 });
 
-// res.render() 사용했을때 - ejs(view 엔진) 사용 필요!
+/* 
+res.render() 사용했을때 - ejs(view 엔진) 사용 필요!
 app.get(
   "/board2/:pageNumber",
   asyncHandler(async (req, res) => {
@@ -107,6 +109,7 @@ app.get("/page2/:pagegNumber", (req, res, next) => {
   );
 });
 
+*/
 app.post(
   "/login2",
   asyncHandler(async (req, res) => {
@@ -147,6 +150,22 @@ app.post(
 );
 
 app.post(
+  "/getBoardList",
+  asyncHandler(async (req, res) => {
+    let rd = appUtil.getRequestData(req);
+    let r = undefined;
+    r = await service.getBoardList(
+      rd.boardTypeCode,
+      rd.page,
+      rd.title,
+      rd.userIdx
+    );
+    console.log(r);
+    res.json(r);
+  })
+);
+
+app.post(
   "/getNoticeBoardList",
   asyncHandler(async (req, res) => {
     let rd = appUtil.getRequestData(req);
@@ -169,6 +188,40 @@ app.post(
     let rd = appUtil.getRequestData(req);
     let r = undefined;
     let boardTypeCode = "1002";
+    r = await service.getBoardList(
+      boardTypeCode,
+      rd.page,
+      rd.title,
+      rd.userIdx
+    );
+    console.log(r);
+    res.json(r);
+  })
+);
+
+app.post(
+  "/getStudyBoardList",
+  asyncHandler(async (req, res) => {
+    let rd = appUtil.getRequestData(req);
+    let r = undefined;
+    let boardTypeCode = "1003";
+    r = await service.getBoardList(
+      boardTypeCode,
+      rd.page,
+      rd.title,
+      rd.userIdx
+    );
+    console.log(r);
+    res.json(r);
+  })
+);
+
+app.post(
+  "/getScheduleBoardList",
+  asyncHandler(async (req, res) => {
+    let rd = appUtil.getRequestData(req);
+    let r = undefined;
+    let boardTypeCode = "1004";
     r = await service.getBoardList(
       boardTypeCode,
       rd.page,

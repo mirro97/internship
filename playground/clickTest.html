@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>click Event Test</title>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <ul>
+      <li class="click" id="1">1</li>
+      <li class="click" id="2">2</li>
+      <li class="click" id="3">3</li>
+      <li class="click" id="4">4</li>
+    </ul>
+    <script>
+      var select = $(".click");
+
+      select.click(function () {
+        var id_check = $(this).attr("id");
+        console.log(id_check);
+      });
+    </script>
+  </body>
+</html>

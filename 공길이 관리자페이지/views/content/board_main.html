@@ -1,0 +1,47 @@
+<input
+  type="hidden"
+  name="selectedType"
+  id="selectedType"
+  value="getBoardList"
+/>
+<div class="border_container">
+  <h1 class="board_title">전체 게시판 관리 페이지</h1>
+
+  <div class="search_container">
+    <!-- <form id="search_wrapper" name="search_wrapper" class="input_group"> -->
+    <div class="input_group">
+      <input
+        type="text"
+        id="search"
+        name="search"
+        class="search_input"
+        placeholder="제목으로 검색하세요"
+      />
+
+      <button class="btn_container" type="button">
+        <img class="search_btn" src="/css/img/돋보기.png" alt="검색아이콘" />
+      </button>
+    </div>
+
+    <!-- </form> -->
+  </div>
+
+  <table class="table_container test">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>게시판 타입</th>
+        <th>제목</th>
+        <th>닉네임</th>
+        <th>내용</th>
+        <th>게시한 날짜</th>
+      </tr>
+    </thead>
+
+    <tbody id="table"></tbody>
+  </table>
+
+  <div class="page_container">
+    <ul id="page_wrapper"></ul>
+  </div>
+</div>

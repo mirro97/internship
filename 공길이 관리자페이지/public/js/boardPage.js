@@ -1,27 +1,59 @@
+// // 보드 이동
+// var boardPage = document.querySelectorAll(".sub_link");
+// var content = document.querySelectorAll(".content");
+// for (var i = 0; i < boardPage.length; i++) {
+//   id = content[i];
+//   boardPage[i].addEventListener("click", movePage);
+// }
+
+// function movePage(e) {
+//   window.alert(this.innerHTML);
+// }
+
 // search
-var search_btn = document.querySelector(".btn_container");
+// var search_btn = document.querySelector(".btn_container");
 
-// search_btn.addEventListener("click", getBoardList);
-search_btn.addEventListener("click", function (event) {
-  getBoardList();
-});
+// // search_btn.addEventListener("click", getBoardList);
+// search_btn.addEventListener("click", function (event) {
+//   getBoardList();
+// });
+// document.getElementById("search").addEventListener("keyup", function (event) {
+//   var code;
 
-document.getElementById("search").addEventListener("keyup", function (event) {
-  var code;
+//   if (event.key !== undefined) {
+//     code = event.key;
+//   } else if (event.keyIdentifier !== undefined) {
+//     code = event.keyIdentifier;
+//   } else if (event.keyCode !== undefined) {
+//     code = event.keyCode;
+//   }
 
-  if (event.key !== undefined) {
-    code = event.key;
-  } else if (event.keyIdentifier !== undefined) {
-    code = event.keyIdentifier;
-  } else if (event.keyCode !== undefined) {
-    code = event.keyCode;
-  }
+//   if (code == 13 || code == "Enter") {
+//     getBoardList();
+//   }
+// });
 
-  if (code == 13 || code == "Enter") {
+function initEvent() {
+  $(".btn_container").click(function () {
     getBoardList();
-  }
-});
+  });
 
+  $("#search").keyup(function (event) {
+    var code;
+
+    if (event.key !== undefined) {
+      code = event.key;
+    } else if (event.keyIdentifier !== undefined) {
+      code = event.keyIdentifier;
+    } else if (event.keyCode !== undefined) {
+      code = event.keyCode;
+    }
+
+    if (code == 13 || code == "Enter") {
+      getBoardList();
+    }
+  });
+}
 // board 출력
 function movePage(i) {
   getBoardList(i);
@@ -30,9 +62,9 @@ function movePage(i) {
 function getBoardList(page) {
   if (!page) page = 0;
   var title_s = $("#search").val();
-
+  var selectType = $("#selectedType").val();
   $.ajax({
-    url: "/getNoticeBoardList",
+    url: "/" + selectType,
     type: "POST",
     dataType: "json",
     data: { page: page, title: title_s },
