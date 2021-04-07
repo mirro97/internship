@@ -75,6 +75,71 @@ app.get("/board", (req, res, next) => {
   );
 });
 
+app.get("/board_news", (req, res, next) => {
+  console.log("boarder Page");
+  fs.readFile(
+    __dirname + "/views/content/board_news.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
+
+app.get("/board_freeBoard", (req, res, next) => {
+  console.log("boarder Page");
+  fs.readFile(
+    __dirname + "/views/content/board_freeBoard.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
+
+app.get("/board_study", (req, res, next) => {
+  console.log("boarder Page");
+  fs.readFile(
+    __dirname + "/views/content/board_study.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
+
+app.get("/board_schedule", (req, res, next) => {
+  console.log("boarder Page");
+  fs.readFile(
+    __dirname + "/views/content/board_schedule.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
+
+app.get("/board_studyAmount", (req, res, next) => {
+  console.log("boarder Page");
+  fs.readFile(
+    __dirname + "/views/content/board_studyAmount.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
+
+app.get("/user_management", (req, res, next) => {
+  console.log("user Management Page");
+  fs.readFile(
+    __dirname + "/views/content/userPage.html",
+    "utf8",
+    function (err, data) {
+      res.end(data);
+    }
+  );
+});
 /* 
 res.render() 사용했을때 - ejs(view 엔진) 사용 필요!
 app.get(
@@ -230,5 +295,30 @@ app.post(
     );
     console.log(r);
     res.json(r);
+  })
+);
+
+app.post(
+  "/getStudyAmountBoardList",
+  asyncHandler(async (req, res) => {
+    let rd = appUtil.getRequestData(req);
+    let r = undefined;
+    let boardTypeCode = "1005";
+    r = await service.getBoardList(
+      boardTypeCode,
+      rd.page,
+      rd.title,
+      rd.userIdx
+    );
+    console.log(r);
+    res.json(r);
+  })
+);
+
+app.post(
+  "/getUserList",
+  asyncHandler(async (req, res) => {
+    let rd = appUtil.getRequestData(req);
+    let r = undefined;
   })
 );

@@ -6,17 +6,21 @@ a {
 }
 
 header {
+  font-family: "Recipekorea", sans-serif;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10;
-  background-color: #fff;
+  background-color: #15a58d;
+  box-shadow: 0 4px 4px -4px #f1f3f5;
 }
 
 .main_title {
-  font-family: "Recipekorea", sans-serif;
   display: block;
   font-size: 20px;
-  padding: 15px 0 5px 15px;
-  border-bottom: 1px solid #e9ecef;
+  padding: 14px 0 7px 22px;
+}
+
+.main_title a {
+  color: #fff;
 }

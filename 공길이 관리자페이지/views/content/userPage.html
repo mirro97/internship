@@ -4,10 +4,91 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>게시판 관리</title>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- header nav 공통 html 불러오기 -->
+    <script src="/js/includeHTML.js"></script>
+
+    <!-- header css -->
+    <link rel="stylesheet" href="/css/header.css" />
+
+    <!-- nav css -->
+    <link rel="stylesheet" href="/css/navigation.css" />
+
+    <!-- board css -->
+    <link rel="stylesheet" href="/css/board.css" />
+
+    <!-- 폰트 link -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      $(document).ready(function () {
+        $("[include-html]").each(function (index, item) {
+          $(item).load($(item).attr("include-html"), function () {});
+        });
+        initEvent();
+        getBoardList();
+      });
+    </script>
   </head>
   <body>
     <header include-html="/component/header.html"></header>
     <nav include-html="/component/navigation.html"></nav>
+    <main class="border_sec">
+      <div class="border_container">
+        <h1 class="board_title">유저 관리 페이지</h1>
+
+        <div class="search_container">
+          <div class="input_group">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              class="search_input"
+              placeholder="닉네임으로 검색하세요"
+            />
+
+            <button class="btn_container" type="button">
+              <img
+                class="search_btn"
+                src="/css/img/돋보기.png"
+                alt="검색아이콘"
+              />
+            </button>
+          </div>
+        </div>
+
+        <table class="table_container test">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>email</th>
+              <th>이름</th>
+              <th>생일</th>
+              <th>카카오 ID</th>
+              <th>닉네임</th>
+              <th>사는곳</th>
+              <th>가입 일자</th>
+            </tr>
+          </thead>
+
+          <tbody id="table"></tbody>
+        </table>
+
+        <div class="page_container">
+          <ul id="page_wrapper"></ul>
+        </div>
+      </div>
+    </main>
+
+    <!-- 테이블 호출 -->
+    <script src="/js/boardPage.js"></script>
   </body>
 </html>
