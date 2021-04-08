@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <app-content v-on:change="showStr"></app-content>
+    </div>
+
+    <script>
+      var test = new Vue({
+        el: "#app",
+        data: {
+          message: "hello world!",
+        },
+        methods: {
+          showStr: function () {
+            console.log("이벤트 받았음!!!");
+          },
+        },
+        components: {
+          "app-content": {
+            template: '<button v-on:click="change">메시지 변경</button>',
+            methods: {
+              change() {
+                this.$emit("change");
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

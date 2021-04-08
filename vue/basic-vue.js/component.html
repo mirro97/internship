@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
     <div id="app">
@@ -16,12 +18,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-      new Vue({
+      // var data = {
+      //   str: "프롭스 문자열",
+      // };
+      var test = new Vue({
         // 인스턴스 옵션
         el: "#app",
         data: {
           str: "프롭스 문자열",
         },
+        // data: data,
         methods: {
           changeStr: function () {
             this.str = "변경됐습니다.";

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <router-view name="header"></router-view>
+      <!-- name이 없으면 디폴트 -->
+      <router-view></router-view>
+      <router-view name="footer"></router-view>
+    </div>
+
+    <script>
+      var Body = { template: "<div>This is body</div>" };
+      var Header = { template: "<div>This is header</div>" };
+      var Footer = { template: "<div>This is footer</div>" };
+
+      var router = new VueRouter({
+        routes: [
+          {
+            path: "/",
+            components: {
+              // <router-view>의 name 속성과 컴포넌트를 연결
+              default: Body,
+              header: Header,
+              footer: Footer,
+            },
+          },
+        ],
+      });
+
+      var app = new Vue({
+        router,
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

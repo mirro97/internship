@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <child-component v-bind:propsdata="message"></child-component>
+      <sibling-comonent v-bind:propsdata="message2"></sibling-comonent>
+    </div>
+    <script>
+      Vue.component("child-component", {
+        props: ["propsdata"],
+        template: "<p>{{propsdata}}</p>",
+      });
+
+      Vue.component("sibling-comonent", {
+        props: ["propsdata"],
+        template: "<p>{{propsdata}}</p>",
+      });
+
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "hello vue! ",
+          message2: "bye vue!",
+        },
+      });
+    </script>
+  </body>
+</html>
