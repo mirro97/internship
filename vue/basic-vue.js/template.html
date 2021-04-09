@@ -5,36 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
     <div id="app">
-      <app-main v-bind:message="str"></app-main>
+      <input v-model="message" />
     </div>
-
     <script>
       new Vue({
         el: "#app",
         data: {
-          str: "hello wolrd!",
+          message: "hello Vue.js",
         },
-        components: {
-          "app-main": {
-            props: ["message"],
-            template: "<div>{{message}}</div>",
+        watch: {
+          message: function (data) {
+            console.log("message의 값이 변경됩니다", data);
           },
-        },
-      });
-    </script>
-
-    <div id="app2"></div>
-
-    <script>
-      new Vue({
-        el: "#app2",
-        data: {
-          idA: 10,
         },
       });
     </script>

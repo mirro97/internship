@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- {{}} 콧수염 괄호 -->
+    <div id="app">{{message}}</div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          message: "Hello Vue.js!",
+        },
+      });
+    </script>
+
+    <!-- v-bind -->
+    <div id="app2">
+      <p v-bind:id="idA">아이디 바인딩</p>
+      <p v-bind:class="classA">클래스 바인딩</p>
+      <p v-bind:style="styleA">스타일 바인딩</p>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app2",
+        data: {
+          idA: 10,
+          classA: "container",
+          styleA: "color:blue",
+        },
+      });
+    </script>
+
+    <!-- 자바스크립트 표현식 -->
+    <div id="app3">
+      {{ var a = 10; }}<!-- X, 선언문 사용 불가 -->
+      {{ if(true) {return 100} }}<!-- X, 분기구문 사용 불가 -->
+      {{ true ? 100 : 0}}<!-- O, 삼항연산자로 표현가능 -->
+
+      {{ message.split('').reverse().join('') }}<!-- X, 복잡한 연산은 인스턴스 안에서 수행 -->
+      {{ reversedMessage }}<!-- O, 스크립트에서 computed 속성으로 계산한 수 최종 값만 표현 -->
+    </div>
+    <script>
+      new Vue({
+        el: "#app3",
+        data: {
+          message: "Hello Vue! this is test",
+        },
+        computed: {
+          reversedMessage: function () {
+            return this.message.split("").join("");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
