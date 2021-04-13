@@ -1,0 +1,90 @@
+<template>
+  <nav>
+    <h1 class="nav_title hidden">네비게이션 메뉴</h1>
+    <ul class="nav_menu">
+      <li class="nav_content">
+        <router-link to="#" class="nav_link">메인페이지로 이동</router-link>
+      </li>
+      <li class="nav_content">
+        <a href="#" class="nav_link"> 전체 게시판 관리 </a>
+      </li>
+      <li class="nav_content">
+        <a href="#" class="nav_link">공시뉴스 게시판</a>
+      </li>
+      <li class="nav_content">
+        <a href="#" class="nav_link">자유 게시판</a>
+      </li>
+      <li class="nav_content">
+        <a href="#" class="nav_link">스터디</a>
+      </li>
+      <li class="nav_content">
+        <a href="#" class="nav_link">스케줄 & 공부량</a>
+      </li>
+      <li class="nav_content">
+        <a href="#" class="nav_link">공부량</a>
+      </li>
+      <li class="nav_content">
+        <a href="#" class="nav_link">유저 관리</a>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped>
+/* common css */
+.hidden {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* nav css */
+nav {
+  margin-top: 49px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 200px;
+  height: 100%;
+
+  border-right: 1px solid #dee2e6;
+  /* border-right: 1px solid #e9ecef; */
+}
+
+.nav_menu {
+  padding: 0;
+  padding-top: 15px;
+}
+
+.nav_content {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.nav_content:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 4px 4px -4px #f1f3f5;
+}
+
+.nav_link {
+  line-height: 40px;
+}
+</style>

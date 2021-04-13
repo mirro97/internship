@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="code_info">
+  <sql id="sql_where-code_info">
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="searchFilter.idx               != undefined AND searchFilter.idx               != ''"> AND A.idx               = #{searchFilter.idx}               </if>
+      <if test="searchFilter.categoryCode      != undefined AND searchFilter.categoryCode      != ''"> AND A.category_code     = #{searchFilter.categoryCode}      </if>
+      <if test="searchFilter.categoryName      != undefined AND searchFilter.categoryName      != ''"> AND A.category_name     = #{searchFilter.categoryName}      </if>
+      <if test="searchFilter.code              != undefined AND searchFilter.code              != ''"> AND A.code              = #{searchFilter.code}              </if>
+      <if test="searchFilter.name              != undefined AND searchFilter.name              != ''"> AND A.name              = #{searchFilter.name}              </if>
+      <if test="searchFilter.description       != undefined AND searchFilter.description       != ''"> AND A.description       = #{searchFilter.description}       </if>
+    </trim>
+  </sql>
+
+  <select id="select-list">
+    SELECT 
+      COUNT(A.idx) OVER() AS count,
+      A.idx               AS idx,
+      A.category_code     AS categoryCode,
+      A.category_name     AS categoryName,
+      A.code              AS code,
+      A.name              AS name,
+      A.description       AS description
+    FROM code_info A 
+    <include refid="sql_where-code_info" />
+  </select>
+
+  <insert id="insert-object">
+    insert into code_info (
+      category_code 
+      , category_name 
+      , code 
+      , name 
+      <if test="insertData.description       != undefined and insertData.description      != ''">, description      </if>
+    ) values (
+      #{insertData.categoryCode}
+      , #{insertData.categoryName}
+      , #{insertData.code}
+      , #{insertData.name}
+      <if test="insertData.description       != undefined and insertData.description      != ''">, #{insertData.description}       </if>
+    )
+  </insert>
+
+  <update id="update-object">
+    update code_info A
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="updateData.categoryCode      != undefined and updateData.categoryCode     != ''">, category_code     = #{updateData.categoryCode}      </if>
+      <if test="updateData.categoryName      != undefined and updateData.categoryName     != ''">, category_name     = #{updateData.categoryName}      </if>
+      <if test="updateData.code              != undefined and updateData.code             != ''">, code              = #{updateData.code}              </if>
+      <if test="updateData.name              != undefined and updateData.name             != ''">, name              = #{updateData.name}              </if>
+      <if test="updateData.description       != undefined and updateData.description      != ''">, description       = #{updateData.description}       </if>
+    </trim>
+    <include refid="sql_where-code_info" />
+  </update>
+
+  <delete id="delete-object">
+    delete from code_info
+    where idx = #{searchFilter.idx}
+  </delete>
+
+</mapper>

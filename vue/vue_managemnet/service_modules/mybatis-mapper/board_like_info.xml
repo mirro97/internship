@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board_like_info">
+  <sql id="sql_where-board_like_info">
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="searchFilter.boardIdx          != undefined AND searchFilter.boardIdx          != ''"> AND A.board_idx         = #{searchFilter.boardIdx}          </if>
+      <if test="searchFilter.userIdx           != undefined AND searchFilter.userIdx           != ''"> AND A.user_idx          = #{searchFilter.userIdx}           </if>
+      <choose>
+        <when test="searchFilter.registerDate.s      != '' and searchFilter.registerDate.e      != ''">AND register_date     between DATE_FORMAT(#{searchFilter.registerDate.s},      '%Y-%m-%d') AND DATE_ADD(DATE_FORMAT(#{searchFilter.registerDate.e},      '%Y-%m-%d'), INTERVAL 1 DAY) </when>
+        <when test="searchFilter.registerDate.s      != '' and searchFilter.registerDate.e      == ''">AND register_date     &gt;    DATE_FORMAT(#{searchFilter.registerDate.s},      '%Y-%m-%d')  </when>
+        <when test="searchFilter.registerDate.s      == '' and searchFilter.registerDate.e      != ''">AND register_date     &lt;                                                                     DATE_ADD(DATE_FORMAT(#{searchFilter.registerDate.e},      '%Y-%m-%d'), INTERVAL 1 DAY) </when>
+      </choose>
+    </trim>
+  </sql>
+
+  <select id="select-list">
+    SELECT 
+      A.board_idx         AS boardIdx,
+      A.user_idx          AS userIdx,
+      A.register_date     AS registerDate
+    FROM board_like_info A 
+    <include refid="sql_where-board_like_info" />
+  </select>
+
+  <select id="select-count">
+    SELECT count(A.user_idx) count
+    FROM board_like_info A
+    WHERE A.board_idx = #{searchFilter.boardIdx}
+    AND A.user_idx = #{searchFilter.userIdx}
+  </select>
+
+  <insert id="insert-object">
+    insert into board_like_info (
+      board_idx 
+      , user_idx 
+      <if test="insertData.registerDate      != undefined and insertData.registerDate     != ''">, register_date    </if>
+    ) values (
+      #{insertData.boardIdx}
+      , #{insertData.userIdx}
+      <if test="insertData.registerDate      != undefined and insertData.registerDate     != ''">, #{insertData.registerDate}      </if>
+    )
+  </insert>
+
+  <update id="update-object">
+  </update>
+
+  <delete id="delete-object">
+  </delete>
+
+</mapper>

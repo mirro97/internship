@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board_comment_info">
+  <sql id="sql_where-board_comment_info">
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <if test="searchFilter.idx               != undefined AND searchFilter.idx               != ''"> AND A.idx               = #{searchFilter.idx}               </if>
+      <if test="searchFilter.boardIdx          != undefined AND searchFilter.boardIdx          != ''"> AND A.board_idx         = #{searchFilter.boardIdx}          </if>
+      <if test="searchFilter.parentIdx         != undefined AND searchFilter.parentIdx         != ''"> AND A.parent_idx        = #{searchFilter.parentIdx}         </if>
+      <if test="searchFilter.userIdx           != undefined AND searchFilter.userIdx           != ''"> AND A.user_idx          = #{searchFilter.userIdx}           </if>
+      <if test="searchFilter.contents          != undefined AND searchFilter.contents          != ''"> AND A.contents          = #{searchFilter.contents}          </if>
+      <choose>
+        <when test="searchFilter.registerDate.s      != '' and searchFilter.registerDate.e      != ''">AND register_date     between DATE_FORMAT(#{searchFilter.registerDate.s},      '%Y-%m-%d') AND DATE_ADD(DATE_FORMAT(#{searchFilter.registerDate.e},      '%Y-%m-%d'), INTERVAL 1 DAY) </when>
+        <when test="searchFilter.registerDate.s      != '' and searchFilter.registerDate.e      == ''">AND register_date     &gt;    DATE_FORMAT(#{searchFilter.registerDate.s},      '%Y-%m-%d')  </when>
+        <when test="searchFilter.registerDate.s      == '' and searchFilter.registerDate.e      != ''">AND register_date     &lt;                                                                     DATE_ADD(DATE_FORMAT(#{searchFilter.registerDate.e},      '%Y-%m-%d'), INTERVAL 1 DAY) </when>
+      </choose>
+    </trim>
+  </sql>
+
+  <select id="select-list">
+    SELECT 
+      COUNT(A.idx) OVER() AS count,
+      A.idx               AS idx,
+      A.board_idx         AS boardIdx,
+      A.parent_idx        AS parentIdx,
+      A.user_idx          AS userIdx,
+      A.contents          AS contents,
+      A.register_date     AS registerDate,
+      B.nickname          AS nickname,
+      B.profile_image_name AS profileImage
+    FROM board_comment_info A 
+    LEFT JOIN user_info B ON B.idx = A.user_idx
+    <include refid="sql_where-board_comment_info" />
+  </select>
+
+  <insert id="insert-object">
+    insert into board_comment_info (
+      board_idx 
+      <if test="insertData.parentIdx         != undefined and insertData.parentIdx        != ''">, parent_idx       </if>
+      , user_idx 
+      , contents 
+      <if test="insertData.registerDate      != undefined and insertData.registerDate     != ''">, register_date    </if>
+    ) values (
+      #{insertData.boardIdx}
+      <if test="insertData.parentIdx         != undefined and insertData.parentIdx        != ''">, #{insertData.parentIdx}         </if>
+      , #{insertData.userIdx}
+      , #{insertData.contents}
+      <if test="insertData.registerDate      != undefined and insertData.registerDate     != ''">, #{insertData.registerDate}      </if>
+    )
+  </insert>
+
+  <update id="update-object">
+    update board_comment_info A
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="updateData.boardIdx          != undefined and updateData.boardIdx         != ''">, board_idx         = #{updateData.boardIdx}          </if>
+      <if test="updateData.parentIdx         != undefined and updateData.parentIdx        != ''">, parent_idx        = #{updateData.parentIdx}         </if>
+      <if test="updateData.userIdx           != undefined and updateData.userIdx          != ''">, user_idx          = #{updateData.userIdx}           </if>
+      <if test="updateData.contents          != undefined and updateData.contents         != ''">, contents          = #{updateData.contents}          </if>
+      <if test="updateData.registerDate      != undefined and updateData.registerDate     != ''">, register_date     = #{updateData.registerDate}      </if>
+    </trim>
+    <include refid="sql_where-board_comment_info" />
+  </update>
+
+  <delete id="delete-object">
+    delete from board_comment_info
+    where idx = #{searchFilter.idx}
+  </delete>
+
+</mapper>
