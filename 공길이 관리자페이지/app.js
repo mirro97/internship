@@ -320,5 +320,6 @@ app.post(
   asyncHandler(async (req, res) => {
     let rd = appUtil.getRequestData(req);
     let r = undefined;
+    r = await service.getCodeList();
   })
 );

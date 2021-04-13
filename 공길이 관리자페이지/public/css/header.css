@@ -12,7 +12,7 @@ header {
   width: 100%;
   z-index: 10;
   background-color: #15a58d;
-  box-shadow: 0 4px 4px -4px #f1f3f5;
+  box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.8);
 }
 
 .main_title {

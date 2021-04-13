@@ -18,17 +18,19 @@ ul {
 /* nav css */
 nav {
   margin-top: 49px;
-
   position: fixed;
   top: 0;
   z-index: 10;
   width: 200px;
   height: 100%;
-  border-right: 1px solid #e9ecef;
+
+  border-right: 1px solid #dee2e6;
+  /* border-right: 1px solid #e9ecef; */
 }
 
 .nav_menu {
   padding: 0;
+  padding-top: 15px;
 }
 
 .nav_content {
@@ -37,11 +39,10 @@ nav {
   height: 40px;
   font-size: 15px;
   font-weight: 400;
-  border-bottom: 1px solid #dee2e6;
 }
 
 .nav_content:hover {
-  background-color: #dce8e0;
+  background-color: #e9ecef;
   box-shadow: 0 4px 4px -4px #f1f3f5;
 }
 
