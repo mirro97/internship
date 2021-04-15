@@ -1,5 +1,9 @@
 <template>
-  <div class="box">test용 화면!</div>
+  <main>
+    <div>공길이 관리자페이지임</div>
+
+    <router-link to="/login">로그인 페이지로 가기</router-link>
+  </main>
 </template>
 
 <script>
@@ -7,8 +11,8 @@ export default {};
 </script>
 
 <style scoped>
-.box {
-  color: #adb5bd;
-  background: #f3f0ff;
+main {
+  margin-top: 49px;
+  margin-left: 200px;
 }
 </style>

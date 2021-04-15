@@ -1,7 +1,7 @@
 <template>
   <main class="border_sec">
     <div class="border_container">
-      <h1 class="board_title">전체 게시판 관리</h1>
+      <h1 class="board_title">유저 관리 페이지</h1>
 
       <div class="search_container">
         <div class="input_group">
@@ -10,7 +10,7 @@
             id="search"
             name="search"
             class="search_input"
-            placeholder="제목으로 검색하세요"
+            placeholder="닉네임으로 검색하세요"
           />
 
           <button class="btn_container" type="button">
@@ -26,12 +26,14 @@
       <table class="table_container test">
         <thead>
           <tr>
-            <th>번호</th>
-            <th>게시판 타입</th>
-            <th>제목</th>
+            <th>ID</th>
+            <th>email</th>
+            <th>이름</th>
+            <th>생일</th>
+            <th>카카오 ID</th>
             <th>닉네임</th>
-            <th>내용</th>
-            <th>게시한 날짜</th>
+            <th>사는곳</th>
+            <th>가입 일자</th>
           </tr>
         </thead>
 
@@ -39,9 +41,7 @@
       </table>
 
       <div class="page_container">
-        <ul id="page_wrapper">
-          <li></li>
-        </ul>
+        <ul id="page_wrapper"></ul>
       </div>
     </div>
   </main>
