@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "공시뉴스테스트",
+    "nickName": "노답1",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  },
+  {
+    "id": 2,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "가나다라",
+    "nickName": "노답1",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  },
+  {
+    "id": 3,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "마바사아",
+    "nickName": "노답1",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  },
+  {
+    "id": 4,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "자차카타",
+    "nickName": "노답2",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  },
+  {
+    "id": 5,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "파하",
+    "nickName": "노답2",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  },
+  {
+    "id": 6,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "기니디리",
+    "nickName": "노답3",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  },
+  {
+    "id": 7,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "미비시",
+    "nickName": "노답3",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  },
+  {
+    "id": 8,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "이지치키",
+    "nickName": "노답3",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  },
+  {
+    "id": 9,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "티피히",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-21"
+  }
+]
