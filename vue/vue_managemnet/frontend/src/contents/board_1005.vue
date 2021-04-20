@@ -34,16 +34,16 @@
           </tr>
         </thead>
 
-        <!-- <tbody id="table">
+        <tbody id="table">
           <tr v-for="(board, i) in boardList" :key="i">
-            <td>{{ i }}</td>
+            <td>{{ i + 1 }}</td>
             <td>{{ board.board_type_code }}</td>
             <td>{{ board.title }}</td>
             <td>{{ board.nickName }}</td>
             <td>{{ board.contents }}</td>
             <td>{{ board.register_date }}</td>
           </tr>
-        </tbody> -->
+        </tbody>
       </table>
 
       <div class="page_container">
@@ -57,23 +57,16 @@
 
 <script>
 export default {
-  // created() {
-  //   this.$http.get("/api/boardList").then(response => {
-  //     this.boardList = response.data;
-  //   });
-  // },
-  // data() {
-  //   return {
-  //     boardList: []
-  //   };
-  // }
-  // computed: {
-  // currentBoradType() {
-  //   var type = this.$route.params.name;
-  //   console.log(type);
-  //   return type;
-  //   // }
-  // }
+  data() {
+    return {
+      boardList: []
+    };
+  },
+  async mounted() {
+    const { data } = await this.axios.get("/api/main/1005");
+    console.log(data);
+    this.boardList = data;
+  }
 };
 </script>
 

@@ -17,22 +17,22 @@
     "nickName": "노답1",
     "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
     "read_count": 2,
-    "register_date": "2020-1-21"
+    "register_date": "2020-1-17"
   },
   {
     "id": 3,
     "user_idx": 2,
-    "board_type_code": 1001,
+    "board_type_code": 1003,
     "title": "마바사아",
     "nickName": "노답1",
     "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
     "read_count": 2,
-    "register_date": "2020-1-21"
+    "register_date": "2020-1-15"
   },
   {
     "id": 4,
     "user_idx": 2,
-    "board_type_code": 1001,
+    "board_type_code": 1002,
     "title": "자차카타",
     "nickName": "노답2",
     "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
@@ -42,51 +42,261 @@
   {
     "id": 5,
     "user_idx": 2,
-    "board_type_code": 1001,
+    "board_type_code": 1003,
     "title": "파하",
     "nickName": "노답2",
     "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
     "read_count": 2,
-    "register_date": "2020-1-21"
+    "register_date": "2020-1-15"
   },
   {
     "id": 6,
     "user_idx": 2,
-    "board_type_code": 1001,
+    "board_type_code": 1004,
     "title": "기니디리",
     "nickName": "노답3",
     "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
     "read_count": 2,
-    "register_date": "2020-1-21"
+    "register_date": "2020-1-28"
   },
   {
     "id": 7,
     "user_idx": 2,
-    "board_type_code": 1001,
+    "board_type_code": 1005,
     "title": "미비시",
     "nickName": "노답3",
     "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
     "read_count": 2,
-    "register_date": "2020-1-21"
+    "register_date": "2020-1-30"
   },
   {
     "id": 8,
     "user_idx": 2,
-    "board_type_code": 1001,
+    "board_type_code": 1003,
     "title": "이지치키",
     "nickName": "노답3",
     "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
     "read_count": 2,
-    "register_date": "2020-1-21"
+    "register_date": "2020-1-03"
   },
   {
     "id": 9,
     "user_idx": 2,
-    "board_type_code": 1001,
+    "board_type_code": 1004,
     "title": "티피히",
     "nickName": "노답4",
     "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
     "read_count": 2,
+    "register_date": "2020-1-08"
+  },
+  {
+    "id": 10,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄sdfsdfㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-11"
+  },
+  {
+    "id": 11,
+    "user_idx": 2,
+    "board_type_code": 1005,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄sdfsdfㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-15"
+  },
+  {
+    "id": 12,
+    "user_idx": 2,
+    "board_type_code": 1004,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄sdfsdfㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-26"
+  },
+  {
+    "id": 13,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄sdfsdfㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-24"
+  },
+  {
+    "id": 14,
+    "user_idx": 2,
+    "board_type_code": 1003,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄sdfsdfㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-22"
+  },
+  {
+    "id": 15,
+    "user_idx": 2,
+    "board_type_code": 1004,
+    "title": "티피히dsfdsfdfhdfghdfs",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄sdfdfhsdfhsdfhsdfsdfㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-2-29"
+  },
+  {
+    "id": 16,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "공시뉴스테스트",
+    "nickName": "노답1",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-24"
+  },
+  {
+    "id": 17,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "가나다라",
+    "nickName": "노답1",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-17"
+  },
+  {
+    "id": 18,
+    "user_idx": 2,
+    "board_type_code": 1003,
+    "title": "마바사아",
+    "nickName": "노답1",
+    "contents": "랄ㄹㄹ라라랄라랄ㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-15"
+  },
+  {
+    "id": 19,
+    "user_idx": 2,
+    "board_type_code": 1002,
+    "title": "자차카타",
+    "nickName": "노답2",
+    "contents": "ㅏㅇ헝ㄹ헝ㄹ헝ㄱ서ㅓㅌ선옴ㄷ곰ㄴㄷ곰ㄱ도",
+    "read_count": 2,
     "register_date": "2020-1-21"
+  },
+  {
+    "id": 20,
+    "user_idx": 2,
+    "board_type_code": 1003,
+    "title": "파하",
+    "nickName": "노답2",
+    "contents": "언ㄹ허ㅜ윹츈ㅇㅎㅁㅎㅁㄴㅇㅎ",
+    "read_count": 2,
+    "register_date": "2020-1-15"
+  },
+  {
+    "id": 21,
+    "user_idx": 2,
+    "board_type_code": 1004,
+    "title": "기니디리",
+    "nickName": "노답3",
+    "contents": "ㄷ굗ㅅ겨ㅛㅑ",
+    "read_count": 2,
+    "register_date": "2020-1-28"
+  },
+  {
+    "id": 22,
+    "user_idx": 2,
+    "board_type_code": 1005,
+    "title": "미비시",
+    "nickName": "노답3",
+    "contents": "퓨ㅜ퓨ㅜㄹ홄",
+    "read_count": 2,
+    "register_date": "2020-1-30"
+  },
+  {
+    "id": 23,
+    "user_idx": 2,
+    "board_type_code": 1003,
+    "title": "이지치키",
+    "nickName": "노답3",
+    "contents": ",ㅑㅏㅣ,ㅕㅑㅕㅑ",
+    "read_count": 2,
+    "register_date": "2020-1-03"
+  },
+  {
+    "id": 24,
+    "user_idx": 2,
+    "board_type_code": 1004,
+    "title": "티피히",
+    "nickName": "노답4",
+    "contents": "ㅗㄴ오셕걱서",
+    "read_count": 2,
+    "register_date": "2020-1-08"
+  },
+  {
+    "id": 25,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "ㄷㄳㄷㅎㄴㅁㄻ",
+    "read_count": 2,
+    "register_date": "2020-1-11"
+  },
+  {
+    "id": 26,
+    "user_idx": 2,
+    "board_type_code": 1005,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "ㅊ풀훙ㄹ훌훅ㄷ",
+    "read_count": 2,
+    "register_date": "2020-1-15"
+  },
+  {
+    "id": 27,
+    "user_idx": 2,
+    "board_type_code": 1004,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "ㄴㅇㄹㄴㅇㄹㄴㅇㅎㅊ퓿퓨",
+    "read_count": 2,
+    "register_date": "2020-1-26"
+  },
+  {
+    "id": 28,
+    "user_idx": 2,
+    "board_type_code": 1001,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "ㄴㅇㄹㄴㅇㄹ",
+    "read_count": 2,
+    "register_date": "2020-1-24"
+  },
+  {
+    "id": 29,
+    "user_idx": 2,
+    "board_type_code": 1003,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄ㄴㅇㄹㄴㅇㄹsdfsdfㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-22"
+  },
+  {
+    "id": 30,
+    "user_idx": 2,
+    "board_type_code": 1002,
+    "title": "티피히dsfdsdfs",
+    "nickName": "노답4",
+    "contents": "랄ㄹㄹ라라랄라랄sdfssdfsdfsdfdfㄹ라ㅏ",
+    "read_count": 2,
+    "register_date": "2020-1-29"
   }
 ]

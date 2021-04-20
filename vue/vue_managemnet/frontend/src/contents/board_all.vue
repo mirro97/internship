@@ -36,7 +36,7 @@
 
         <tbody id="table">
           <tr v-for="(board, i) in boardList" :key="i">
-            <td>{{ i }}</td>
+            <td>{{ i + 1 }}</td>
             <td>{{ board.board_type_code }}</td>
             <td>{{ board.title }}</td>
             <td>{{ board.nickName }}</td>
@@ -57,15 +57,15 @@
 
 <script>
 export default {
-  created() {
-    this.$http.get("/api/movies").then(response => {
-      this.movies = response.data;
-    });
-  },
   data() {
     return {
       boardList: []
     };
+  },
+  async mounted() {
+    const { data } = await this.axios.get("/api/main");
+    console.log(data);
+    this.boardList = data;
   }
 };
 </script>

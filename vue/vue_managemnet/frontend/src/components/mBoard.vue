@@ -40,7 +40,9 @@ export default {
   },
   computed: {
     currentType() {
-      return this.$route.params.boardType;
+      var type = this.$route.params.boardType;
+
+      return type;
     }
   }
 };
