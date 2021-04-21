@@ -2,16 +2,28 @@
   <main>
     <div class="login">
       <h1 class="login_title">관리자 로그인</h1>
-      <form id="login_wrapper" name="login_wrapper" class="input_group">
+      <form
+        v-on:submit="signUp"
+        id="login_wrapper"
+        name="login_wrapper"
+        class="input_group"
+      >
         <!-- 사용자 계정 입력 -->
         <div class="input_wrapper">
           <div class="item_input">
             <label for="userId" class="lab_placeholder"> 아이디 </label>
-            <input type="text" id="userId" name="userId" class="user_input" />
+            <input
+              v-model="userId"
+              type="text"
+              id="userId"
+              name="userId"
+              class="user_input"
+            />
           </div>
           <div class="item_input">
             <label for="userPw" class="lab_placeholder">비밀번호</label>
             <input
+              v-model="userPw"
               type="password"
               id="userPw"
               name="userPw"
@@ -21,16 +33,33 @@
         </div>
 
         <!-- 버튼 -->
-        <router-link class="submit_btn" type="button" to="/main">
+        <button class="submit_btn">
           로그인
-        </router-link>
+        </button>
+        <!-- <router-link class="submit_btn" type="button" to="/main">
+          로그인
+        </router-link> -->
         <img src="../../public/img/group_62.png" alt="공길이" />
       </form>
     </div>
   </main>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      userId: "",
+      userPw: ""
+    };
+  },
+  methods: {
+    signUp(e) {
+      e.preventDefault();
+      console.log("id = " + this.userId);
+      console.log("pass = " + this.userPw);
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -110,9 +139,13 @@ input {
 }
 
 .submit_btn {
+  display: block;
   height: 50px;
   width: 100%;
   color: #fff;
+  text-decoration: none;
+  text-align: center;
+  line-height: 48px;
   font-size: 16px;
   font-weight: 700;
   background-color: #20c997;

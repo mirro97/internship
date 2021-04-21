@@ -1,0 +1,24 @@
+[
+  {
+    "id": "test",
+    "pw": 1,
+    "name": "강수정",
+    "email": "mirro97@naver.com",
+    "birthDay": "1997-05-25",
+    "kakaoId": "sirro97",
+    "nickName": "NYchicken",
+    "address": "Gangwondo",
+    "registDay": "2021-03-01"
+  },
+  {
+    "id": "test1",
+    "pw": 1,
+    "name": "성종희",
+    "email": "hongjee@naver.com",
+    "birthDay": "1997-06-07",
+    "kakaoId": "hongjee",
+    "nickName": "huck",
+    "address": "Gangwondo",
+    "registDay": "2021-03-07"
+  }
+]
