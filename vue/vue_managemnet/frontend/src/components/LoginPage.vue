@@ -3,7 +3,7 @@
     <div class="login">
       <h1 class="login_title">관리자 로그인</h1>
       <form
-        v-on:submit="signUp"
+        @submit.prevent="signIn"
         id="login_wrapper"
         name="login_wrapper"
         class="input_group"
@@ -46,6 +46,25 @@
 </template>
 <script>
 export default {
+  // name: "Login",
+  // data() {
+  //   return {
+  //     user: {
+  //       userId: "",
+  //       userPw: ""
+  //     }
+  //   };
+  // },
+  // methods: {
+  //   async signUp() {
+  //     const response = await this.axios.post("/api/login", {
+  //       user: this.user
+  //     });
+
+  //     console.log(response);
+  //   }
+  // }
+  name: "Login",
   data() {
     return {
       userId: "",
@@ -53,10 +72,13 @@ export default {
     };
   },
   methods: {
-    signUp(e) {
-      e.preventDefault();
-      console.log("id = " + this.userId);
-      console.log("pass = " + this.userPw);
+    async signIn() {
+      const response = await this.axios.post("/api/login", {
+        userId: this.userId,
+        userPw: this.userPw
+      });
+
+      console.log(response);
     }
   }
 };
