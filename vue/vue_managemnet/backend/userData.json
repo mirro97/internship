@@ -1,7 +1,7 @@
 [
   {
     "id": "test",
-    "pw": 1,
+    "pw": "Tf9Oo0DwqCPxXT9PAati6uDl2lecy4Ufjbnf6ExYsrN7iZA6dA4e4XLaeTpuedVg5ff5vQWKEqKAQz7W+kZRCg==",
     "name": "강수정",
     "email": "mirro97@naver.com",
     "birthDay": "1997-05-25",
@@ -12,8 +12,19 @@
   },
   {
     "id": "test1",
-    "pw": 1,
+    "pw": "7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==",
     "name": "성종희",
+    "email": "hongjee@naver.com",
+    "birthDay": "1997-06-07",
+    "kakaoId": "hongjee",
+    "nickName": "huck",
+    "address": "Gangwondo",
+    "registDay": "2021-03-07"
+  },
+  {
+    "id": "test2",
+    "pw": "qp7C/9JSEyCJYKt07hokPi+m9vPlLxZ8sMEqYK21x6WdKFN4iDFQnKU2LDSc0XNwWaQN0NMmYhQo7Xn/j0S4dg==",
+    "name": "김혜연",
     "email": "hongjee@naver.com",
     "birthDay": "1997-06-07",
     "kakaoId": "hongjee",
