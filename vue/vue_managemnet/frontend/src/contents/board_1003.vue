@@ -63,6 +63,7 @@ export default {
     };
   },
   async mounted() {
+    await this.axios.get("/auth/check");
     const { data } = await this.axios.get("/api/main/1003");
     console.log(data);
     this.boardList = data;

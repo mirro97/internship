@@ -37,7 +37,7 @@ router.post("/", function (req, res, next) {
             id: inputUserId,
           },
           jwt_secret,
-          { expiresIn: "7d", issuer: "Dinner", subject: "userInfo" },
+          { expiresIn: "7d", issuer: "NYchicken", subject: "userInfo" },
           (err, token) => {
             if (err) reject(err);
             resolve(token);

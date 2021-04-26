@@ -54,13 +54,6 @@ export default {
     };
   },
   methods: {
-    // async signIn() {
-    //   const response = await this.axios.post("/api/login", {
-    //     userId: this.userId,
-    //     userPw: this.userPw
-    //   });
-    //   console.log(response);
-    // }
     signIn() {
       this.axios
         .post("/api/login", {
@@ -69,7 +62,6 @@ export default {
         })
         .then(res => {
           console.log(res);
-          // this.router.push("/main/test");
           this.$router.push("/main/test");
         });
     }
