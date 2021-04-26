@@ -44,6 +44,10 @@ export default {
 
       return type;
     }
+  },
+  async mounted() {
+    const isValid = await this.axios.post("/api/check");
+    console.log(isValid);
   }
 };
 </script>

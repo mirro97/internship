@@ -46,24 +46,6 @@
 </template>
 <script>
 export default {
-  // name: "Login",
-  // data() {
-  //   return {
-  //     user: {
-  //       userId: "",
-  //       userPw: ""
-  //     }
-  //   };
-  // },
-  // methods: {
-  //   async signUp() {
-  //     const response = await this.axios.post("/api/login", {
-  //       user: this.user
-  //     });
-
-  //     console.log(response);
-  //   }
-  // }
   name: "Login",
   data() {
     return {
@@ -72,13 +54,24 @@ export default {
     };
   },
   methods: {
-    async signIn() {
-      const response = await this.axios.post("/api/login", {
-        userId: this.userId,
-        userPw: this.userPw
-      });
-
-      console.log(response);
+    // async signIn() {
+    //   const response = await this.axios.post("/api/login", {
+    //     userId: this.userId,
+    //     userPw: this.userPw
+    //   });
+    //   console.log(response);
+    // }
+    signIn() {
+      this.axios
+        .post("/api/login", {
+          userId: this.userId,
+          userPw: this.userPw
+        })
+        .then(res => {
+          console.log(res);
+          // this.router.push("/main/test");
+          this.$router.push("/main/test");
+        });
     }
   }
 };

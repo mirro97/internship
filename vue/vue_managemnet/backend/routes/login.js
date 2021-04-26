@@ -45,6 +45,8 @@ router.post("/", function (req, res, next) {
         );
       });
       getToken.then((token) => {
+        res.cookie("token", token);
+
         res.status(200).json({
           status: 200,
           message: "로그인 성공!",
