@@ -7,7 +7,6 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/:board_type_code", function (req, res, next) {
-  console.log("Login Page");
   var board_type_code = parseInt(req.params.board_type_code, 10);
   var board = boardList.filter(function (board) {
     return board.board_type_code === board_type_code;
