@@ -39,8 +39,8 @@
         </thead>
 
         <tbody id="table">
-          <tr v-for="(user, i) in calData" :key="i">
-            <td>{{ i + currentPage * 5 + 1 }}</td>
+          <tr v-for="(user, i) in userList" :key="i">
+            <td>{{ i + (currentPage - 1) * 10 + 1 }}</td>
             <td>{{ user.id }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.name }}</td>
@@ -55,18 +55,25 @@
 
       <div class="page_container">
         <ul id="page_wrapper">
-          <li class="pageIdx" v-if="currentPage != 0">
-            <a href="#">
+          <li class="pageIdx" v-if="firstPageIndex != 0">
+            <a @click="movePage(firstPageIndex - 1)">
               prev
             </a>
           </li>
+
           <li
             class="pageIdx"
-            v-for="(i, firstPage) in endPage"
-            :key="firstPage"
+            v-for="(i, firstPageIndex) in endPageIndex"
+            :key="firstPageIndex"
           >
             <a @click="movePage(i)">
               {{ i }}
+            </a>
+          </li>
+
+          <li class="pageIdx" v-if="endPageIndex != maxPage">
+            <a @click="movePage(endPageIndex + 1)">
+              next
             </a>
           </li>
         </ul>
@@ -79,17 +86,55 @@
 export default {
   data() {
     return {
-      userList: [],
-      dataPage: 5,
-      currentPage: 0
+      userList: [], // 화면에 표시될 데이터
+      dataPage: 5, // 화면에 표시될 최대 페이지 인덱스 개수
+      currentPage: 0, // 현재 페이지
+      maxdata: 0, // 데이터의 총 개수 (userData.json)
+      maxdataSize: 10 // 화면에 표시될 최대 데이터의 수
     };
   },
   methods: {
     async getUserList(currentPage) {
-      if (!currentPage) currentPage = 0;
-      const { data } = await this.axios.get("/users");
-      console.log(data);
-      this.userList = data;
+      if (!currentPage) currentPage = 1; // 처음 화면 로딩시(새로고침) 나타나는 페이지
+
+      console.log(
+        "예외처리하기 전 - " +
+          " endPageIndex: " +
+          this.endPageIndex +
+          " maxPage: " +
+          this.maxPage
+      );
+      if (this.endPageIndex >= this.maxPage) {
+        console.log(
+          "테스트중1- " +
+            " maxPage: " +
+            this.maxPage +
+            " endPageIndex: " +
+            this.endPageIndex
+        );
+        this.endPageIndex = this.maxPage;
+        console.log(
+          "테스트중2- " +
+            " maxPage: " +
+            this.maxPage +
+            " endPageIndex: " +
+            this.endPageIndex
+        );
+      }
+      console.log(
+        "예외처리한 후 - " +
+          " endPageIndex: " +
+          this.endPageIndex +
+          " maxPage: " +
+          this.maxPage
+      );
+
+      const { data } = await this.axios.get("/users", {
+        params: { currentPage }
+      });
+      this.userList = data.resUserList;
+      this.maxdata = data.maxdata;
+      this.currentPage = currentPage;
     },
     movePage(i) {
       console.log(i);
@@ -97,17 +142,14 @@ export default {
     }
   },
   computed: {
-    firstPage() {
-      return this.currentPage - (this.currentPage % this.dataPage);
-    },
-    endPage() {
-      return this.firstPage + this.dataPage;
-    },
     maxPage() {
-      return Math.ceil(this.userList.length / this.dataPage);
+      return Math.ceil(this.maxdata / this.maxdataSize); // 요구되는 페이지 인덱스의 총 개수
     },
-    calData() {
-      return this.userList.slice(this.firstPage, this.endPage + 5);
+    firstPageIndex() {
+      return this.currentPage - 1 - ((this.currentPage - 1) % this.dataPage);
+    },
+    endPageIndex() {
+      return this.firstPageIndex + this.dataPage;
     }
   },
   mounted() {
