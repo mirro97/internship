@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import mBoard from "./components/mBoard.vue";
 import main from "./components/Main.vue";
 import test from "./components/mMain.vue";
-import mUserList from "./components/mUserList_test.vue";
+import mUserList from "./components/mUserList.vue";
 import login from "./components/LoginPage.vue";
 
 const routes = [
