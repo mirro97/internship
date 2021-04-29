@@ -3,29 +3,30 @@
     <div class="border_container">
       <h1 class="board_title">유저 관리 페이지</h1>
 
-      <div class="search_container">
-        <div class="input_group">
-          <input
-            type="text"
-            id="search"
-            name="search"
-            class="search_input"
-            placeholder="닉네임으로 검색하세요"
-          />
+      <form class="input_group" v-on:submit="searchInput">
+        <input
+          type="text"
+          v-model="searchName"
+          class="search_input"
+          placeholder="닉네임으로 검색하세요"
+          autocomplete="false"
+        />
 
-          <button class="btn_container" type="button">
-            <img
-              class="search_btn"
-              src="../../public/img/돋보기.png"
-              alt="검색아이콘"
-            />
-          </button>
-        </div>
-      </div>
+        <button class="btn_container">
+          <img
+            class="search_btn"
+            src="../../public/img/돋보기.png"
+            alt="검색아이콘"
+          />
+        </button>
+      </form>
 
       <table class="table_container test">
         <thead>
           <tr>
+            <th>
+              <input type="checkbox" value="전체" v-model="checkItems" />
+            </th>
             <th>번호</th>
             <th>ID</th>
             <th>email</th>
@@ -40,6 +41,9 @@
 
         <tbody id="table">
           <tr v-for="(user, i) in userList" :key="i">
+            <td>
+              <input type="checkbox" id v-model="checkItem" />
+            </td>
             <td>{{ i + (currentPage - 1) * 10 + 1 }}</td>
             <td>{{ user.id }}</td>
             <td>{{ user.email }}</td>
@@ -55,24 +59,24 @@
 
       <div class="page_container">
         <ul id="page_wrapper">
-          <li class="pageIdx" v-if="firstPageIndex != 0">
-            <a @click="movePage(firstPageIndex - 1)">
+          <li class="pageIdx" v-if="firstPageIndex != 1">
+            <a @click="movePage(firstPageIndex - 1, searchName)">
               prev
             </a>
           </li>
 
           <li
             class="pageIdx"
-            v-for="(i, firstPageIndex) in endPageIndex"
-            :key="firstPageIndex"
+            v-for="pageIndex in range(firstPageIndex, endPageIndex)"
+            :key="pageIndex"
           >
-            <a @click="movePage(i)">
-              {{ i }}
+            <a @click="movePage(pageIndex, searchName)">
+              {{ pageIndex }}
             </a>
           </li>
 
           <li class="pageIdx" v-if="endPageIndex != maxPage">
-            <a @click="movePage(endPageIndex + 1)">
+            <a @click="movePage(firstPageIndex + 5, searchName)">
               next
             </a>
           </li>
@@ -90,66 +94,55 @@ export default {
       dataPage: 5, // 화면에 표시될 최대 페이지 인덱스 개수
       currentPage: 0, // 현재 페이지
       maxdata: 0, // 데이터의 총 개수 (userData.json)
-      maxdataSize: 10 // 화면에 표시될 최대 데이터의 수
+      maxdataSize: 10, // 화면에 표시될 최대 데이터의 수
+      checkItems: [],
+      checkItem: []
     };
   },
   methods: {
-    async getUserList(currentPage) {
+    async getUserList(currentPage, searchName) {
+      await this.axios.get("/auth/check");
       if (!currentPage) currentPage = 1; // 처음 화면 로딩시(새로고침) 나타나는 페이지
 
-      console.log(
-        "예외처리하기 전 - " +
-          " endPageIndex: " +
-          this.endPageIndex +
-          " maxPage: " +
-          this.maxPage
-      );
-      if (this.endPageIndex >= this.maxPage) {
-        console.log(
-          "테스트중1- " +
-            " maxPage: " +
-            this.maxPage +
-            " endPageIndex: " +
-            this.endPageIndex
-        );
-        this.endPageIndex = this.maxPage;
-        console.log(
-          "테스트중2- " +
-            " maxPage: " +
-            this.maxPage +
-            " endPageIndex: " +
-            this.endPageIndex
-        );
-      }
-      console.log(
-        "예외처리한 후 - " +
-          " endPageIndex: " +
-          this.endPageIndex +
-          " maxPage: " +
-          this.maxPage
-      );
-
       const { data } = await this.axios.get("/users", {
-        params: { currentPage }
+        params: { currentPage, searchName }
       });
-      this.userList = data.resUserList;
-      this.maxdata = data.maxdata;
+
+      console.log("프론트: " + searchName);
+
       this.currentPage = currentPage;
+      this.userList = data.resUserList;
+      this.maxdata = data.maxData;
     },
-    movePage(i) {
-      console.log(i);
-      return this.getUserList(i);
+    movePage(i, searchName) {
+      console.log(i, searchName);
+      return this.getUserList(i, searchName);
+    },
+    range: function(start, end) {
+      let list = [];
+      for (let i = start; i <= end; i++) list.push(i);
+      return list;
+    },
+    searchInput(e) {
+      e.preventDefault();
+      return this.getUserList(this.currentPage, this.searchName);
     }
   },
   computed: {
     maxPage() {
-      return Math.ceil(this.maxdata / this.maxdataSize); // 요구되는 페이지 인덱스의 총 개수
+      return Math.ceil(this.maxdata / 10); // 요구되는 페이지 인덱스의 총 개수
     },
     firstPageIndex() {
-      return this.currentPage - 1 - ((this.currentPage - 1) % this.dataPage);
+      return (
+        this.currentPage - 1 - ((this.currentPage - 1) % this.dataPage) + 1
+      );
     },
     endPageIndex() {
-      return this.firstPageIndex + this.dataPage;
+      var endPage = this.firstPageIndex + this.dataPage - 1;
+      if (endPage >= this.maxPage) {
+        endPage = this.maxPage;
+      }
+      return endPage;
     }
   },
   mounted() {

@@ -3,23 +3,23 @@
     <div class="border_container">
       <h1 class="board_title">전체 게시판 관리</h1>
       <div class="search_container">
-        <div class="input_group">
+        <form class="input_group" v-on:submit="searchInput">
           <input
             type="text"
-            id="search"
-            name="search"
+            v-model="searchTitle"
             class="search_input"
             placeholder="제목으로 검색하세요"
+            autocomplete="false"
           />
 
-          <button class="btn_container" type="button">
+          <button class="btn_container">
             <img
               class="search_btn"
               src="../../public/img/돋보기.png"
               alt="검색아이콘"
             />
           </button>
-        </div>
+        </form>
       </div>
 
       <table class="table_container test">
@@ -36,7 +36,7 @@
 
         <tbody id="table">
           <tr v-for="(board, i) in boardList" :key="i">
-            <td>{{ i + 1 }}</td>
+            <td>{{ i + (currentPage - 1) * 10 + 1 }}</td>
             <td>{{ board.board_type_code }}</td>
             <td>{{ board.title }}</td>
             <td>{{ board.nickName }}</td>
@@ -48,7 +48,27 @@
 
       <div class="page_container">
         <ul id="page_wrapper">
-          <li></li>
+          <li class="pageIdx" v-if="firstPageIndex != 1">
+            <a @click="movePage(firstPageIndex - 1, searchTitle)">
+              prev
+            </a>
+          </li>
+
+          <li
+            class="pageIdx"
+            v-for="pageIndex in range(firstPageIndex, endPageIndex)"
+            :key="pageIndex"
+          >
+            <a @click="movePage(pageIndex, searchTitle)">
+              {{ pageIndex }}
+            </a>
+          </li>
+
+          <li class="pageIdx" v-if="endPageIndex != maxPage">
+            <a @click="movePage(firstPageIndex + 5, searchTitle)">
+              next
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -59,14 +79,59 @@
 export default {
   data() {
     return {
-      boardList: []
+      boardList: [],
+      dataPage: 5,
+      currentPage: 0,
+      maxdata: 0,
+      maxdataSize: 10
     };
   },
-  async mounted() {
-    await this.axios.get("/auth/check");
-    const { data } = await this.axios.get("/api/main");
-    console.log(data);
-    this.boardList = data;
+  methods: {
+    async getBoardList(currentPage, searchTitle) {
+      await this.axios.get("/auth/check");
+      if (!currentPage) currentPage = 1; // 처음 화면 로딩시(새로고침) 나타나는 페이지
+
+      const { data } = await this.axios.get("/api/main", {
+        params: { currentPage, searchTitle }
+      });
+
+      this.currentPage = currentPage;
+      this.boardList = data.resBoardList;
+      this.maxdata = data.maxData;
+    },
+    movePage(i, searchTitle) {
+      console.log("currentPage: " + i + ", searchTitle: " + searchTitle);
+      return this.getBoardList(i, searchTitle);
+    },
+    range: function(start, end) {
+      let list = [];
+      for (let i = start; i <= end; i++) list.push(i);
+      return list;
+    },
+    searchInput(e) {
+      e.preventDefault();
+      return this.getBoardList(this.currentPage, this.searchTitle);
+    }
+  },
+  computed: {
+    maxPage() {
+      return Math.ceil(this.maxdata / 10); // 요구되는 페이지 인덱스의 총 개수
+    },
+    firstPageIndex() {
+      return (
+        this.currentPage - 1 - ((this.currentPage - 1) % this.dataPage) + 1
+      );
+    },
+    endPageIndex() {
+      var endPage = this.firstPageIndex + this.dataPage - 1;
+      if (endPage >= this.maxPage) {
+        endPage = this.maxPage;
+      }
+      return endPage;
+    }
+  },
+  mounted() {
+    this.getBoardList();
   }
 };
 </script>
@@ -162,29 +227,33 @@ table {
   height: 600px;
 }
 
+td {
+  text-align: center;
+}
+
 td:first-child {
   padding: 10px;
   width: 5%;
-  text-align: center;
+}
+
+td:nth-child(1) {
+  width: 5%;
 }
 
 td:nth-child(2) {
   width: 10%;
-  text-align: center;
+}
+
+td:nth-child(3) {
+  width: 15%;
 }
 
 td:nth-child(4) {
-  width: 10%;
-  text-align: center;
+  width: 8%;
 }
 
 td:nth-child(5) {
-  width: 50%;
-}
-
-td:nth-child(6) {
   width: 13%;
-  text-align: center;
 }
 
 .page_container {
@@ -201,12 +270,17 @@ td:nth-child(6) {
   border-radius: 4px;
 }
 
+.pageIdx {
+  list-style: none;
+}
+
 .pageIdx a {
   display: inline-block;
   text-align: center;
+  text-decoration: none;
   line-height: 35px;
   height: 100%;
-  width: 43px;
+  width: 35px;
   color: #495057;
   background-color: #fff;
   border: 1px solid #dee2e6;

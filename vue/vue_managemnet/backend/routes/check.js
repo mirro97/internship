@@ -15,8 +15,8 @@ router.get("/", function (req, res, next) {
   }
 
   let jsonObject = jwt.verify(token, jwt_secret);
-  console.log("디코딩된 사용자 정보>>");
-  console.log(jsonObject);
+  // console.log("디코딩된 사용자 정보>>");
+  // console.log(jsonObject);
 
   res.status(200).json({
     status: 200,
