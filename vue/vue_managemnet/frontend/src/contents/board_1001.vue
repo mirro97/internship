@@ -2,25 +2,28 @@
   <main class="border_sec">
     <div class="border_container">
       <h1 class="board_title">공시뉴스 게시판 관리</h1>
-      <form class="input_group" v-on:submit="searchInput">
-        <div class="input_group">
-          <input
-            type="text"
-            v-model="searchTitle"
-            class="search_input"
-            placeholder="제목으로 검색하세요"
-            autocomplete="false"
-          />
 
-          <button class="btn_container" type="button">
-            <img
-              class="search_btn"
-              src="../../public/img/돋보기.png"
-              alt="검색아이콘"
+      <div class="search_container">
+        <form class="input_group" v-on:submit="searchInput">
+          <div class="input_group">
+            <input
+              type="text"
+              v-model="searchTitle"
+              class="search_input"
+              placeholder="제목으로 검색하세요"
+              autocomplete="false"
             />
-          </button>
-        </div>
-      </form>
+
+            <button class="btn_container" type="button">
+              <img
+                class="search_btn"
+                src="../../public/img/돋보기.png"
+                alt="검색아이콘"
+              />
+            </button>
+          </div>
+        </form>
+      </div>
 
       <table class="table_container test">
         <thead>
@@ -159,18 +162,6 @@ export default {
   align-items: center;
 }
 
-.select_type {
-  height: 41px;
-  border: 1px solid #ced0da;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-right: none;
-}
-
-.select_type:focus {
-  outline: none;
-}
-
 .search_container {
   margin-top: 20px;
 }
@@ -258,7 +249,7 @@ td:nth-child(5) {
 
 .page_container {
   width: 100%;
-  height: 35px;
+  height: 30px;
   margin-top: 20px;
 }
 
@@ -275,12 +266,13 @@ td:nth-child(5) {
 }
 
 .pageIdx a {
+  font-size: 11px;
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  line-height: 35px;
+  line-height: 30px;
   height: 100%;
-  width: 35px;
+  width: 30px;
   color: #495057;
   background-color: #fff;
   border: 1px solid #dee2e6;

@@ -159,18 +159,6 @@ export default {
   align-items: center;
 }
 
-.select_type {
-  height: 41px;
-  border: 1px solid #ced0da;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-right: none;
-}
-
-.select_type:focus {
-  outline: none;
-}
-
 .search_container {
   margin-top: 20px;
 }
@@ -258,7 +246,7 @@ td:nth-child(5) {
 
 .page_container {
   width: 100%;
-  height: 35px;
+  height: 30px;
   margin-top: 20px;
 }
 
@@ -275,12 +263,13 @@ td:nth-child(5) {
 }
 
 .pageIdx a {
+  font-size: 11px;
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  line-height: 35px;
+  line-height: 30px;
   height: 100%;
-  width: 35px;
+  width: 30px;
   color: #495057;
   background-color: #fff;
   border: 1px solid #dee2e6;

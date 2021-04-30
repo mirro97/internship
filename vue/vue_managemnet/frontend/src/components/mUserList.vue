@@ -3,23 +3,25 @@
     <div class="border_container">
       <h1 class="board_title">유저 관리 페이지</h1>
 
-      <form class="input_group" v-on:submit="searchInput">
-        <input
-          type="text"
-          v-model="searchName"
-          class="search_input"
-          placeholder="닉네임으로 검색하세요"
-          autocomplete="false"
-        />
-
-        <button class="btn_container">
-          <img
-            class="search_btn"
-            src="../../public/img/돋보기.png"
-            alt="검색아이콘"
+      <div class="search_container">
+        <form class="input_group" v-on:submit="searchInput">
+          <input
+            type="text"
+            v-model="searchName"
+            class="search_input"
+            placeholder="닉네임으로 검색하세요"
+            autocomplete="false"
           />
-        </button>
-      </form>
+
+          <button class="btn_container">
+            <img
+              class="search_btn"
+              src="../../public/img/돋보기.png"
+              alt="검색아이콘"
+            />
+          </button>
+        </form>
+      </div>
 
       <table class="table_container test">
         <thead>
@@ -81,6 +83,9 @@
             </a>
           </li>
         </ul>
+        <div class="fuction_container">
+          <button class="delete_btn">삭제</button>
+        </div>
       </div>
     </div>
   </main>
@@ -244,6 +249,7 @@ table {
 
 td {
   text-align: center;
+  padding: 0 5px;
 }
 
 td:first-child {
@@ -256,24 +262,23 @@ td:nth-child(1) {
 }
 
 td:nth-child(2) {
-  width: 10%;
+  width: 5%;
 }
 
 td:nth-child(3) {
-  width: 15%;
+  width: 10%;
 }
 
 td:nth-child(4) {
-  width: 8%;
+  width: 15%;
 }
 
 td:nth-child(5) {
-  width: 13%;
+  width: 5%;
 }
 
 .page_container {
   width: 100%;
-  height: 35px;
   margin-top: 20px;
 }
 
@@ -290,12 +295,13 @@ td:nth-child(5) {
 }
 
 .pageIdx a {
+  font-size: 11px;
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  line-height: 35px;
+  line-height: 30px;
   height: 100%;
-  width: 35px;
+  width: 30px;
   color: #495057;
   background-color: #fff;
   border: 1px solid #dee2e6;
@@ -316,5 +322,20 @@ td:nth-child(5) {
 .pageIdx a:hover {
   background-color: #0ca678;
   color: #fff;
+}
+
+.fuction_container {
+  position: relative;
+  top: -30px;
+  width: 50px;
+}
+
+.delete_btn {
+  background-color: #f03e3e;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  width: 50px;
+  height: 30px;
 }
 </style>
