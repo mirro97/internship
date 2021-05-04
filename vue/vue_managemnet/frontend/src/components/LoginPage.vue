@@ -30,15 +30,26 @@
               class="user_input"
             />
           </div>
+
+          <div class="inputError" :style="{ display: chk_id }">
+            아이디를 입력하세요
+          </div>
+          <div class="inputError" :style="{ display: chk_pw }">
+            비밀번호를 입력하세요
+          </div>
+          <div class="inputError" :style="{ display: chk_both }">
+            계정과 비밀번호를 모두 입력해주세요
+          </div>
+          <div class="inputError" :style="{ display: errorMsg }">
+            관리자 계정 혹은 비밀번호가 일치하지 않습니다. <br />
+            입력한 내용을 다시 확인해 주세요
+          </div>
         </div>
 
         <!-- 버튼 -->
-        <button class="submit_btn">
+        <button class="submit_btn" @click="checkInput">
           로그인
         </button>
-        <!-- <router-link class="submit_btn" type="button" to="/main">
-          로그인
-        </router-link> -->
         <img src="../../public/img/group_62.png" alt="공길이" />
       </form>
     </div>
@@ -50,7 +61,11 @@ export default {
   data() {
     return {
       userId: "",
-      userPw: ""
+      userPw: "",
+      chk_both: "none",
+      chk_id: "none",
+      chk_pw: "none",
+      errorMsg: "none"
     };
   },
   methods: {
@@ -63,7 +78,24 @@ export default {
         .then(res => {
           console.log(res);
           this.$router.push("/main/test");
+        })
+        .catch(res => {
+          console.log(res);
+          this.errorMsg = "block";
         });
+    },
+    checkInput() {
+      this.errorMsg = "none";
+      this.chk_both = "none";
+      this.chk_id = "none";
+      this.chk_pw = "none";
+      if (!this.userId && !this.userPw) {
+        this.chk_both = "block";
+      } else if (!this.userId && this.userPw) {
+        this.chk_id = "block";
+      } else if (!this.userPw && this.userId) {
+        this.chk_pw = "block";
+      }
     }
   }
 };
@@ -143,6 +175,13 @@ input {
 .user_input:focus {
   outline: none;
   border: 1px solid #099268;
+}
+
+.inputError {
+  font-size: 14px;
+  background-color: #f1f3f5;
+  padding: 10px 8px;
+  color: #d9480f;
 }
 
 .submit_btn {
