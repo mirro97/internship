@@ -17,7 +17,6 @@ router.post("/", function (req, res, next) {
   let inputUserId = req.body.userId;
   let inputUserPw = req.body.userPw;
   let jwt_secret = "Chicken";
-
   if (!inputUserId) {
     console.log("아이디를 입력하세요");
   } else if (!inputUserPw) {

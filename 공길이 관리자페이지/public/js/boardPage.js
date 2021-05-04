@@ -73,7 +73,7 @@ function getBoardList(page) {
     var dataCount = data.count;
     var tbody = $("#table").empty();
     var reqPage = $("#page_wrapper").empty();
-    var maxPageSize = 10; // 한번에 보여지는 최대 페이지의 수
+    var maxPageSize = 10; // 한번에 보여지는 최대 데이터의 수
     var maxPage = Math.ceil(dataCount / maxPageSize); // 총 페이지의 수
 
     var first = page - (page % maxPageSize); // 페이지에 보여지는 첫번째 숫자

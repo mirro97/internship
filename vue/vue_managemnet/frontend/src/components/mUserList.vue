@@ -113,8 +113,6 @@ export default {
         params: { currentPage, searchName }
       });
 
-      console.log("프론트: " + searchName);
-
       this.currentPage = currentPage;
       this.userList = data.resUserList;
       this.maxdata = data.maxData;

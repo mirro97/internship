@@ -7,8 +7,6 @@ router.get("/", function (req, res, next) {
   let searchName = req.query.searchName;
   let sendData;
 
-  console.log("테스트");
-
   if (!searchName) {
     sendData = {
       resUserList: userList.slice((currPage - 1) * 10, currPage * 10),

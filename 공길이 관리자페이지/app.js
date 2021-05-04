@@ -3,7 +3,6 @@ require("./system-config");
 const path = require("path");
 const appUtil = require("./common_modules/express-util");
 const express = require("express");
-// const app = express();
 
 appUtil.setGlobalSession(appUtil.getDefaultMysqlSessionOption());
 const app = appUtil.getBaseAppObject({

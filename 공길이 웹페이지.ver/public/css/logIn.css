@@ -153,7 +153,7 @@ section .login-method .line {
   width: calc(50% - 20px);
   height: 1px;
   margin: 8px 0;
-  background-color: #ced4da;
+  background-color: #f1f7fd;
   vertical-align: top;
   content: "";
 }
