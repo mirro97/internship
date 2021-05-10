@@ -9,6 +9,7 @@ var loginRouter = require("./routes/login");
 var checkRouter = require("./routes/check");
 var usersRouter = require("./routes/users");
 var indexRouter = require("./routes/index");
+var functionRouter = require("./routes/functions");
 var app = express();
 
 app.use(require("connect-history-api-fallback")());
@@ -29,6 +30,8 @@ app.use("/api/main", boardRouter);
 app.use("/api/login", loginRouter);
 app.use("/auth/check", checkRouter);
 
+app.use("/deleteUser", functionRouter);
+
 // catch 404 and forward to error handler
 // app.use(function (req, res, next) {
 //   next(createError(404));
@@ -39,6 +42,8 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
+
+  console.error(err);
 
   // render the error page
   res.status(err.status || 500);

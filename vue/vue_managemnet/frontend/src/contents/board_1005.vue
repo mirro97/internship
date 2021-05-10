@@ -197,7 +197,7 @@ export default {
 
 .table_container {
   font-size: 14px;
-  border: 1px solid #ced4da;
+  border-top: 1px solid #ced4da;
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;

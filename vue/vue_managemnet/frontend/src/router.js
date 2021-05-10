@@ -5,8 +5,6 @@ import test from "./components/mMain.vue";
 import mUserList from "./components/mUserList.vue";
 import login from "./components/LoginPage.vue";
 
-import ftest from "./components/Ftest.vue";
-
 const routes = [
   {
     path: "/",
@@ -27,11 +25,6 @@ const routes = [
       { path: "/main/:boardType", component: mBoard },
       { path: "userList", component: mUserList }
     ]
-  },
-  {
-    path: "/ftest",
-    name: "ftest",
-    component: ftest
   }
 ];
 

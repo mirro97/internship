@@ -26,9 +26,6 @@
       <table class="table_container test">
         <thead>
           <tr>
-            <th>
-              <input type="checkbox" value="전체" v-model="checkItems" />
-            </th>
             <th>번호</th>
             <th>ID</th>
             <th>email</th>
@@ -38,14 +35,12 @@
             <th>닉네임</th>
             <th>사는곳</th>
             <th>가입 일자</th>
+            <th>기능</th>
           </tr>
         </thead>
 
         <tbody id="table">
           <tr v-for="(user, i) in userList" :key="i">
-            <td>
-              <input type="checkbox" id v-model="checkItem" />
-            </td>
             <td>{{ i + (currentPage - 1) * 10 + 1 }}</td>
             <td>{{ user.id }}</td>
             <td>{{ user.email }}</td>
@@ -55,6 +50,15 @@
             <td>{{ user.nickName }}</td>
             <td>{{ user.address }}</td>
             <td>{{ user.registDay }}</td>
+            <td>
+              <button
+                class="f_btn delete_btn"
+                @click="deleteUserData(user.idx)"
+              >
+                삭제
+              </button>
+              <button class="f_btn modify_btn">수정</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -83,9 +87,6 @@
             </a>
           </li>
         </ul>
-        <div class="fuction_container">
-          <button class="delete_btn">삭제</button>
-        </div>
       </div>
     </div>
   </main>
@@ -100,8 +101,7 @@ export default {
       currentPage: 0, // 현재 페이지
       maxdata: 0, // 데이터의 총 개수 (userData.json)
       maxdataSize: 10, // 화면에 표시될 최대 데이터의 수
-      checkItems: [],
-      checkItem: []
+      delete_data: ""
     };
   },
   methods: {
@@ -118,7 +118,6 @@ export default {
       this.maxdata = data.maxData;
     },
     movePage(i, searchName) {
-      console.log(i, searchName);
       return this.getUserList(i, searchName);
     },
     range: function(start, end) {
@@ -129,6 +128,12 @@ export default {
     searchInput(e) {
       e.preventDefault();
       return this.getUserList(this.currentPage, this.searchName);
+    },
+    async deleteUserData(userIdx) {
+      await this.axios.get("/deleteUser", {
+        params: { userIdx }
+      });
+      this.getUserList(this.currentPage, this.searchName);
     }
   },
   computed: {
@@ -224,7 +229,7 @@ export default {
 
 .table_container {
   font-size: 14px;
-  border: 1px solid #ced4da;
+  border-top: 1px solid #ced4da;
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
@@ -250,11 +255,6 @@ td {
   padding: 0 5px;
 }
 
-td:first-child {
-  padding: 10px;
-  width: 5%;
-}
-
 td:nth-child(1) {
   width: 5%;
 }
@@ -263,16 +263,21 @@ td:nth-child(2) {
   width: 5%;
 }
 
-td:nth-child(3) {
-  width: 10%;
+.f_btn {
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  width: 50px;
+  height: 30px;
 }
 
-td:nth-child(4) {
-  width: 15%;
+.delete_btn {
+  background-color: #f03e3e;
+  margin-right: 8px;
 }
 
-td:nth-child(5) {
-  width: 5%;
+.modify_btn {
+  background-color: #7e7e7e;
 }
 
 .page_container {
@@ -326,14 +331,5 @@ td:nth-child(5) {
   position: relative;
   top: -30px;
   width: 50px;
-}
-
-.delete_btn {
-  background-color: #f03e3e;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  width: 50px;
-  height: 30px;
 }
 </style>

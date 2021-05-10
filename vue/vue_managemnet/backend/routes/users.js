@@ -1,27 +1,19 @@
 var express = require("express");
 var router = express.Router();
-var userList = require("../userData.json");
+
+const database = require("../database");
 
 router.get("/", function (req, res, next) {
   let currPage = req.query.currentPage;
   let searchName = req.query.searchName;
   let sendData;
 
-  if (!searchName) {
-    sendData = {
-      resUserList: userList.slice((currPage - 1) * 10, currPage * 10),
-      maxData: userList.length,
-    };
-  } else {
-    var search = userList.filter(function (search) {
-      return search.name.includes(searchName);
-    });
+  let userList = database.getUserList(currPage, searchName);
 
-    sendData = {
-      resUserList: search.slice((currPage - 1) * 10, currPage * 10),
-      maxData: search.length,
-    };
-  }
+  sendData = {
+    resUserList: userList,
+    maxData: userList.length ? userList[0].totalCount : 0,
+  };
 
   res.send(sendData);
 });
