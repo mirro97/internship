@@ -3,10 +3,10 @@ import VueRouter from "vue-router";
 import NewsView from "../views/NewsView.vue";
 import AskView from "../views/AskView.vue";
 import JobsView from "../views/JobsView.vue";
-
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
+  mode: "history", // 주소(url)에서 #(해시) 값을 없애줌
   routes: [
     {
       path: "/",
@@ -23,7 +23,7 @@ export const router = new VueRouter({
       component: AskView
     },
     {
-      path: "jobs",
+      path: "/jobs",
       component: JobsView
     }
   ]
