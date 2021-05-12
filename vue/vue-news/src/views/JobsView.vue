@@ -1,13 +1,11 @@
 <template>
   <div>
-    <p v-for="job in this.$store.state.jobs" :key="job">
+    <div v-for="job in this.$store.state.jobs" :key="job">
       <a :href="job.url">
         {{ job.title }}
       </a>
-      <pre>
-        {{job.time_ago}}, {{job.domain}}
-      </pre>
-    </p>
+      <p>{{ job.time_ago }}, {{ job.domain }}</p>
+    </div>
   </div>
 </template>
 

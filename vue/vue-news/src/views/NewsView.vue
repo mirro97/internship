@@ -4,7 +4,15 @@
       <a v-bind:href="news.url">
         {{ news.title }}
       </a>
-      <p>{{ news.time_ago }} by {{ news.user }}</p>
+      <p>
+        {{ news.time_ago }} by
+        <!-- <router-link v-bind:to="'/user/' + news.user">
+          {{ news.user }}
+        </router-link> -->
+        <router-link v-bind:to="`/user/${news.user}`">
+          {{ news.user }}
+        </router-link>
+      </p>
     </div>
   </div>
 </template>
