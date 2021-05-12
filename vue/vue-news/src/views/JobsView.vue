@@ -1,13 +1,17 @@
 <template>
   <div>
-    <div v-for="job in $store.state.jobs" :key="job">
-      {{ job.title }}
-    </div>
+    <p v-for="job in this.$store.state.jobs" :key="job">
+      <a :href="job.url">
+        {{ job.title }}
+      </a>
+      <pre>
+        {{job.time_ago}}, {{job.domain}}
+      </pre>
+    </p>
   </div>
 </template>
 
 <script>
-import {} from "../store/index";
 export default {
   created() {
     this.$store.dispatch("FETCH_JOBS");

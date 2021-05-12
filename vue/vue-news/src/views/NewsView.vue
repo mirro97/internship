@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div v-for="user in this.$store.state.news" :key="user">
-      {{ user.title }}
+    <div v-for="news in this.$store.state.news" :key="news">
+      <a v-bind:href="news.url">
+        {{ news.title }}
+      </a>
+      <p>{{ news.time_ago }} by {{ news.user }}</p>
     </div>
   </div>
 </template>
