@@ -23,7 +23,7 @@ export default {};
   color: #fff;
 }
 
-.header a:active {
+.header a:focus {
   color: #d0ebff;
 }
 </style>

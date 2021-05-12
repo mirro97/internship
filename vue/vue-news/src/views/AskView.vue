@@ -1,28 +1,34 @@
 <template>
   <div>
-    <div v-for="ask in asks" :key="ask">
-      {{ ask.title }}
+    <div v-for="item in fetchedAsk" :key="item">
+      {{ item.title }}
     </div>
   </div>
 </template>
 
 <script>
-import { fetchAskList } from "../api/index";
+import { mapState, mapGetters } from "vuex";
+
 export default {
-  data() {
-    return {
-      asks: []
-    };
+  computed: {
+    // #1
+    // ask() {
+    //   return this.$store.state.ask;
+    // }
+    //  #2
+    //  ...mapState({
+    //    fetchedAsk: state => state.asks
+    //  })
+    // #3
+    // ...mapGetters({
+    //    askItem: "fetchedAsk" 객체 표기법
+    // })
+
+    // #4 배열 표기법
+    ...mapGetters(["fetchedAsk"])
   },
   created() {
-    var vm = this;
-    fetchAskList()
-      .then(function(response) {
-        vm.asks = response.data;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    this.$store.dispatch("FETCH_ASKS");
   }
 };
 </script>
