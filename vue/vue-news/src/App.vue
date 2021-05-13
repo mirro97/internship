@@ -16,6 +16,11 @@ export default {
 </script>
 
 <style>
+@import url("../public/font/font.css");
+
+* {
+  font-family: "NanumSquareRound", sans-serif;
+}
 body {
   padding: 0;
   margin: 0;
