@@ -7,7 +7,7 @@
           <i class="fas fa-user"></i>
         </div>
         <div class="user_description">
-          <router-link :to="`/user/${fetchedItem.id}`">
+          <router-link :to="`/user/${fetchedItem.user}`">
             {{ fetchedItem.user }}
           </router-link>
           <div class="time_ago">
@@ -44,7 +44,7 @@
             <i class="fas fa-user"></i>
           </div>
           <div class="user_description">
-            <router-link :to="`/user/${fetchedItem.id}`">
+            <router-link :to="`/user/${item.user}`">
               {{ item.user }}
             </router-link>
             <div class="time_ago">
@@ -131,7 +131,7 @@ strong {
 }
 
 .comment_container {
-  padding: 18px 18px 2px 40px;
+  padding: 18px 18px 8px 40px;
   border-radius: 6px;
   background-color: #f1f3f5;
   margin-bottom: 5px;

@@ -18,6 +18,10 @@ export default {};
   padding: 8px;
 }
 
+.header > a {
+  margin-right: 10px;
+}
+
 .header a {
   text-decoration: none;
   color: #fff;
