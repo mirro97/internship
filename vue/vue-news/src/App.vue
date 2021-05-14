@@ -2,7 +2,9 @@
   <div id="app">
     <!-- url 에 따라 화면에 표시되는 페이지가 달라진다 -->
     <tool-bar></tool-bar>
-    <router-view></router-view>
+    <transition name="page">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -24,5 +26,24 @@ export default {
 body {
   padding: 0;
   margin: 0;
+  color: #343a40;
+}
+
+a {
+  color: #343a40;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* router transition */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter, .page-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
