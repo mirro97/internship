@@ -27,7 +27,7 @@ export default {};
   color: #fff;
 }
 
-.header a:focus {
-  color: #d0ebff;
+a.router-link-exact-active {
+  color: #ffe066;
 }
 </style>

@@ -29,12 +29,19 @@ body {
   color: #343a40;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 a {
   color: #343a40;
   text-decoration: none;
 }
 
 a:hover {
+  color: #f59f00;
   text-decoration: underline;
 }
 
