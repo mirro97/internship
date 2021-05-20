@@ -24,6 +24,7 @@ export default {
   font-family: "NanumSquareRound", sans-serif;
 }
 body {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
   color: #343a40;
