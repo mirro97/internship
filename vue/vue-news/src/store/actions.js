@@ -3,7 +3,8 @@ import {
   fetchJobsList,
   fetchAskList,
   fetchUserInfo,
-  fetchAskInfo
+  fetchAskInfo,
+  fetchList
 } from "../api/index";
 
 export default {
@@ -48,6 +49,15 @@ export default {
     fetchAskInfo(askId)
       .then(({ data }) => {
         commit("SET_ASKINFO", data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  FETCH_LIST({ commit }, pageName) {
+    fetchList(pageName)
+      .then(({ data }) => {
+        commit("SET_LIST", data);
       })
       .catch(error => {
         console.log(error);

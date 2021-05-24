@@ -13,5 +13,8 @@ export default {
   },
   SET_ASKINFO(state, askInfoData) {
     state.askInfo = askInfoData;
+  },
+  SET_LIST(state, list) {
+    state.list = list;
   }
 };
