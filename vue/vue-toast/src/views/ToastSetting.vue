@@ -180,6 +180,10 @@
           </div>
         </div>
       </div>
+
+      <button>
+        Show Toast
+      </button>
     </div>
   </div>
 </template>
@@ -231,9 +235,9 @@ export default {
   display: flex;
   flex-direction: column;
 }
-
+/* 
 .input-options {
-}
+} */
 
 .i-options {
   display: flex;

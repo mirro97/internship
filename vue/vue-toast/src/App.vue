@@ -1,17 +1,21 @@
 <template>
   <div id="app">
     <Header></Header>
-    <ToastView> </ToastView>
+    <ToastSetting> </ToastSetting>
+    <Toast></Toast>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
-import ToastView from "./views/ToastView";
+import ToastSetting from "./views/ToastSetting";
+import Toast from "./views/Toast";
+
 export default {
   components: {
     Header,
-    ToastView
+    ToastSetting,
+    Toast
   }
 };
 </script>
