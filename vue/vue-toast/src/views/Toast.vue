@@ -3,7 +3,7 @@
     <div class="content-container">
       <div class="content">
         <div class="title">
-          title
+          {{ getTitle }}
         </div>
         <div class="description">
           description
@@ -16,14 +16,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    getTitle() {
+      return this.$store.state.title;
+    }
+  }
+};
 </script>
 
 <style scoped>
 .toastMsg {
-  position: fixed;
-  top: 0;
-  right: 0;
   width: 300px;
   padding: 10px 8px;
   background-color: #fff;
@@ -34,9 +37,6 @@ export default {};
 .content-container {
   display: flex;
   justify-content: space-between;
-}
-
-.fa-times {
 }
 
 .loading {

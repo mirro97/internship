@@ -11,21 +11,22 @@
         <div class="input-options">
           <div class="i-options t-title">
             <strong>title</strong>
-            <input class="input-box" type="text" />
+            <input class="input-box" type="text" v-model="title" />
           </div>
-          <div class="option-value">
-            <div class="i-options t-description">
-              <strong>description</strong>
-              <input class="input-box" type="text" />
-            </div>
-            <div class="i-options t-timeout">
-              <strong>timeout</strong>
-              <input class="input-box" type="text" />
-            </div>
-            <div class="i-options t-toastBoxColor">
-              <strong>toastBoxColor</strong>
-              <input class="input-box" type="text" />
-            </div>
+
+          <div class="i-options t-description">
+            <strong>description</strong>
+            <input class="input-box" type="text" v-model="descrition" />
+          </div>
+
+          <div class="i-options t-timeout">
+            <strong>timeout</strong>
+            <input class="input-box" type="text" v-model="timeOut" />
+          </div>
+
+          <div class="i-options t-toastBoxColor">
+            <strong>toastBoxColor</strong>
+            <input class="input-box" type="text" v-model="toastBoxColor" />
           </div>
         </div>
 
@@ -181,22 +182,47 @@
         </div>
       </div>
 
-      <button>
+      <button class="btn" @click="add">
         Show Toast
       </button>
+    </div>
+
+    <div class="toast-container">
+      <component
+        v-for="toast in clicks"
+        :key="toast"
+        :is="toast"
+        :style="{ background: toastBoxColor }"
+      ></component>
     </div>
   </div>
 </template>
 
 <script>
+import Toast from "./Toast";
 export default {
   data() {
     return {
-      pickedPos: "",
+      pickedPos: "top-right",
       pickedType: "",
-      pickedTrans: ""
+      pickedTrans: "",
+      title: "타이틀을 입력해주련",
+      descrition: "내용을 입력해주련",
+      timeOut: 1000,
+      toastBoxColor: "#fff",
+      clicks: []
     };
-  }
+  },
+  methods: {
+    setOptions() {
+      this.$store.commit("SET_TITLE", this.title);
+    },
+    add() {
+      console.log("toastBoxColor:" + this.toastBoxColor);
+      this.clicks.push("Toast");
+    }
+  },
+  components: { Toast }
 };
 </script>
 
@@ -246,5 +272,11 @@ export default {
 
 .input-box {
   border: none;
+}
+
+.toast-container {
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 </style>

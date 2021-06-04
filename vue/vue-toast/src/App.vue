@@ -2,20 +2,17 @@
   <div id="app">
     <Header></Header>
     <ToastSetting> </ToastSetting>
-    <Toast></Toast>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
 import ToastSetting from "./views/ToastSetting";
-import Toast from "./views/Toast";
 
 export default {
   components: {
     Header,
-    ToastSetting,
-    Toast
+    ToastSetting
   }
 };
 </script>
