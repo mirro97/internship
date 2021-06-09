@@ -10,28 +10,28 @@
       <div class="setting-container">
         <div class="input-options">
           <div class="i-options t-title">
-            <strong>title</strong>
+            <strong class="option-t">title</strong>
             <input class="input-box" type="text" v-model="title" />
           </div>
 
           <div class="i-options t-description">
-            <strong>description</strong>
-            <input class="input-box" type="text" v-model="descrition" />
+            <strong class="option-t">description</strong>
+            <input class="input-box" type="text" v-model="description" />
           </div>
 
           <div class="i-options t-timeout">
-            <strong>timeout</strong>
+            <strong class="option-t">timeout</strong>
             <input class="input-box" type="text" v-model="timeOut" />
           </div>
 
           <div class="i-options t-toastBoxColor">
-            <strong>toastBoxColor</strong>
+            <strong class="option-t">toastBoxColor</strong>
             <input class="input-box" type="text" v-model="toastBoxColor" />
           </div>
         </div>
 
         <div class="set-position">
-          <strong>position</strong>
+          <strong class="option-t">position</strong>
           <div class="option-value">
             <div class="r-options">
               <input
@@ -40,7 +40,15 @@
                 value="top-left"
                 v-model="pickedPos"
               />
-              <label for="top-left">top-left</label>
+              <label for="top-left">
+                <div class="chk-box" v-if="pickedPos === 'top-left'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                top-left
+              </label>
             </div>
 
             <div class="r-options">
@@ -50,7 +58,15 @@
                 value="top-right"
                 v-model="pickedPos"
               />
-              <label for="top-right">top-right</label>
+              <label for="top-right">
+                <div class="chk-box" v-if="pickedPos === 'top-right'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                top-right
+              </label>
             </div>
 
             <div class="r-options">
@@ -60,7 +76,15 @@
                 value="top-center"
                 v-model="pickedPos"
               />
-              <label for="top-center">top-center</label>
+              <label for="top-center">
+                <div class="chk-box" v-if="pickedPos === 'top-center'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                top-center
+              </label>
             </div>
 
             <div class="r-options">
@@ -70,7 +94,15 @@
                 value="bottom-left"
                 v-model="pickedPos"
               />
-              <label for="bottom-left">bottom-left</label>
+              <label for="bottom-left">
+                <div class="chk-box" v-if="pickedPos === 'bottom-left'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                bottom-left
+              </label>
             </div>
 
             <div class="r-options">
@@ -80,7 +112,15 @@
                 value="bottom-right"
                 v-model="pickedPos"
               />
-              <label for="bottom-right">bottom-right</label>
+              <label for="bottom-right">
+                <div class="chk-box" v-if="pickedPos === 'bottom-right'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                bottom-right
+              </label>
             </div>
 
             <div class="r-options">
@@ -90,13 +130,21 @@
                 value="bottom-center"
                 v-model="pickedPos"
               />
-              <label for="bottom-center">bottom-center</label>
+              <label for="bottom-center">
+                <div class="chk-box" v-if="pickedPos === 'bottom-center'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                bottom-center
+              </label>
             </div>
           </div>
         </div>
 
         <div class="set-type">
-          <strong>type</strong>
+          <strong class="option-t">type</strong>
           <div class="option-value">
             <div class="r-options">
               <input
@@ -105,12 +153,28 @@
                 value="default"
                 v-model="pickedType"
               />
-              <label for="default">default</label>
+              <label for="default">
+                <div class="chk-box" v-if="pickedType === 'default'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                default
+              </label>
             </div>
 
             <div class="r-options">
               <input type="radio" id="info" value="info" v-model="pickedType" />
-              <label for="info">info</label>
+              <label for="info">
+                <div class="chk-box" v-if="pickedType === 'info'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                info
+              </label>
             </div>
 
             <div class="r-options">
@@ -120,7 +184,15 @@
                 value="warning"
                 v-model="pickedType"
               />
-              <label for="warning">warning</label>
+              <label for="warning">
+                <div class="chk-box" v-if="pickedType === 'warning'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                warning
+              </label>
             </div>
 
             <div class="r-options">
@@ -130,7 +202,15 @@
                 value="success"
                 v-model="pickedType"
               />
-              <label for="success">success</label>
+              <label for="success">
+                <div class="chk-box" v-if="pickedType === 'success'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                success
+              </label>
             </div>
 
             <div class="r-options">
@@ -140,14 +220,21 @@
                 value="danger"
                 v-model="pickedType"
               />
-              <label for="danger">danger</label>
+              <label for="danger">
+                <div class="chk-box" v-if="pickedType === 'danger'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                danger
+              </label>
             </div>
           </div>
         </div>
 
         <div class="set-transition">
-          <strong>transition</strong>
-
+          <strong class="option-t">transition</strong>
           <div class="option-value">
             <div class="r-options">
               <input
@@ -156,7 +243,15 @@
                 value="bounce"
                 v-model="pickedTrans"
               />
-              <label for="bounce">bounce</label>
+              <label for="bounce">
+                <div class="chk-box" v-if="pickedTrans === 'bounce'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                bounce
+              </label>
             </div>
 
             <div class="r-options">
@@ -166,7 +261,15 @@
                 value="zoom"
                 v-model="pickedTrans"
               />
-              <label for="zoom">zoom</label>
+              <label for="zoom">
+                <div class="chk-box" v-if="pickedTrans === 'zoom'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                zoom
+              </label>
             </div>
 
             <div class="r-options">
@@ -176,59 +279,83 @@
                 value="slide"
                 v-model="pickedTrans"
               />
-              <label for="slide">slide</label>
+              <label for="slide">
+                <div class="chk-box" v-if="pickedTrans === 'slide'">
+                  <i class="far fa-check-square"></i>
+                </div>
+                <div class="chk-box" v-else>
+                  <i class="far fa-square"></i>
+                </div>
+                slide
+              </label>
             </div>
           </div>
         </div>
       </div>
 
-      <button class="btn" @click="add">
+      <button class="btn" @click="setOptions">
         Show Toast
       </button>
     </div>
 
-    <div class="toast-container">
-      <component
-        v-for="toast in clicks"
-        :key="toast"
-        :is="toast"
-        :style="{ background: toastBoxColor }"
-      ></component>
-    </div>
+    <keep-alive>
+      <div class="toast-container">
+        <component v-for="toast in clicks" :key="toast" :is="toast"></component>
+      </div>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 import Toast from "./Toast";
 export default {
+  props: ["testOptions"],
   data() {
     return {
-      pickedPos: "top-right",
+      pickedPos: "",
       pickedType: "",
       pickedTrans: "",
-      title: "타이틀을 입력해주련",
-      descrition: "내용을 입력해주련",
-      timeOut: 1000,
-      toastBoxColor: "#fff",
+      title: "타이틀을 입력해주세요",
+      description: "내용을 입력해주세요",
+      timeOut: 0,
+      toastBoxColor: "",
+      chk: false,
       clicks: []
     };
   },
   methods: {
-    setOptions() {
-      this.$store.commit("SET_TITLE", this.title);
-    },
     add() {
       console.log("toastBoxColor:" + this.toastBoxColor);
       this.clicks.push("Toast");
+    },
+    setOptions() {
+      this.$store.commit("SET_TITLE", this.title);
+      this.$store.commit("SET_DESCRIPTION", this.description);
+      this.$store.commit("SET_TIMEOUT", this.timeOut);
+      this.$store.commit("SET_BOXCOLOR", this.toastBoxColor);
+      this.$store.commit("SET_POSITION", this.pickedPos);
+      this.$store.commit("SET_TYPE", this.pickedType);
+      this.$store.commit("SET_TRANSITION", this.pickedTrans);
+
+      return this.add();
     }
   },
-  components: { Toast }
+  components: { Toast },
+  computed: {
+    getToastBoxColor() {
+      return this.$store.state.toastBoxColor;
+    }
+  }
 };
 </script>
 
 <style scoped>
+strong {
+  display: block;
+}
 .test-container {
-  background-color: #f8f9fa;
+  padding: 50px 0 40px 0;
+  background-color: #f1f3f5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -239,14 +366,15 @@ export default {
   display: flex;
   justify-content: center;
   background-color: #fff;
+  border: 1px solid #ced4da;
   border-radius: 4px;
   padding: 15px 10px;
-  margin-top: 50px;
 }
 
 .setting-container {
   display: flex;
   margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 .setting-container > div {
@@ -257,21 +385,59 @@ export default {
   margin-right: 0;
 }
 
+.option-t {
+  margin-bottom: 6px;
+}
+
+.input-box {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 7px 0 7px 5px;
+}
+
 .option-value {
   display: flex;
   flex-direction: column;
 }
-/* 
-.input-options {
-} */
+
+input[type="radio"] {
+  display: none;
+}
+.fa-check-square,
+.fa-square {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 17px;
+  margin-right: 5px;
+}
+
+.input-options > div {
+  margin-bottom: 10px;
+}
 
 .i-options {
   display: flex;
   flex-direction: column;
 }
 
-.input-box {
-  border: none;
+.r-options {
+  margin-bottom: 6px;
+}
+
+.chk-box {
+  display: inline-block;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid #afe05a;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #afe05a;
 }
 
 .toast-container {

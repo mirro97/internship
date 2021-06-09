@@ -1,12 +1,12 @@
 <template>
-  <div class="toastMsg">
+  <div class="toastMsg" :style="{ background: getContents.toastBoxColor }">
     <div class="content-container">
       <div class="content">
         <div class="title">
-          {{ getTitle }}
+          {{ getContents.title }}
         </div>
         <div class="description">
-          description
+          {{ getContents.description }}
         </div>
       </div>
       <i class="fas fa-times"></i>
@@ -18,8 +18,8 @@
 <script>
 export default {
   computed: {
-    getTitle() {
-      return this.$store.state.title;
+    getContents() {
+      return this.$store.state;
     }
   }
 };
@@ -28,6 +28,7 @@ export default {
 <style scoped>
 .toastMsg {
   width: 300px;
+  margin: 15px;
   padding: 10px 8px;
   background-color: #fff;
   border-radius: 8px;
@@ -37,6 +38,15 @@ export default {
 .content-container {
   display: flex;
   justify-content: space-between;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .loading {
