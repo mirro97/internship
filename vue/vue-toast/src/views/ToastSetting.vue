@@ -1,32 +1,28 @@
 <template>
   <div>
     <div class="test-container">
-      <div class="show-msg">
-        <p>
-          createToast('')
-        </p>
-      </div>
+      <OptionsView></OptionsView>
 
       <div class="setting-container">
         <div class="input-options">
           <div class="i-options t-title">
             <strong class="option-t">title</strong>
-            <input class="input-box" type="text" v-model="title" />
+            <input class="input-box" type="text" v-model="form.title" />
           </div>
 
           <div class="i-options t-description">
             <strong class="option-t">description</strong>
-            <input class="input-box" type="text" v-model="description" />
+            <input class="input-box" type="text" v-model="form.description" />
           </div>
 
           <div class="i-options t-timeout">
             <strong class="option-t">timeout</strong>
-            <input class="input-box" type="text" v-model="timeOut" />
+            <input class="input-box" type="text" v-model="form.timeOut" />
           </div>
 
           <div class="i-options t-toastBoxColor">
             <strong class="option-t">toastBoxColor</strong>
-            <input class="input-box" type="text" v-model="toastBoxColor" />
+            <input class="input-box" type="text" v-model="form.toastBoxColor" />
           </div>
         </div>
 
@@ -38,10 +34,10 @@
                 type="radio"
                 id="top-left"
                 value="top-left"
-                v-model="pickedPos"
+                v-model="form.position"
               />
               <label for="top-left">
-                <div class="chk-box" v-if="pickedPos === 'top-left'">
+                <div class="chk-box" v-if="form.position === 'top-left'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -56,10 +52,10 @@
                 type="radio"
                 id="top-right"
                 value="top-right"
-                v-model="pickedPos"
+                v-model="form.position"
               />
               <label for="top-right">
-                <div class="chk-box" v-if="pickedPos === 'top-right'">
+                <div class="chk-box" v-if="form.position === 'top-right'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -74,10 +70,10 @@
                 type="radio"
                 id="top-center"
                 value="top-center"
-                v-model="pickedPos"
+                v-model="form.position"
               />
               <label for="top-center">
-                <div class="chk-box" v-if="pickedPos === 'top-center'">
+                <div class="chk-box" v-if="form.position === 'top-center'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -92,10 +88,10 @@
                 type="radio"
                 id="bottom-left"
                 value="bottom-left"
-                v-model="pickedPos"
+                v-model="form.position"
               />
               <label for="bottom-left">
-                <div class="chk-box" v-if="pickedPos === 'bottom-left'">
+                <div class="chk-box" v-if="form.position === 'bottom-left'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -110,10 +106,10 @@
                 type="radio"
                 id="bottom-right"
                 value="bottom-right"
-                v-model="pickedPos"
+                v-model="form.position"
               />
               <label for="bottom-right">
-                <div class="chk-box" v-if="pickedPos === 'bottom-right'">
+                <div class="chk-box" v-if="form.position === 'bottom-right'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -128,10 +124,10 @@
                 type="radio"
                 id="bottom-center"
                 value="bottom-center"
-                v-model="pickedPos"
+                v-model="form.position"
               />
               <label for="bottom-center">
-                <div class="chk-box" v-if="pickedPos === 'bottom-center'">
+                <div class="chk-box" v-if="form.position === 'bottom-center'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -151,10 +147,10 @@
                 type="radio"
                 id="default"
                 value="default"
-                v-model="pickedType"
+                v-model="form.type"
               />
               <label for="default">
-                <div class="chk-box" v-if="pickedType === 'default'">
+                <div class="chk-box" v-if="form.type === 'default'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -165,9 +161,9 @@
             </div>
 
             <div class="r-options">
-              <input type="radio" id="info" value="info" v-model="pickedType" />
+              <input type="radio" id="info" value="info" v-model="form.type" />
               <label for="info">
-                <div class="chk-box" v-if="pickedType === 'info'">
+                <div class="chk-box" v-if="form.type === 'info'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -182,10 +178,10 @@
                 type="radio"
                 id="warning"
                 value="warning"
-                v-model="pickedType"
+                v-model="form.type"
               />
               <label for="warning">
-                <div class="chk-box" v-if="pickedType === 'warning'">
+                <div class="chk-box" v-if="form.type === 'warning'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -200,10 +196,10 @@
                 type="radio"
                 id="success"
                 value="success"
-                v-model="pickedType"
+                v-model="form.type"
               />
               <label for="success">
-                <div class="chk-box" v-if="pickedType === 'success'">
+                <div class="chk-box" v-if="form.type === 'success'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -218,10 +214,10 @@
                 type="radio"
                 id="danger"
                 value="danger"
-                v-model="pickedType"
+                v-model="form.type"
               />
               <label for="danger">
-                <div class="chk-box" v-if="pickedType === 'danger'">
+                <div class="chk-box" v-if="form.type === 'danger'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -241,10 +237,10 @@
                 type="radio"
                 id="bounce"
                 value="bounce"
-                v-model="pickedTrans"
+                v-model="form.transition"
               />
               <label for="bounce">
-                <div class="chk-box" v-if="pickedTrans === 'bounce'">
+                <div class="chk-box" v-if="form.transition === 'bounce'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -259,10 +255,10 @@
                 type="radio"
                 id="zoom"
                 value="zoom"
-                v-model="pickedTrans"
+                v-model="form.transition"
               />
               <label for="zoom">
-                <div class="chk-box" v-if="pickedTrans === 'zoom'">
+                <div class="chk-box" v-if="form.transition === 'zoom'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -277,10 +273,10 @@
                 type="radio"
                 id="slide"
                 value="slide"
-                v-model="pickedTrans"
+                v-model="form.transition"
               />
               <label for="slide">
-                <div class="chk-box" v-if="pickedTrans === 'slide'">
+                <div class="chk-box" v-if="form.transition === 'slide'">
                   <i class="far fa-check-square"></i>
                 </div>
                 <div class="chk-box" v-else>
@@ -293,14 +289,19 @@
         </div>
       </div>
 
-      <button class="btn" @click="setOptions">
+      <button class="btn" @click="add">
         Show Toast
       </button>
     </div>
 
     <keep-alive>
       <div class="toast-container">
-        <component v-for="toast in clicks" :key="toast" :is="toast"></component>
+        <Toast
+          v-for="toast in clicks"
+          :key="toast.id"
+          :is="toast.id"
+          :options="toast.data"
+        ></Toast>
       </div>
     </keep-alive>
   </div>
@@ -308,44 +309,30 @@
 
 <script>
 import Toast from "./Toast";
+import OptionsView from "./OptionsView";
 export default {
-  props: ["testOptions"],
   data() {
     return {
-      pickedPos: "",
-      pickedType: "",
-      pickedTrans: "",
-      title: "타이틀을 입력해주세요",
-      description: "내용을 입력해주세요",
-      timeOut: 0,
-      toastBoxColor: "",
-      chk: false,
+      form: {
+        title: "타이틀을 입력해주세요",
+        description: "내용을 입력해주세요",
+        timeOut: 12,
+        toastBoxColor: "",
+        chk: false,
+        position: "",
+        type: "",
+        transition: ""
+      },
       clicks: []
     };
   },
   methods: {
     add() {
-      console.log("toastBoxColor:" + this.toastBoxColor);
-      this.clicks.push("Toast");
-    },
-    setOptions() {
-      this.$store.commit("SET_TITLE", this.title);
-      this.$store.commit("SET_DESCRIPTION", this.description);
-      this.$store.commit("SET_TIMEOUT", this.timeOut);
-      this.$store.commit("SET_BOXCOLOR", this.toastBoxColor);
-      this.$store.commit("SET_POSITION", this.pickedPos);
-      this.$store.commit("SET_TYPE", this.pickedType);
-      this.$store.commit("SET_TRANSITION", this.pickedTrans);
-
-      return this.add();
+      var toast = Object.assign({}, this.form);
+      this.clicks.push({ id: "toast", data: toast });
     }
   },
-  components: { Toast },
-  computed: {
-    getToastBoxColor() {
-      return this.$store.state.toastBoxColor;
-    }
-  }
+  components: { Toast, OptionsView }
 };
 </script>
 
@@ -359,16 +346,6 @@ strong {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.show-msg {
-  width: 500px;
-  display: flex;
-  justify-content: center;
-  background-color: #fff;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  padding: 15px 10px;
 }
 
 .setting-container {
@@ -392,7 +369,7 @@ strong {
 .input-box {
   border: 1px solid #ced4da;
   border-radius: 4px;
-  padding: 7px 0 7px 5px;
+  padding: 7px 0 7px 7px;
 }
 
 .option-value {

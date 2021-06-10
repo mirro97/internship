@@ -1,26 +1,28 @@
 <template>
-  <div class="toastMsg" :style="{ background: getContents.toastBoxColor }">
+  <div class="toastMsg" :style="{ background: options.toastBoxColor }">
     <div class="content-container">
       <div class="content">
         <div class="title">
-          {{ getContents.title }}
+          {{ options.title }}
         </div>
         <div class="description">
-          {{ getContents.description }}
+          {{ options.description }}
         </div>
       </div>
       <i class="fas fa-times"></i>
     </div>
     <div class="loading"></div>
+    <div class="test">timeout: {{ options.timeOut }} sec</div>
+    <!-- <div class="test">position: {{ options.position }}</div>
+    <div class="test">type: {{ options.type }}</div>
+    <div class="test">transition: {{ options.transition }}</div> -->
   </div>
 </template>
 
 <script>
 export default {
-  computed: {
-    getContents() {
-      return this.$store.state;
-    }
+  props: {
+    options: Object
   }
 };
 </script>

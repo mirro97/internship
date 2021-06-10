@@ -2,8 +2,8 @@ export default {
   SET_TITLE(state, title) {
     state.title = title;
   },
-  SET_DESCRIPTION(state, description) {
-    state.description = description;
+  SET_DESCRIPTION(state, descrition) {
+    state.descrition = descrition;
   },
   SET_TIMEOUT(state, timeOut) {
     state.timeOut = timeOut;
