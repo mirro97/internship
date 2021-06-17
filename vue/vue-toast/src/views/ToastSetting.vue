@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="test-container">
-      <OptionsView></OptionsView>
+      <OptionsView :options="form"></OptionsView>
 
       <div class="setting-container">
         <div class="input-options">
@@ -294,16 +294,21 @@
       </button>
     </div>
 
-    <keep-alive>
-      <div class="toast-container">
+    <div class="v-toast-container">
+      <div
+        class="v-toast"
+        v-for="(pos, index) in toastList"
+        :key="index"
+        :class="index"
+      >
         <Toast
-          v-for="toast in clicks"
+          v-for="toast in pos"
           :key="toast.id"
-          :is="toast.id"
+          :is="toast.component"
           :options="toast.data"
         ></Toast>
       </div>
-    </keep-alive>
+    </div>
   </div>
 </template>
 
@@ -318,18 +323,37 @@ export default {
         description: "내용을 입력해주세요",
         timeOut: 12,
         toastBoxColor: "",
-        chk: false,
-        position: "",
-        type: "",
+        position: "top-right",
+        type: "default",
         transition: ""
       },
-      clicks: []
+      toastList: {
+        "top-left": [],
+        "top-center": [],
+        "top-right": [],
+        "bottom-left": [],
+        "bottom-right": [],
+        "bottom-center": []
+      }
     };
   },
   methods: {
     add() {
       var toast = Object.assign({}, this.form);
-      this.clicks.push({ id: "toast", data: toast });
+
+      for (var toastItem in this.toastList) {
+        if (toastItem === this.form.position) {
+          this.toastList[toastItem].push({
+            id: this.toastList.length,
+            component: "toast",
+            data: toast,
+            pos: this.form.position
+          });
+        }
+      }
+    },
+    closeToast() {
+      // 시간이 지나면 닫게함
     }
   },
   components: { Toast, OptionsView }
@@ -340,6 +364,7 @@ export default {
 strong {
   display: block;
 }
+
 .test-container {
   padding: 50px 0 40px 0;
   background-color: #f1f3f5;
@@ -380,6 +405,7 @@ strong {
 input[type="radio"] {
   display: none;
 }
+
 .fa-check-square,
 .fa-square {
   display: inline-block;
@@ -408,18 +434,72 @@ input[type="radio"] {
 .btn {
   padding: 10px 20px;
   background-color: #fff;
-  border: 1px solid #afe05a;
+  border: 1px solid #40c057;
   border-radius: 6px;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #afe05a;
+  background-color: #40c057;
+  color: #fff;
 }
 
-.toast-container {
+.v-toast-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.v-toast {
   position: fixed;
+  display: flex;
+  align-items: center;
+  width: 400px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* position */
+.top-left,
+.top-right,
+.top-center {
   top: 0;
+  flex-direction: column;
+}
+
+.bottom-left,
+.bottom-right,
+.bottom-center {
+  flex-direction: column-reverse;
+  bottom: 0;
+}
+
+.top-left {
+  align-items: flex-start;
+  left: 0;
+}
+
+.top-center {
+  left: 50%;
+  margin-left: -200px;
+}
+
+.top-right {
+  align-items: flex-end;
+  right: 0;
+}
+
+.bottom-left {
+  align-items: flex-start;
+  left: 0;
+}
+
+.bottom-center {
+  left: 50%;
+  margin-left: -200px;
+}
+
+.bottom-right {
+  align-items: flex-end;
   right: 0;
 }
 </style>
