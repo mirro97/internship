@@ -316,6 +316,7 @@
 import Toast from "./Toast";
 import OptionsView from "./OptionsView";
 export default {
+  components: { Toast, OptionsView },
   data() {
     return {
       form: {
@@ -325,15 +326,15 @@ export default {
         toastBoxColor: "",
         position: "top-right",
         type: "default",
-        transition: ""
+        transition: "bounce"
       },
       toastList: {
         "top-left": [],
         "top-center": [],
         "top-right": [],
         "bottom-left": [],
-        "bottom-right": [],
-        "bottom-center": []
+        "bottom-center": [],
+        "bottom-right": []
       }
     };
   },
@@ -346,8 +347,7 @@ export default {
           this.toastList[toastItem].push({
             id: this.toastList.length,
             component: "toast",
-            data: toast,
-            pos: this.form.position
+            data: toast
           });
         }
       }
@@ -355,8 +355,7 @@ export default {
     closeToast() {
       // 시간이 지나면 닫게함
     }
-  },
-  components: { Toast, OptionsView }
+  }
 };
 </script>
 
