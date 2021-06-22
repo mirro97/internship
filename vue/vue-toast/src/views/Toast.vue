@@ -31,7 +31,14 @@
         </div>
         <i class="fas fa-times delete" @click="toast_is_open = false"></i>
       </div>
-      <div class="loading"></div>
+      <transition
+        name="pgBar"
+        type="animation"
+        :duration="progressBar()"
+        appear
+      >
+        <div class="progress-bar" :id="tid"></div>
+      </transition>
     </div>
   </transition>
 </template>
@@ -75,12 +82,15 @@ export default {
           zoom: "zoomIn",
           slide: "slideRight"
         }
-      }
+      },
+      tid: null
     };
   },
   methods: {
     setTransition() {
-      // var cruTrans = this.options.transition;
+      this.tid = new Date().getTime();
+      this.closeToast();
+
       var transList = this.transitionList;
       var curPos = this.options.position;
       var curTrans = this.options.transition;
@@ -93,6 +103,22 @@ export default {
           }
         }
       }
+    },
+    closeToast() {
+      const setTime = this.options.timeOut;
+
+      setTimeout(() => {
+        this.toast_is_open = false;
+      }, setTime * 1000);
+    },
+    progressBar() {
+      setTimeout(() => {
+        var pgBar = document.getElementById(this.tid);
+
+        pgBar.style["animation-duration"] = `${this.options.timeOut}s`;
+      }, 100);
+      const setTime = this.options.timeOut;
+      return setTime * 1000;
     }
   }
 };
@@ -131,7 +157,7 @@ export default {
   margin-bottom: 8px;
 }
 
-.loading {
+.progress-bar {
   width: 100%;
   height: 6px;
 }
@@ -141,7 +167,7 @@ export default {
   background-color: #fff;
 }
 
-.default .loading {
+.default .progress-bar {
   background: -webkit-linear-gradient(
     -152deg,
     rgb(248, 211, 188),
@@ -155,7 +181,7 @@ export default {
   background-color: #339af0;
 }
 
-.info .loading {
+.info .progress-bar {
   background-color: #d0ebff;
 }
 
@@ -163,7 +189,7 @@ export default {
   background-color: #fcc419;
 }
 
-.warning .loading {
+.warning .progress-bar {
   background-color: #ffec99;
 }
 
@@ -172,7 +198,7 @@ export default {
   background-color: #40c057;
 }
 
-.success .loading {
+.success .progress-bar {
   background-color: #d3f9d8;
 }
 
@@ -181,7 +207,7 @@ export default {
   background-color: #f03e3e;
 }
 
-.danger .loading {
+.danger .progress-bar {
   background-color: #ffc9c9;
 }
 
@@ -364,6 +390,20 @@ export default {
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+
+.pgBar-enter-active {
+  animation-name: progress;
+  /* animation-duration: 2s; */
+}
+
+@keyframes progress {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
   }
 }
 </style>

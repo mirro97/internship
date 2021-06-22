@@ -322,7 +322,7 @@ export default {
       form: {
         title: "타이틀을 입력해주세요",
         description: "내용을 입력해주세요",
-        timeOut: 12,
+        timeOut: 5,
         toastBoxColor: "",
         position: "top-right",
         type: "default",
@@ -351,9 +351,6 @@ export default {
           });
         }
       }
-    },
-    closeToast() {
-      // 시간이 지나면 닫게함
     }
   }
 };
