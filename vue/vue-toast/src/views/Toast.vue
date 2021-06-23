@@ -37,7 +37,7 @@
         :duration="progressBar()"
         appear
       >
-        <div class="progress-bar" :id="tid"></div>
+        <div class="progress-bar" :id="progressId"></div>
       </transition>
     </div>
   </transition>
@@ -83,12 +83,12 @@ export default {
           slide: "slideRight"
         }
       },
-      tid: null
+      progressId: null
     };
   },
   methods: {
     setTransition() {
-      this.tid = new Date().getTime();
+      this.progressId = new Date().getTime();
       this.closeToast();
 
       var transList = this.transitionList;
@@ -112,14 +112,15 @@ export default {
       }, setTime * 1000);
     },
     progressBar() {
-      setTimeout(() => {
-        var pgBar = document.getElementById(this.tid);
-
-        pgBar.style["animation-duration"] = `${this.options.timeOut}s`;
-      }, 100);
       const setTime = this.options.timeOut;
       return setTime * 1000;
     }
+  },
+  mounted() {
+    document.getElementById(this.progressId).style[
+      "animation-duration"
+    ] = `${this.options.timeOut}s`;
+    console.log("test!");
   }
 };
 </script>

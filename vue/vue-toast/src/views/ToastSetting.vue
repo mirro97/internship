@@ -430,6 +430,7 @@ input[type="radio"] {
 .btn {
   padding: 10px 20px;
   background-color: #fff;
+  color: #40c057;
   border: 1px solid #40c057;
   border-radius: 6px;
   cursor: pointer;
@@ -438,6 +439,7 @@ input[type="radio"] {
 .btn:hover {
   background-color: #40c057;
   color: #fff;
+  transition: 0.2s ease;
 }
 
 .v-toast-container {
