@@ -5,7 +5,7 @@ SYSTEM_CONFIG.emailAccount = {
   host: "smtp.naver.com",
   email: "mirro97@naver.com",
   user: "mirro97",
-  pass: "WJDTNRKD09!",
+  pass: "spdlqjWkwmdsk",
 };
 // SYSTEM_CONFIG.emailAccount = {
 //   service: "gmail",

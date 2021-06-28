@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 const moment = require("moment");
 
-const server = app.listen(PORT, () => console.log(`server is running ${PORT}`));
+const server = app.listen(PORT, () =>
+  console.log(`server is running ${PORT} GOOD`)
+);
 const socketIo = require("socket.io");
 
 const io = socketIo(server);
@@ -17,7 +19,7 @@ io.on("connection", (socket) => {
     io.emit("chatting", {
       name,
       msg,
-      time: moment(new Date()).format("h: ss A"),
+      time: moment(new Date()).format("h: mm A"),
     });
   });
 });

@@ -19,6 +19,7 @@ function send() {
     msg: chatInput.value,
   };
   socket.emit("chatting", param);
+  chatInput.value = "";
 }
 
 sendButton.addEventListener("click", send);
@@ -39,15 +40,17 @@ function LiModel(name, msg, time) {
   this.makeLi = () => {
     const li = document.createElement("li");
     li.classList.add(nickname.value === this.name ? "sent" : "received");
-    const dom = `<span class="profile">
-                  <i class="fas fa-user"></i>
-                  <span class="user-name">${this.name}</span>
-                 </span>
+    const dom = `<i class="fas fa-user"></i>
                  <div class="context">
-                   <span class="message">
+                   <div class="user-msg">
+                     <span class="user-name">${this.name}</span>
+                     <div class="msg-detail">
+                     <span class="message">
                      ${this.msg}
-                   </span>
-                   <span class="time">${this.time}</span>
+                     </span>
+                     <span class="time">${this.time}</span>
+                     </div>
+                   </div>
                  </div>`;
     li.innerHTML = dom;
     chatList.appendChild(li);
