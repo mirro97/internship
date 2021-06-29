@@ -13,6 +13,8 @@ chatInput.addEventListener("keypress", (event) => {
   }
 });
 
+sendButton.addEventListener("click", send);
+
 function send() {
   const param = {
     name: nickname.value,
@@ -21,8 +23,6 @@ function send() {
   socket.emit("chatting", param);
   chatInput.value = "";
 }
-
-sendButton.addEventListener("click", send);
 
 socket.on("chatting", (data) => {
   const { name, msg, time } = data;
@@ -45,11 +45,11 @@ function LiModel(name, msg, time) {
                    <div class="user-msg">
                      <span class="user-name">${this.name}</span>
                      <div class="msg-detail">
+                        <span class="message">
+                        ${this.msg}
+                        </span>
+                        <span class="time">${this.time}</span>
                      </div>
-                     <span class="message">
-                     ${this.msg}
-                     </span>
-                     <span class="time">${this.time}</span>
                    </div>
                  </div>`;
     li.innerHTML = dom;
