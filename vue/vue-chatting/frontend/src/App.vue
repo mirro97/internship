@@ -45,6 +45,6 @@ ul {
 
 input {
   border: none;
-  color: #495057;
+  color: #212529;
 }
 </style>

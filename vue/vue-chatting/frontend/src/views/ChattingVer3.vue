@@ -3,26 +3,68 @@
     <div class="wrapper">
       <div class="chatname-container">
         <label class="chatname" for="nickname">대화명</label>
-        <input class="chatname-input" type="text" id="nickname" />
+        <input
+          class="chatname-input"
+          type="text"
+          id="nickname"
+          v-model="nickName"
+        />
       </div>
       <div class="display-container">
         <ul class="chatting-list">
           <li class="alert-join">
             대화에 참여했습니다
           </li>
+          <li v-for="(data, index) in messages" :key="index">
+            <i class="fas fa-user"></i>
+            <div class="context">
+              <div class="user-msg">
+                <span class="user-name">{{ data.name }}</span>
+                <div class="msg-detail">
+                  <span class="message">
+                    {{ data.msg }}
+                  </span>
+                  <span class="time">{{ data.time }}</span>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
       <div class="input-container">
-        <input type="text" class="chatting-input" />
-        <button class="send-button">전송</button>
+        <input type="text" class="chatting-input" v-model="message" />
+        <button class="send-button" @click="sendMessage">전송</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import io from "socket.io-client";
 export default {
-  // backend 에서 chat.js 사용
+  data() {
+    return {
+      socket: io(),
+      messages: [],
+      nickName: "",
+      message: ""
+    };
+  },
+  created() {
+    // 채팅 받을때
+    this.socket.on("chatting", msg => {
+      console.log(msg);
+    });
+  },
+  methods: {
+    sendMessage() {
+      const param = {
+        nickName: this.nickName
+      };
+      this.socket.emit("chatting", { param });
+      this.nickName = "";
+    }
+  }
 };
 </script>
 
