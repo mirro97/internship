@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  // backend 에서 chat.js 사용
+  methods: {}
 };
 </script>
 
@@ -136,7 +136,7 @@ li {
   width: fit-content;
   max-width: 320px;
   background-color: #fff;
-  color: #212529;
+  color: #495057;
   display: flex;
   align-items: center;
   padding: 6px 10px;

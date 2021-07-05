@@ -10,30 +10,24 @@
           v-model="nickName"
         />
       </div>
-      <div class="display-container">
-        <ul class="chatting-list">
-          <li class="alert-join">
-            대화에 참여했습니다
-          </li>
-          <li v-for="(data, index) in messages" :key="index">
-            <i class="fas fa-user"></i>
-            <div class="context">
-              <div class="user-msg">
-                <span class="user-name">{{ data.name }}</span>
-                <div class="msg-detail">
-                  <span class="message">
-                    {{ data.msg }}
-                  </span>
-                  <span class="time">{{ data.time }}</span>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
+
+      <ul class="display-container" ref="container">
+        <li class="alert-join">대화에 참여했습니다</li>
+        <Message
+          v-for="message in messages"
+          :key="message.id"
+          :content="message.data"
+          :curName="nickName"
+        ></Message>
+      </ul>
       <div class="input-container">
-        <input type="text" class="chatting-input" v-model="message" />
-        <button class="send-button" @click="sendMessage">전송</button>
+        <input
+          type="text"
+          class="chatting-input"
+          v-model="chatInput"
+          @keyup.enter="sendMessage()"
+        />
+        <button class="send-button" @click="sendMessage()">전송</button>
       </div>
     </div>
   </div>
@@ -41,28 +35,37 @@
 
 <script>
 import io from "socket.io-client";
+import Message from "../components/Message.vue";
 export default {
+  components: { Message },
   data() {
     return {
       socket: io(),
       messages: [],
-      nickName: "",
-      message: ""
+      nickName: ""
     };
   },
   created() {
     // 채팅 받을때
-    this.socket.on("chatting", msg => {
-      console.log(msg);
+    this.socket.on("chatting", data => {
+      var contents = Object.assign({}, data);
+      this.messages.push({ data: contents });
     });
+  },
+  updated() {
+    // var container = this.$refs["display-container"];
+    // container.scrollTo(0, container.scrollHeight);
+
+    this.$refs.container.scrollTo(0, this.$refs.container.scrollHeight);
   },
   methods: {
     sendMessage() {
       const param = {
-        nickName: this.nickName
+        name: this.nickName,
+        msg: this.chatInput
       };
-      this.socket.emit("chatting", { param });
-      this.nickName = "";
+      this.socket.emit("chatting", param);
+      this.chatInput = "";
     }
   }
 };
@@ -105,15 +108,18 @@ li {
   outline: none;
 }
 
+.alert-container {
+}
+
 .wrapper {
-  /* -webkit-box-shadow: 0px 0px 31px -14px #868e96;
-  box-shadow: 0px 0px 31px -14px #868e96; */
   background-color: #181a1d;
-  width: 500px;
-  height: 650px;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  padding: 50px 0 20px 0;
 }
 
 .display-container {
@@ -227,7 +233,8 @@ li {
   display: flex;
   padding: 3px;
   background-color: #fff;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .chatting-input {

@@ -1,20 +1,23 @@
 <template>
   <div id="app">
     <Header></Header>
+    <Navigator></Navigator>
     <Chatting></Chatting>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Chatting from "./views/ChattingVer3.vue";
+import Chatting from "./views/ChattingVer2.vue";
 import Header from "./components/Header.vue";
+import Navigator from "./components/Navigator.vue";
 import Footer from "./components/Footer.vue";
 export default {
   name: "App",
   components: {
     Chatting,
     Header,
+    Navigator,
     Footer
   }
 };
