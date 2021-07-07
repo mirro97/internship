@@ -1,23 +1,40 @@
 <template>
   <div class="chat-container">
+    <Notice
+      v-if="alertIsOpen"
+      @noticeChk="checkNoticeState"
+      @alert="alert"
+    ></Notice>
     <div class="wrapper">
       <div class="chatname-container">
-        <label class="chatname" for="nickname">대화명</label>
-        <input
-          class="chatname-input"
-          type="text"
-          id="nickname"
-          v-model="nickName"
-        />
+        <div>
+          <label class="chatname" for="nickname">대화명</label>
+          <input
+            class="chatname-input"
+            type="text"
+            id="nickname"
+            v-model="nickName"
+          />
+        </div>
       </div>
 
       <ul class="display-container" ref="container">
+        <transition name="slideDown" type="animation">
+          <div class="notice-container" v-if="noticeIsOpen">
+            <i class="fas fa-bullhorn"></i>
+            <p class="notice-description">
+              {{ notice }}
+            </p>
+          </div>
+        </transition>
         <li class="alert-join">대화에 참여했습니다</li>
         <Message
           v-for="message in messages"
           :key="message.id"
           :content="message.data"
           :curName="nickName"
+          @alert="alert"
+          @notice="noticeDes"
         ></Message>
       </ul>
       <div class="input-container">
@@ -36,13 +53,18 @@
 <script>
 import io from "socket.io-client";
 import Message from "../components/Message.vue";
+import Notice from "../components/NoticePage.vue";
 export default {
-  components: { Message },
+  components: { Message, Notice },
   data() {
     return {
       socket: io(),
       messages: [],
-      nickName: ""
+      nickName: "",
+      noticeIsOpen: true,
+      alertIsOpen: false,
+      notice: "대화 더블클릭시 공지사항에 올릴수 있음 🎈",
+      waitNotice: ""
     };
   },
   created() {
@@ -53,9 +75,6 @@ export default {
     });
   },
   updated() {
-    // var container = this.$refs["display-container"];
-    // container.scrollTo(0, container.scrollHeight);
-
     this.$refs.container.scrollTo(0, this.$refs.container.scrollHeight);
   },
   methods: {
@@ -66,12 +85,24 @@ export default {
       };
       this.socket.emit("chatting", param);
       this.chatInput = "";
+    },
+    alert(alertNotice) {
+      this.alertIsOpen = alertNotice;
+    },
+    noticeDes(content) {
+      this.waitNotice = content;
+    },
+    checkNoticeState(state) {
+      this.alertIsOpen = false;
+      if (state) {
+        this.notice = this.waitNotice;
+      }
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 li {
   display: flex;
   margin-bottom: 10px;
@@ -87,10 +118,10 @@ li {
 
 .chatname-container {
   background-color: #343a40;
-  height: 48px;
-  padding: 4px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+  width: 100%;
+  padding: 6px 4px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .chatname {
@@ -108,7 +139,28 @@ li {
   outline: none;
 }
 
-.alert-container {
+.notice-container {
+  display: flex;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 90%;
+  padding: 10px 15px;
+  background-color: #fff;
+  opacity: 0.85;
+  border-radius: 6px;
+}
+
+.fa-bullhorn {
+  color: #212529;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.notice-description {
+  color: #212529;
 }
 
 .wrapper {
@@ -119,10 +171,12 @@ li {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 50px 0 20px 0;
 }
 
 .display-container {
+  width: 100%;
   height: 100%;
   padding: 10px 15px;
   overflow: auto;
@@ -143,88 +197,6 @@ li {
 .profile {
   display: flex;
   flex-direction: column;
-}
-
-.fa-user {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  border: 1px solid #ced4da;
-  overflow: hidden;
-  width: 40px;
-  height: 40px;
-  font-size: 30px;
-  border-radius: 15px;
-  margin-top: 3px;
-}
-
-.user-msg {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-name {
-  color: #75fda6;
-  font-size: 13px;
-  margin-bottom: 5px;
-}
-
-.context {
-  display: flex;
-  align-items: flex-end;
-  margin-left: 10px;
-}
-
-.msg-detail {
-  display: flex;
-  align-items: flex-end;
-}
-
-.message {
-  width: fit-content;
-  max-width: 320px;
-  background-color: #fff;
-  color: #212529;
-  display: flex;
-  align-items: center;
-  padding: 6px 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 1px 2px -1px #868e96;
-  box-shadow: 0px 1px 2px -1px #868e96;
-  word-break: break-all;
-}
-
-.sent {
-  flex-direction: row-reverse;
-}
-
-.sent .msg-detail {
-  flex-direction: row-reverse;
-}
-
-.sent .user-msg {
-  align-items: flex-end;
-}
-
-.sent .message {
-  background-color: #fcc419;
-}
-
-.sent .time {
-  margin-right: 10px;
-  margin-left: 0;
-}
-
-.sent .context {
-  flex-direction: row-reverse;
-  margin-left: 0;
-  margin-right: 10px;
-}
-
-.time {
-  margin-left: 8px;
-  font-size: 12px;
 }
 
 .input-container {
@@ -265,5 +237,18 @@ li {
 .alert-join {
   display: block;
   text-align: center;
+}
+
+.slideDown-enter-active {
+  animation: slide-down 0.35s;
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translate(0, -200px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 </style>

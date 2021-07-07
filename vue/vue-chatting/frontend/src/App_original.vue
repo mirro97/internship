@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Chatting from "./views/ChattingVer2.vue";
+import Chatting from "./views/ChattingVer3.vue";
 import Header from "./components/Header.vue";
 import Navigator from "./components/Navigator.vue";
 import Footer from "./components/Footer.vue";
