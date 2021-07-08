@@ -7,26 +7,38 @@
     ></Notice>
     <div class="wrapper">
       <div class="chatname-container">
-        <div>
-          <label class="chatname" for="nickname">대화명</label>
-          <input
-            class="chatname-input"
-            type="text"
-            id="nickname"
-            v-model="nickName"
-          />
-        </div>
+        <label class="chatname" for="nickname">대화명</label>
+        <input
+          class="chatname-input"
+          type="text"
+          id="nickname"
+          v-model="nickName"
+        />
       </div>
 
       <ul class="display-container" ref="container">
-        <transition name="slideDown" type="animation">
-          <div class="notice-container" v-if="noticeIsOpen">
-            <i class="fas fa-bullhorn"></i>
-            <p class="notice-description">
-              {{ notice }}
-            </p>
-          </div>
-        </transition>
+        <div class="all-notice">
+          <transition name="full-notice" mode="out-in">
+            <div class="full-notice common-notice" v-if="noticeIsOpen">
+              <div class="n-wrapper">
+                <i class="far fa-hand-paper fas"></i>
+                <p class="notice-description">
+                  {{ notice }}
+                </p>
+              </div>
+              <i class="fas fa-chevron-down" @click="turnNotice()" key="on"></i>
+            </div>
+            <div
+              class="mini-notice common-notice"
+              v-if="!noticeIsOpen"
+              key="off"
+              @click="turnNotice()"
+            >
+              <i class="far fa-hand-rock fas"></i>
+            </div>
+          </transition>
+        </div>
+
         <li class="alert-join">대화에 참여했습니다</li>
         <Message
           v-for="message in messages"
@@ -97,6 +109,9 @@ export default {
       if (state) {
         this.notice = this.waitNotice;
       }
+    },
+    turnNotice() {
+      this.noticeIsOpen = !this.noticeIsOpen;
     }
   }
 };
@@ -139,24 +154,61 @@ li {
   outline: none;
 }
 
-.notice-container {
-  display: flex;
+.all-notice {
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 90%;
-  padding: 10px 15px;
-  background-color: #fff;
+  width: 95%;
+  max-width: 950px;
+}
+
+.common-notice {
+  background: #fff;
+  padding: 10px;
   opacity: 0.85;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(86, 86, 86, 0.8);
+  box-shadow: 0px 1px 2px 0px rgba(86, 86, 86, 0.8);
+}
+
+.full-notice {
+  display: flex;
+  justify-content: space-between;
   border-radius: 6px;
 }
 
-.fa-bullhorn {
-  color: #212529;
+.mini-notice {
+  float: right;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.n-wrapper {
+  display: flex;
+}
+
+.fas {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #495057;
+}
+
+.far {
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.fa-chevron-down {
+  color: #868e96;
+}
+
+.fa-hand-paper {
   margin-right: 10px;
+}
+
+.fa-chevron-down:hover {
+  color: #495057;
 }
 
 .notice-description {
@@ -239,16 +291,18 @@ li {
   text-align: center;
 }
 
-.slideDown-enter-active {
-  animation: slide-down 0.35s;
+/* transition css */
+.full-notice-enter-active {
+  transition: all 0.3s ease;
 }
 
-@keyframes slide-down {
-  0% {
-    transform: translate(0, -200px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
+.full-notice-leave-active {
+  transition: all 0.3s ease;
+}
+
+.full-notice-enter,
+.full-notice-leave-to {
+  transform: translate(0, -10px);
+  opacity: 0;
 }
 </style>

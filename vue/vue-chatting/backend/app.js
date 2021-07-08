@@ -14,8 +14,6 @@ const socketIo = require("socket.io");
 const io = socketIo(server);
 
 io.on("connection", (socket) => {
-  console.log("연결이 되었음");
-
   socket.on("chatting", (data) => {
     const { name, msg } = data;
     io.emit("chatting", {
