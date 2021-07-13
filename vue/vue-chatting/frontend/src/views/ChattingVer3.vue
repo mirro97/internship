@@ -45,6 +45,7 @@
           :key="message.id"
           :content="message.data"
           :curName="nickName"
+          :socketId="socketId"
           @alert="alert"
           @notice="noticeDes"
         ></Message>
@@ -73,6 +74,7 @@ export default {
       socket: io(),
       messages: [],
       nickName: "",
+      socketId: "",
       noticeIsOpen: true,
       alertIsOpen: false,
       notice: "대화 더블클릭시 공지사항에 올릴수 있음 🎈",
@@ -84,6 +86,8 @@ export default {
     this.socket.on("chatting", data => {
       var contents = Object.assign({}, data);
       this.messages.push({ data: contents });
+      this.socketId = this.socket.id;
+      console.log("받는 사람 socket.id: " + this.socket.id);
     });
   },
   updated() {

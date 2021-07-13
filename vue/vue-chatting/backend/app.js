@@ -12,14 +12,38 @@ const server = app.listen(PORT, () =>
 const socketIo = require("socket.io");
 
 const io = socketIo(server);
+const socketList = [];
 
 io.on("connection", (socket) => {
+  console.log("someone join");
+  socketList.push(socket);
+  console.log("현재 사람들 id: ");
+  socketList.forEach(function (item, i) {
+    console.log(item.id);
+  });
+
   socket.on("chatting", (data) => {
-    const { name, msg } = data;
-    io.emit("chatting", {
-      name,
-      msg,
-      time: moment(new Date()).format("h: mm A"),
+    socketList.forEach(function (item, i) {
+      if (item === socket) {
+        const { name, msg } = data;
+        const socketId = socket.id;
+        io.emit("chatting", {
+          name,
+          msg,
+          time: moment(new Date()).format("h: mm A"),
+          socketId,
+        });
+      }
+    });
+  });
+
+  socket.on("disconnect", function () {
+    console.log(socket.id + " 님 께서 나가셨습니다");
+    socketList.splice(socketList.indexOf(socket), 1);
+
+    console.log("남은 사람들 id: ");
+    socketList.forEach(function (item, i) {
+      console.log(item.id);
     });
   });
 });

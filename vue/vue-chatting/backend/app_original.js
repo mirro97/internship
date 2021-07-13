@@ -14,6 +14,8 @@ const socketIo = require("socket.io");
 const io = socketIo(server);
 
 io.on("connection", (socket) => {
+  console.log("someone join");
+  console.log("socket: " + socket);
   socket.on("chatting", (data) => {
     const { name, msg } = data;
     io.emit("chatting", {
@@ -21,5 +23,13 @@ io.on("connection", (socket) => {
       msg,
       time: moment(new Date()).format("h: mm A"),
     });
+  });
+
+  socket.on("disconnect", (data) => {
+    console.log("disconnect - backend");
+
+    var msg = "누가 나갔다!";
+
+    io.emit("updata", { msg });
   });
 });

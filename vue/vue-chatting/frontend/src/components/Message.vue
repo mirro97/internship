@@ -1,5 +1,5 @@
 <template>
-  <li v-bind:class="[curName === content.name ? 'sent' : 'received']">
+  <li v-bind:class="[socketId === content.socketId ? 'sent' : 'received']">
     <i class="fas fa-user"></i>
     <div class="context">
       <div class="user-msg">
@@ -18,8 +18,9 @@
 <script>
 export default {
   props: {
-    content: Object,
-    curName: String
+    content: Object, // 백엔드 상의 socketId: content.socketId
+    curName: String,
+    socketId: String // 프론트 상의 socketId
   },
   data() {},
   methods: {
