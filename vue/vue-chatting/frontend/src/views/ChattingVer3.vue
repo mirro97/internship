@@ -87,7 +87,6 @@ export default {
       var contents = Object.assign({}, data);
       this.messages.push({ data: contents });
       this.socketId = this.socket.id;
-      console.log("받는 사람 socket.id: " + this.socket.id);
     });
   },
   updated() {
@@ -112,6 +111,7 @@ export default {
       this.alertIsOpen = false;
       if (state) {
         this.notice = this.waitNotice;
+        console.log("notice 내용: " + this.notice);
       }
     },
     turnNotice() {
