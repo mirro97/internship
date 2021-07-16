@@ -19,14 +19,13 @@
 export default {
   props: {
     content: Object, // 백엔드 상의 socketId: content.socketId
-    curName: String,
     socketId: String // 프론트 상의 socketId
   },
   data() {},
   methods: {
     makeNotice() {
-      this.$emit("notice", this.content.msg);
       this.$emit("alert", true);
+      this.$emit("noticeContent", this.content.msg);
     }
   }
 };

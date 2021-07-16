@@ -1,10 +1,10 @@
 <template>
   <div class="chat-container">
-    <Notice
+    <NoticeAlertPage
       v-if="alertIsOpen"
       @noticeChk="checkNoticeState"
       @alert="alert"
-    ></Notice>
+    ></NoticeAlertPage>
     <div class="wrapper">
       <div class="chatname-container">
         <label class="chatname" for="nickname">대화명</label>
@@ -17,27 +17,7 @@
       </div>
 
       <ul class="display-container" ref="container">
-        <div class="all-notice">
-          <transition name="full-notice" mode="out-in">
-            <div class="full-notice common-notice" v-if="noticeIsOpen">
-              <div class="n-wrapper">
-                <i class="far fa-hand-paper fas"></i>
-                <p class="notice-description">
-                  {{ notice }}
-                </p>
-              </div>
-              <i class="fas fa-chevron-down" @click="turnNotice()" key="on"></i>
-            </div>
-            <div
-              class="mini-notice common-notice"
-              v-if="!noticeIsOpen"
-              key="off"
-              @click="turnNotice()"
-            >
-              <i class="far fa-hand-rock fas"></i>
-            </div>
-          </transition>
-        </div>
+        <Notice :notice="notice"></Notice>
 
         <li class="alert-join">대화에 참여했습니다</li>
         <Message
@@ -47,7 +27,7 @@
           :curName="nickName"
           :socketId="socketId"
           @alert="alert"
-          @notice="noticeDes"
+          @noticeContent="noticeDes"
         ></Message>
       </ul>
       <div class="input-container">
@@ -66,19 +46,18 @@
 <script>
 import io from "socket.io-client";
 import Message from "../components/Message.vue";
-import Notice from "../components/NoticePage.vue";
+import NoticeAlertPage from "../components/NoticeAlertPage.vue";
+import Notice from "../components/Notice.vue";
 export default {
-  components: { Message, Notice },
+  components: { Message, NoticeAlertPage, Notice },
   data() {
     return {
       socket: io(),
       messages: [],
       nickName: "",
       socketId: "",
-      noticeIsOpen: true,
       alertIsOpen: false,
-      notice: "대화 더블클릭시 공지사항에 올릴수 있음 🎈",
-      waitNotice: ""
+      notice: "대화 더블클릭시 공지사항에 올릴수 있음 🎈"
     };
   },
   created() {
@@ -87,6 +66,12 @@ export default {
       var contents = Object.assign({}, data);
       this.messages.push({ data: contents });
       this.socketId = this.socket.id;
+    });
+
+    this.socket.on("notice", data => {
+      console.log("프론트에서 받은 noticeData: " + data);
+      this.notice = data;
+      console.log("바뀐 notice: " + this.notice);
     });
   },
   updated() {
@@ -105,17 +90,14 @@ export default {
       this.alertIsOpen = alertNotice;
     },
     noticeDes(content) {
+      // waitNotice: 공지사항으로 만들지 않을 수 있으니 대기하는 변수
       this.waitNotice = content;
     },
     checkNoticeState(state) {
       this.alertIsOpen = false;
       if (state) {
-        this.notice = this.waitNotice;
-        console.log("notice 내용: " + this.notice);
+        this.socket.emit("notice", this.waitNotice);
       }
-    },
-    turnNotice() {
-      this.noticeIsOpen = !this.noticeIsOpen;
     }
   }
 };
@@ -156,67 +138,6 @@ li {
   margin-left: 10px;
   font-size: 14px;
   outline: none;
-}
-
-.all-notice {
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 95%;
-  max-width: 950px;
-}
-
-.common-notice {
-  background: #fff;
-  padding: 10px;
-  opacity: 0.85;
-  -webkit-box-shadow: 0px 1px 2px 0px rgba(86, 86, 86, 0.8);
-  box-shadow: 0px 1px 2px 0px rgba(86, 86, 86, 0.8);
-}
-
-.full-notice {
-  display: flex;
-  justify-content: space-between;
-  border-radius: 6px;
-}
-
-.mini-notice {
-  float: right;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-}
-
-.n-wrapper {
-  display: flex;
-}
-
-.fas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #495057;
-}
-
-.far {
-  font-weight: 400;
-  font-size: 22px;
-}
-
-.fa-chevron-down {
-  color: #868e96;
-}
-
-.fa-hand-paper {
-  margin-right: 10px;
-}
-
-.fa-chevron-down:hover {
-  color: #495057;
-}
-
-.notice-description {
-  color: #212529;
 }
 
 .wrapper {
@@ -293,20 +214,5 @@ li {
 .alert-join {
   display: block;
   text-align: center;
-}
-
-/* transition css */
-.full-notice-enter-active {
-  transition: all 0.3s ease;
-}
-
-.full-notice-leave-active {
-  transition: all 0.3s ease;
-}
-
-.full-notice-enter,
-.full-notice-leave-to {
-  transform: translate(0, -10px);
-  opacity: 0;
 }
 </style>

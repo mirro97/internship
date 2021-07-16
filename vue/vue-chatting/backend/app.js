@@ -37,6 +37,11 @@ io.on("connection", (socket) => {
     });
   });
 
+  socket.on("notice", (data) => {
+    console.log("공지사항: " + data);
+    io.emit("notice", data);
+  });
+
   socket.on("disconnect", function () {
     console.log(socket.id + " 님 께서 나가셨습니다");
     socketList.splice(socketList.indexOf(socket), 1);
