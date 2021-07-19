@@ -46,6 +46,8 @@ io.on("connection", (socket) => {
     console.log(socket.id + " 님 께서 나가셨습니다");
     socketList.splice(socketList.indexOf(socket), 1);
 
+    io.emit("alert", socket.id); // 나간사람 id
+
     console.log("남은 사람들 id: ");
     socketList.forEach(function (item, i) {
       console.log(item.id);

@@ -18,8 +18,10 @@
 
       <ul class="display-container" ref="container">
         <Notice :notice="notice"></Notice>
+        <LeaveAlert v-if="leaveToast" :leaveName="leaveName"></LeaveAlert>
 
         <li class="alert-join">대화에 참여했습니다</li>
+
         <Message
           v-for="message in messages"
           :key="message.id"
@@ -48,8 +50,9 @@ import io from "socket.io-client";
 import Message from "../components/Message.vue";
 import NoticeAlertPage from "../components/NoticeAlertPage.vue";
 import Notice from "../components/Notice.vue";
+import LeaveAlert from "../components/LeaveAlert.vue";
 export default {
-  components: { Message, NoticeAlertPage, Notice },
+  components: { Message, NoticeAlertPage, Notice, LeaveAlert },
   data() {
     return {
       socket: io(),
@@ -57,7 +60,9 @@ export default {
       nickName: "",
       socketId: "",
       alertIsOpen: false,
-      notice: "대화 더블클릭시 공지사항에 올릴수 있음 🎈"
+      notice: "대화 더블클릭시 공지사항에 올릴수 있음 🎈",
+      leaveName: "",
+      leaveToast: false
     };
   },
   created() {
@@ -69,9 +74,15 @@ export default {
     });
 
     this.socket.on("notice", data => {
-      console.log("프론트에서 받은 noticeData: " + data);
       this.notice = data;
-      console.log("바뀐 notice: " + this.notice);
+    });
+
+    this.socket.on("alert", data => {
+      this.leaveName = data;
+      this.leaveToast = true;
+      console.log(data + " 님께서 나가셨습니다");
+
+      this.closeToast();
     });
   },
   updated() {
@@ -98,6 +109,11 @@ export default {
       if (state) {
         this.socket.emit("notice", this.waitNotice);
       }
+    },
+    closeToast() {
+      setTimeout(() => {
+        this.leaveToast = false;
+      }, 3000);
     }
   }
 };
