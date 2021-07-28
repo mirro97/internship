@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'apple';
+  src: url(../fonts/AppleSDGothicNeoM.ttf);
+}
+
+@font-face {
+  font-family: 'appleB';
+  src: url(../fonts/AppleSDGothicNeoB.ttf);
+}
