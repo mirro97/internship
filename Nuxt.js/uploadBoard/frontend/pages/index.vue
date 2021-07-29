@@ -21,9 +21,16 @@ export default {
   font-family: apple;
 }
 
+h1,
+h2,
+h3,
 a,
 span {
   display: block;
+}
+
+ul {
+  list-style: none;
 }
 
 button {

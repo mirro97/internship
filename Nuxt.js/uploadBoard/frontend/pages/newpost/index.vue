@@ -1,9 +1,7 @@
 <template>
-  <div>New Post 작성하는 곳</div>
+  <div id="app">
+    <client-only>
+      <tiptap />
+    </client-only>
+  </div>
 </template>
-
-<script>
-export default {}
-</script>
-
-<style></style>
