@@ -19,6 +19,7 @@ export default {
   margin: 0;
   padding: 0;
   font-family: apple;
+  color: #333;
 }
 
 h1,

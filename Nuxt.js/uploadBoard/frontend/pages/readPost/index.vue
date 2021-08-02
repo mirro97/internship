@@ -1,13 +1,10 @@
 <template>
-  <index-page></index-page>
+  <div>글 읽을수 있는곳</div>
 </template>
 
 <script>
-import IndexPage from '~/components/IndexPage.vue'
 export default {
-  components: {
-    IndexPage,
-  },
+  components: {},
 }
 </script>
 

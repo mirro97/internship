@@ -333,7 +333,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 28
+    "idx": 27
   },
   {
     "id": "test2",
@@ -345,7 +345,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 29
+    "idx": 28
   },
   {
     "id": "test",
@@ -357,12 +357,24 @@
     "nickName": "NYchicken",
     "address": "Gangwondo",
     "registDay": "2021-03-01",
-    "idx": 30
+    "idx": 29
   },
   {
     "id": "test1",
     "pw": "7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==",
     "name": "성종희",
+    "email": "hongjee@naver.com",
+    "birthDay": "1997-06-07",
+    "kakaoId": "hongjee",
+    "nickName": "huck",
+    "address": "Gangwondo",
+    "registDay": "2021-03-07",
+    "idx": 30
+  },
+  {
+    "id": "test2",
+    "pw": "qp7C/9JSEyCJYKt07hokPi+m9vPlLxZ8sMEqYK21x6WdKFN4iDFQnKU2LDSc0XNwWaQN0NMmYhQo7Xn/j0S4dg==",
+    "name": "김혜연",
     "email": "hongjee@naver.com",
     "birthDay": "1997-06-07",
     "kakaoId": "hongjee",
@@ -372,9 +384,9 @@
     "idx": 31
   },
   {
-    "id": "test2",
-    "pw": "qp7C/9JSEyCJYKt07hokPi+m9vPlLxZ8sMEqYK21x6WdKFN4iDFQnKU2LDSc0XNwWaQN0NMmYhQo7Xn/j0S4dg==",
-    "name": "김혜연",
+    "id": "test1",
+    "pw": "7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==",
+    "name": "성종희",
     "email": "hongjee@naver.com",
     "birthDay": "1997-06-07",
     "kakaoId": "hongjee",
@@ -384,9 +396,9 @@
     "idx": 32
   },
   {
-    "id": "test1",
-    "pw": "7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==",
-    "name": "성종희",
+    "id": "test2",
+    "pw": "qp7C/9JSEyCJYKt07hokPi+m9vPlLxZ8sMEqYK21x6WdKFN4iDFQnKU2LDSc0XNwWaQN0NMmYhQo7Xn/j0S4dg==",
+    "name": "황준규",
     "email": "hongjee@naver.com",
     "birthDay": "1997-06-07",
     "kakaoId": "hongjee",
@@ -396,18 +408,6 @@
     "idx": 33
   },
   {
-    "id": "test2",
-    "pw": "qp7C/9JSEyCJYKt07hokPi+m9vPlLxZ8sMEqYK21x6WdKFN4iDFQnKU2LDSc0XNwWaQN0NMmYhQo7Xn/j0S4dg==",
-    "name": "황준규",
-    "email": "hongjee@naver.com",
-    "birthDay": "1997-06-07",
-    "kakaoId": "hongjee",
-    "nickName": "huck",
-    "address": "Gangwondo",
-    "registDay": "2021-03-07",
-    "idx": 34
-  },
-  {
     "id": "test",
     "pw": "Tf9Oo0DwqCPxXT9PAati6uDl2lecy4Ufjbnf6ExYsrN7iZA6dA4e4XLaeTpuedVg5ff5vQWKEqKAQz7W+kZRCg==",
     "name": "강수정",
@@ -417,12 +417,24 @@
     "nickName": "NYchicken",
     "address": "Gangwondo",
     "registDay": "2021-03-01",
-    "idx": 35
+    "idx": 34
   },
   {
     "id": "test1",
     "pw": "7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==",
     "name": "조예린",
+    "email": "hongjee@naver.com",
+    "birthDay": "1997-06-07",
+    "kakaoId": "hongjee",
+    "nickName": "huck",
+    "address": "Gangwondo",
+    "registDay": "2021-03-07",
+    "idx": 35
+  },
+  {
+    "id": "test2",
+    "pw": "qp7C/9JSEyCJYKt07hokPi+m9vPlLxZ8sMEqYK21x6WdKFN4iDFQnKU2LDSc0XNwWaQN0NMmYhQo7Xn/j0S4dg==",
+    "name": "김혜연",
     "email": "hongjee@naver.com",
     "birthDay": "1997-06-07",
     "kakaoId": "hongjee",
@@ -432,18 +444,6 @@
     "idx": 36
   },
   {
-    "id": "test2",
-    "pw": "qp7C/9JSEyCJYKt07hokPi+m9vPlLxZ8sMEqYK21x6WdKFN4iDFQnKU2LDSc0XNwWaQN0NMmYhQo7Xn/j0S4dg==",
-    "name": "김혜연",
-    "email": "hongjee@naver.com",
-    "birthDay": "1997-06-07",
-    "kakaoId": "hongjee",
-    "nickName": "huck",
-    "address": "Gangwondo",
-    "registDay": "2021-03-07",
-    "idx": 37
-  },
-  {
     "id": "test1",
     "pw": "7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==",
     "name": "성종희",
@@ -453,7 +453,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 38
+    "idx": 37
   },
   {
     "id": "test2",
@@ -465,7 +465,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 39
+    "idx": 38
   },
   {
     "id": "test",
@@ -477,7 +477,7 @@
     "nickName": "NYchicken",
     "address": "Gangwondo",
     "registDay": "2021-03-01",
-    "idx": 40
+    "idx": 39
   },
   {
     "id": "test1",
@@ -489,7 +489,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 41
+    "idx": 40
   },
   {
     "id": "test2",
@@ -501,7 +501,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 42
+    "idx": 41
   },
   {
     "id": "test1",
@@ -513,7 +513,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 43
+    "idx": 42
   },
   {
     "id": "test2",
@@ -525,7 +525,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 44
+    "idx": 43
   },
   {
     "id": "test",
@@ -537,7 +537,7 @@
     "nickName": "NYchicken",
     "address": "Gangwondo",
     "registDay": "2021-03-01",
-    "idx": 45
+    "idx": 44
   },
   {
     "id": "test1",
@@ -549,7 +549,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 46
+    "idx": 45
   },
   {
     "id": "test2",
@@ -561,7 +561,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 47
+    "idx": 46
   },
   {
     "id": "test1",
@@ -573,7 +573,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 48
+    "idx": 47
   },
   {
     "id": "test2",
@@ -585,7 +585,7 @@
     "nickName": "huck",
     "address": "Gangwondo",
     "registDay": "2021-03-07",
-    "idx": 49
+    "idx": 48
   },
   {
     "id": "test",
@@ -597,6 +597,6 @@
     "nickName": "NYchicken",
     "address": "Gangwondo",
     "registDay": "2021-03-01",
-    "idx": 50
+    "idx": 49
   }
 ]

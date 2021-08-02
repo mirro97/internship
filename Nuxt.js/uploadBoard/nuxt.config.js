@@ -41,7 +41,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:3000/',
+  },
 
   srcDir: 'frontend/',
 
@@ -49,5 +51,9 @@ export default {
   build: {},
   serverMiddleware: [
     { path: '/test', handler: path.join(__dirname, '/backend/test.js') },
+    {
+      path: '/sendData',
+      handler: path.join(__dirname, '/backend/sendData.js'),
+    },
   ],
 }

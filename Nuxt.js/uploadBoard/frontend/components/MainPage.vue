@@ -49,10 +49,17 @@ header {
 
 .btn {
   font-size: 15px;
-  padding: 9px 12px;
-  background-color: #ffd43b;
-  border-radius: 5px;
-  border: none;
+  color: #91a7ff;
+  padding: 10px 16px;
+  background-color: #fff;
+  border-radius: 18px;
+  border: 2px solid #91a7ff;
+}
+
+.btn:hover {
+  transition: 0.3s ease;
+  color: #fff;
+  background-color: #91a7ff;
 }
 
 /* main contents css */

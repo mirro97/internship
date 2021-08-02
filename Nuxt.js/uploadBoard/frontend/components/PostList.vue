@@ -12,23 +12,26 @@
           </div>
         </div>
       </li>
-      <li>
-        <div class="intro">
-          <div class="img-container">
-            <img src="../assets/img/testImg.jpg" alt="" />
-          </div>
-          <div class="detail">
-            <h2 class="sub-title">서브타이틀</h2>
-            <span class="sub-date"> 올린 날짜</span>
-          </div>
-        </div>
-      </li>
     </ul>
+    <button @click="getData">데이터 왔는지 확인용</button>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      sentdata: '',
+    }
+  },
+  methods: {
+    getData() {
+      this.$axios.get('/sendData').then((res) => {
+        console.log(res.data)
+      })
+    },
+  },
+}
 </script>
 
 <style>
@@ -42,6 +45,7 @@ export default {}
 .intro {
   border: 1px solid #dee2e6;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .img-container {
