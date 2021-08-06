@@ -3,7 +3,7 @@ import path from 'path'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-
+  static: { prefix: false },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'uploadBoard',
@@ -47,10 +47,17 @@ export default {
 
   srcDir: 'frontend/',
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  // 8/4 일 테스트 image upload 관련 테스트
+  // alias: {
+  //   uploadPath: path.resolve(__dirname, './FileStorage/upload'),
+  //   'static/upload': path.resolve(__dirname, './FileStorage/upload'),
+  // },
+  // build: {
+  //   publicPath: '/public/',
+  // },
   serverMiddleware: [
     { path: '/test', handler: path.join(__dirname, '/backend/test.js') },
+    { path: '/Storage', handler: path.join(__dirname, '/backend/Storage.js') },
     {
       path: '/sendData',
       handler: path.join(__dirname, '/backend/sendData.js'),

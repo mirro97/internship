@@ -1,19 +1,23 @@
 <template>
   <div>
     <ul class="index-list">
-      <li>
+      <li
+        class="content"
+        v-for="(content, i) in contentList"
+        :key="i"
+        @click="route"
+      >
         <div class="intro">
           <div class="img-container">
-            <img src="../assets/img/testImg.jpg" alt="" />
+            <img :src="content.imgUrl" alt="" />
           </div>
           <div class="detail">
-            <h2 class="sub-title">서브타이틀</h2>
-            <span class="sub-date"> 올린 날짜</span>
+            <h2 class="sub-title">{{ content.title }}</h2>
+            <span class="sub-date"> 올린 날짜 {{ content.uploadDay }}</span>
           </div>
         </div>
       </li>
     </ul>
-    <button @click="getData">데이터 왔는지 확인용</button>
   </div>
 </template>
 
@@ -21,14 +25,21 @@
 export default {
   data() {
     return {
-      sentdata: '',
+      contentList: [],
     }
   },
+  mounted() {
+    this.getData()
+  },
   methods: {
-    getData() {
-      this.$axios.get('/sendData').then((res) => {
-        console.log(res.data)
+    async getData() {
+      await this.$axios.get('/sendData').then((res) => {
+        this.contentList = res.data
       })
+      console.log('받아온 데이터 출력: ' + this.contentList[0].title)
+    },
+    route() {
+      this.$router.push('/readPost')
     },
   },
 }
@@ -43,9 +54,14 @@ export default {
 }
 
 .intro {
-  border: 1px solid #dee2e6;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.intro:hover {
+  transition: 0.2s ease;
+  -webkit-box-shadow: 0px 0px 13px -2px rgba(59, 59, 59, 0.79);
+  box-shadow: 0px 0px 13px -2px rgba(59, 59, 59, 0.79);
 }
 
 .img-container {
@@ -64,6 +80,9 @@ export default {
 
 .detail {
   padding: 18px 12px;
+  border: 1px solid #dee2e6;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .sub-title {

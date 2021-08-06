@@ -8,7 +8,7 @@
       </client-only>
 
       <div class="w-bottom">
-        <button class="confirm-btn">완료</button>
+        <button class="confirm-btn" @click="route">완료</button>
       </div>
     </div>
   </div>
@@ -26,12 +26,15 @@ export default {
       console.log(content)
       this.content = content
     },
+    route() {
+      this.$router.push('/')
+    },
   },
 }
 </script>
 
 <style>
-@import url('../../assets/css/fonts.css');
+@import url('../assets/css/fonts.css');
 * {
   box-sizing: border-box;
   margin: 0;
