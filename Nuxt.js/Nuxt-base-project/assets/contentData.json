@@ -1,0 +1,32 @@
+[
+  {
+    "postIndex": 1,
+    "nickname": "NYchicken",
+    "name": "강수정",
+    "email": "mirro97@naver.com",
+    "uploadDay": "2020-5-13",
+    "title": "1번 content",
+    "contents": "현재 테스트중 첫번째 컨텐츠 입니다. 한줄이상으로 글작성 -> css 에 참고하기 위함 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. ",
+    "imgUrl": "/img/sky.jpg"
+  },
+  {
+    "postIndex": 2,
+    "nickname": "NYchicken",
+    "name": "강수정",
+    "email": "mirro97@naver.com",
+    "uploadDay": "2021-8-2",
+    "title": "2번 content",
+    "contents": "현재 테스트중 두번째 컨텐츠 입니다. 두줄이상으로 글작성 -> css 에 참고하기 위함 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. ",
+    "imgUrl": "/img/cat.jpg"
+  },
+  {
+    "postIndex": 3,
+    "nickname": "NYchicken",
+    "name": "강수정",
+    "email": "mirro97@naver.com",
+    "uploadDay": "2021-8-4",
+    "title": "3번 content",
+    "contents": "현재 테스트중 세번째 컨텐츠 입니다. 세줄이상으로 글작성 -> css 에 참고하기 위함 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. 아무상관없는말. ",
+    "imgUrl": "/img/turtle.jpg"
+  }
+]

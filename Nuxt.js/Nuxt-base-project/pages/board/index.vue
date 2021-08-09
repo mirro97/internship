@@ -1,5 +1,5 @@
 <template>
-  <div>New Post 작성하는 곳</div>
+  <div></div>
 </template>
 
 <script>
